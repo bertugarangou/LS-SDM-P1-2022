@@ -5,31 +5,44 @@ LIST P=PIC18F4321	F=INHX32
     CONFIG PBADEN=DIG	    ;PORTB com a Digital (el posem a 0)
     CONFIG WDT=OFF	    ;Desactivem el Watch Dog Timer
     CONFIG LVP=OFF	    ;Evitar resets eusart
-;vars
+;--------------------------------DECLARACIO_VARS--------------------------------
+ eeprom_adr EQU 0x00
+ eeprom_data EQU 0x01
+ carrier EQU 0x02
+ 
+;-------------------------------------INITS-------------------------------------
     ORG 0x000
     GOTO MAIN
     ORG 0x008
     GOTO HIGH_RSI
     ORG 0x018
     retfie FAST
+
     
 INIT_PORTS
+    
 RETURN
     
 INIT_VARS
+    movlw b'00001101' ;\n del putty a Windows 10
+    movwf carrier,0
+    
 RETURN
     
 INIT_EUSART
+    
 RETURN
     
 INIT_INTCONS
+    
 RETURN
 
 INIT_TIMER
+    
 RETURN
     
 CARREGA_TIMER
-    MOVLW HIGH(.);cada 20ms
+    MOVLW HIGH(.);cada XXms
     MOVWF TMR0H,0
     MOVLW LOW(.)
     MOVWF TMR0L,0
@@ -41,12 +54,14 @@ INIT_EEPROM
 RETURN
     
 INIT_ADCON
+    
 RETURN
 
 INIT_OSC
+    
 RETURN
     
-;-------------------------------------------------------------------------------
+;--------------------------------------MAIN-------------------------------------
 MAIN
     call INIT_VARS
     call INIT_PORTS
@@ -59,7 +74,7 @@ MAIN
     call INIT_ADCON
     
     
-    
+;-------------------------------------LOOP--------------------------------------
 LOOP
     ;codi
     
@@ -68,11 +83,11 @@ LOOP
 GOTO LOOP
     
     
-;-------------------------------------------------------------------------------
+;-----------------------------------HIGH_RSI------------------------------------
 HIGH_RSI
 RETFIE FAST
     
-;-------------------------------------------------------------------------------
+;-----------------------------------FUNCIONS------------------------------------
 
 ;Lectura EEPROM
 EEPROM_READ
@@ -84,7 +99,7 @@ EEPROM_READ
     MOVFF EEDATA, eeprom_data
 RETURN
     
-;Escriptura EEPROM   
+;Escriptura EEPROM   ;moure el que sigui a "eeprom_addr" i "eeprom_data"
 EEPROM_WRITE
     movf eeprom_addr,0
     movwf EEADR,0
