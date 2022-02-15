@@ -1,4 +1,4 @@
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  1
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -43,7 +43,7 @@ Warning[215]: Processor superseded by command line.  Verify processor symbol.
 00001A                00025 HIGH_RSI
 00001A 0011           00026     RETFIE FAST
                       00027     
-00001C                00028 INIT_PORTS
+00001C                00028 CONFIG_PORTS
 00001C 6A95           00029     CLRF TRISD,0
 00001E 6A8C           00030     CLRF LATD,0
 000020 0EC0           00031     MOVLW b'11000000'
@@ -57,7 +57,7 @@ Warning[215]: Processor superseded by command line.  Verify processor symbol.
 00002C 0E4F           00039     MOVLW b'01001111'
 00002E 6E01           00040     MOVWF SEVEN_SEG_D,0
 000030 0E3B           00041     MOVLW b'00111011'
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  2
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -82,20 +82,20 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00058     
                       00059 ;--------------------------------------MAIN-------------------------------------
 000050                00060 MAIN
-000050 EC?? F???      00061     CALL INIT_PORTS
+000050 EC?? F???      00061     CALL CONFIG_PORTS
 000054 EC?? F???      00062     CALL INIT_VARS
-                      00063     ;CALL INIT_OSC
-                      00064     ;CALL INIT_EUSART
-                      00065     ;CALL INIT_INTCONS
-                      00066     ;CALL INIT_TIMER
+                      00063     ;CALL CONFIG_OSC
+                      00064     ;CALL CONFIG_EUSART
+                      00065     ;CALL CONFIG_INTERRUPTS
+                      00066     ;CALL CONFIG_TIMER
                       00067     ;CALL CARREGA_TIMER
-                      00068     ;CALL INIT_ADCON
+                      00068     ;CALL CONFIG_ADCON
                       00069 
 000058                00070 LOOP_MAIN
-000058 EC?? F???      00071         CALL CANVIA_ESTAT_LED
-00005C EF?? F???      00072         GOTO LOOP_MAIN
+000058 EC?? F???      00071     CALL CANVIA_ESTAT_LED
+00005C EF?? F???      00072     GOTO LOOP_MAIN
                       00073     END
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  3
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  3
 
 
 SYMBOL TABLE
@@ -154,7 +154,7 @@ BCLIP                             00000003
 BF                                00000000
 BGST                              00000005
 BOR                               00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  4
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  4
 
 
 SYMBOL TABLE
@@ -213,7 +213,7 @@ CIS                               00000003
 CK                                00000006
 CKE                               00000006
 CKP                               00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  5
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  5
 
 
 SYMBOL TABLE
@@ -228,6 +228,7 @@ CMCON                             00000FB4
 CMIE                              00000006
 CMIF                              00000006
 CMIP                              00000006
+CONFIG_PORTS                      0000001C
 CREN                              00000004
 CS                                00000002
 CSRC                              00000007
@@ -271,13 +272,13 @@ EEIF                              00000004
 EEIP                              00000004
 EEPGD                             00000007
 FAST                              00000001
-FERR                              00000002
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  6
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  6
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+FERR                              00000002
 FLT0                              00000000
 FLTS                              00000002
 FREE                              00000004
@@ -315,7 +316,6 @@ IDLEN                             00000007
 INDF0                             00000FEF
 INDF1                             00000FE7
 INDF2                             00000FDF
-INIT_PORTS                        0000001C
 INIT_VARS                         00000028
 INT0                              00000000
 INT0E                             00000004
@@ -331,7 +331,7 @@ INT1IP                            00000006
 INT1P                             00000006
 INT2                              00000002
 INT2E                             00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  7
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  7
 
 
 SYMBOL TABLE
@@ -390,7 +390,7 @@ LATC6                             00000006
 LATC7                             00000007
 LATD                              00000F8C
 LATD0                             00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  8
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  8
 
 
 SYMBOL TABLE
@@ -449,7 +449,7 @@ OSC2                              00000006
 OSCCON                            00000FD3
 OSCFIE                            00000007
 OSCFIF                            00000007
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE  9
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE  9
 
 
 SYMBOL TABLE
@@ -508,7 +508,7 @@ POSTDEC2                          00000FDD
 POSTINC0                          00000FEE
 POSTINC1                          00000FE6
 POSTINC2                          00000FDE
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 10
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 10
 
 
 SYMBOL TABLE
@@ -567,7 +567,7 @@ RC2                               00000002
 RC3                               00000003
 RC4                               00000004
 RC5                               00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 11
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 11
 
 
 SYMBOL TABLE
@@ -626,7 +626,7 @@ SEVEN_SEG_E                       00000002
 SEVEN_SEG_F                       00000003
 SEVEN_SEG_G                       00000004
 SEVEN_SEG_c                       00000007
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 12
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 12
 
 
 SYMBOL TABLE
@@ -685,7 +685,7 @@ T1OSI                             00000001
 T1OSO                             00000000
 T1RUN                             00000006
 T1SYNC                            00000002
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 13
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 13
 
 
 SYMBOL TABLE
@@ -744,7 +744,7 @@ TOSL                              00000FFD
 TOSU                              00000FFF
 TOUTPS0                           00000003
 TOUTPS1                           00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 14
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 14
 
 
 SYMBOL TABLE
@@ -803,7 +803,7 @@ TX9                               00000006
 TX9D                              00000000
 TXCKP                             00000004
 TXEN                              00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 15
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 15
 
 
 SYMBOL TABLE
@@ -862,7 +862,7 @@ _CPB_OFF_5H                       000000FF
 _CPB_ON_5H                        000000BF
 _CPD_OFF_5H                       000000FF
 _CPD_ON_5H                        0000007F
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 16
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 16
 
 
 SYMBOL TABLE
@@ -921,7 +921,7 @@ _WDTPS_2048_2H                    000000F7
 _WDTPS_256_2H                     000000F1
 _WDTPS_2_2H                       000000E3
 _WDTPS_32768_2H                   000000FF
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  12:22:08         PAGE 17
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-15-2022  20:52:14         PAGE 17
 
 
 SYMBOL TABLE

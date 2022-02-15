@@ -1,7 +1,7 @@
 LIST P=PIC18F4321   F=INHX32
 #include <p18f4321.inc>
 
-    CONFIG OSC=INTIO2	    
+    CONFIG OSC=INTIO2	    ;16MHz
     CONFIG PBADEN=DIG	    ;PORTB com a Digital (el posem a 0)
     CONFIG WDT=OFF	    ;Desactivem el Watch Dog Timer
     CONFIG LVP=OFF	    ;Evitar resets eusart
@@ -24,8 +24,14 @@ SEVEN_SEG_c EQU 0X07
 
 HIGH_RSI
     RETFIE FAST
-    
-INIT_PORTS
+
+CONFIG_PORTS
+    BSF TRISB, 0, 0  ;Pols1 entrada
+    BSF TRISB, 1, 0  ;Pols2 entrada
+    BSF TRISB, 2, 0  ;Pols3 entrada
+    BSF TRISB, 3, 0
+    BSF TRISB, 4, 0
+    BCF INTCON2, 7, 0;Portb pull ups
     CLRF TRISD,0
     CLRF LATD,0
     MOVLW b'11000000'
@@ -52,24 +58,47 @@ INIT_VARS
     MOVWF SEVEN_SEG_c
     RETURN
     
-CANVIA_ESTAT_LED
-    MOVFF SEVEN_SEG_c, LATD
+CONFIG_OSC
+    BSF OSCCON, 5, 0
+    BSF OSCTUNE, 6, 0
     RETURN
     
+CONFIG_EUSART
+    BCF TXSTA, 4, 0
+    BSF TXSTA, 2, 0
+    BSF RCSTA, 7, 0
+    BSF RCSTA, 4, 0
+    BSF BAUDCON, 3, 0
+    MOVLW HIGH(.1040)  ;Carreguem baudrate de 9600
+    MOVWF SPBRGH, 0
+    MOVLW LOW(.1040)
+    MOVWF SPBRG, 0
+    RETURN    
+    
+CONFIG_ADC
+    BSF ADCON0, ADON, 0 ;Converter module enabled.
+    MOVLW b'00001110'  ;AN0 analog
+    MOVWF ADCON1, 0
+    BCF ADCON2, ADFM, 0 ;Left justified
+    BSF ADCON2, 5, 0   ;Toquem aquests bits perquè trigui més a convertir
+    BSF ADCON2, 4, 0
+    BSF ADCON2, 2, 0
+    BSF ADCON2, 0, 0
+    RETURN    
 ;--------------------------------------MAIN-------------------------------------
 MAIN
-    CALL INIT_PORTS
+    CALL CONFIG_PORTS
     CALL INIT_VARS
-    ;CALL INIT_OSC
-    ;CALL INIT_EUSART
-    ;CALL INIT_INTCONS
-    ;CALL INIT_TIMER
+    ;CALL CONFIG_OSC
+    ;CALL CONFIG_EUSART
+    ;CALL CONFIG_INTERRUPTS
+    ;CALL CONFIG_TIMER
     ;CALL CARREGA_TIMER
-    ;CALL INIT_ADCON
+    ;CALL CONFIG_ADC
 
 LOOP_MAIN
-	CALL CANVIA_ESTAT_LED
-	GOTO LOOP_MAIN
+    
+    GOTO LOOP_MAIN
     END
     
 ;-----------------------------------FUNCIONS------------------------------------
