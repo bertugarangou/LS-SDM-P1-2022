@@ -17,6 +17,8 @@ SEVEN_SEG_c EQU 0X07
 tmp_timer EQU 0x08
 MODE_ACTUAL EQU 0x0A
 eusart_input EQU 0x0B
+tmp3 EQU 0x0C
+tmp4 EQU 0x0D
  ; mode: (0s per defecte al init)
  ; b7[0:manual, 1:automatic]
  ; b6[0:no s'ha rebut la P encara pero estem en auto, 1:s'ha rebut la P]
@@ -158,8 +160,28 @@ FUNCIO_MODE_MANUAL
     
     ;NO ARRIBAR AQUI SI S'ESTÀ ENREGISTRANT
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
     BTFSS PORTB,1,0;si actiu (0) canvi mode
-    BSF MODE_ACTUAL,7,0
+    CALL POLSADOR_REBOTS_CANVI_A_AUTO
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     ;canvi per P EUSART.
     BTFSS PIR1,RCIF,0
@@ -171,6 +193,36 @@ FUNCIO_MODE_MANUAL
     GOTO END_LOOP_MAIN
     BSF MODE_ACTUAL,7,0;activem mode auto
     GOTO END_LOOP_MAIN
+    
+    
+    
+    
+POLSADOR_REBOTS_CANVI_A_AUTO
+  CALL ESPERA_meitat
+  CALL ESPERA_meitat
+  BTFSC PORTB,1,0
+  RETURN
+  BSF MODE_ACTUAL,7,0	;OKOKOKOKOK
+ESPERA_DESCLICAR_CANVI_A_AUTO
+  BTFSS PORTB,1,0
+  GOTO ESPERA_DESCLICAR_CANVI_A_AUTO
+  RETURN
+  
+  
+POLSADOR_REBOTS_CANVI_A_MANUAL
+  CALL ESPERA_meitat
+  CALL ESPERA_meitat
+  
+  BTFSC PORTB,1,0
+  RETURN
+  BCF MODE_ACTUAL,7,0	;OKOKOKOKOK
+ESPERA_DESCLICAR_CANVI_A_MANUAL
+  BTFSS PORTB,1,0
+  GOTO ESPERA_DESCLICAR_CANVI_A_MANUAL
+  RETURN
+    
+    
+    
     
 FUNCIO_MODE_AUTOMATIC
     BSF LATC,0,0;blau
@@ -188,7 +240,7 @@ FUNCIO_MODE_AUTOMATIC
     ;i tornar a reproduir una altra
     
     BTFSS PORTB,1,0;si cliquen manual, activem manual
-    BCF MODE_ACTUAL,7,0
+    CALL POLSADOR_REBOTS_CANVI_A_MANUAL
     
     GOTO END_LOOP_MAIN
     
@@ -198,8 +250,7 @@ PRE_AUTO_MODE
     ;mirar btn
     BTFSC PORTB,1,0
     GOTO PRE_AUTO_MODE_CHECK_PIR
-    BCF MODE_ACTUAL,7,0
-    BCF MODE_ACTUAL,6,0
+    CALL POLSADOR_REBOTS_CANVI_A_MANUAL
     GOTO END_LOOP_MAIN
     
     ;mirar eusart
@@ -212,4 +263,19 @@ PRE_AUTO_MODE_CHECK_PIR
     CPFSEQ eusart_input,0
     GOTO PRE_AUTO_MODE
     GOTO FUNCIO_MODE_AUTOMATIC
+    
+    
+ESPERA_meitat
+    setf tmp3,0
+BUCLE_D_1
+    setf tmp4,0
+BUCLE2_D_1
+    decfsz tmp4,f,0
+    goto BUCLE2_D_1
+    decfsz tmp3,f,0
+    goto BUCLE_D_1
+    RETURN
+    
+    
+    
     END
