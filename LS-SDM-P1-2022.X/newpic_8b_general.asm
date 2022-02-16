@@ -30,6 +30,15 @@ tmp4 EQU 0x0D
     ORG 0x018
     RETFIE FAST
 
+;-----------------------------------HIGH_RSI------------------------------------
+HIGH_RSI
+    BCF INTCON,TMR0IF,0;quan salti una interrupcio qualsevol, nomes tenim timer0 de moment
+    CALL CARREGA_TIMER;reiniciem el timer
+     
+    MOVLW .250;250
+    MOVWF tmp_timer,0  
+    RETFIE FAST    
+    
 ;------------------------------------------------------------------------------
 CONFIG_PORTS
     MOVLW b'00000011'
@@ -69,146 +78,65 @@ INIT_VARS
     MOVWF SEVEN_SEG_B
     MOVLW b'00001011'
     MOVWF SEVEN_SEG_c
-    
     CLRF MODE_ACTUAL,0
     
     RETURN
     
-INIT_EUSART
-    movlw b'00100100'
-    movwf TXSTA,0
-    movlw b'10010000'
-    movwf RCSTA,0
-    movlw b'00001000'
-    movwf BAUDCON,0
-    movlw HIGH(.1040)
-    movwf SPBRGH,0
-    movlw LOW(.1040)
-    movwf SPBRG,0
-    return
+CONFIG_EUSART
+    BCF TXSTA, 4, 0
+    BSF TXSTA, 2, 0
+    BSF RCSTA, 7, 0
+    BSF RCSTA, 4, 0
+    BSF BAUDCON, 3, 0
+    MOVLW HIGH(.1040)  ;Carreguem baudrate de 9600
+    MOVWF SPBRGH, 0
+    MOVLW LOW(.1040)
+    MOVWF SPBRG, 0
+    RETURN 
     
 CONFIG_ADC
     BSF ADCON0, ADON, 0 ;Converter module enabled.
-    MOVLW b'00001101'
-    MOVWF ADCON1,0
-    MOVLW b'00001000'
-    MOVWF ADCON2,0
-    RETURN
+    MOVLW b'00001110'  ;AN0 analog
+    MOVWF ADCON1, 0
+    BCF ADCON2, ADFM, 0 ;Left justified
+    BSF ADCON2, 5, 0   ;Toquem aquests bits perqu? trigui m?s a convertir
+    BSF ADCON2, 4, 0
+    BSF ADCON2, 2, 0
+    BSF ADCON2, 0, 0
+    RETURN  
     
 CONFIG_TIMER
     MOVLW b'10010001'
     MOVWF T0CON,0   
     CALL CARREGA_TIMER
     RETURN
+    
 CARREGA_TIMER
     MOVLW HIGH(.15536);cada 20ms
     MOVWF TMR0H,0
     MOVLW LOW(.15536)
     MOVWF TMR0L,0
     RETURN
+    
 CONFIG_INTERRUPTS
     MOVLW b'11100000'
     MOVWF INTCON,0
     BCF INTCON2,RBPU,0
-    
     RETURN
-;--------------------------------------MAIN-------------------------------------
-MAIN
-
-    CALL CONFIG_PORTS
-    CALL INIT_VARS
-    CALL INIT_EUSART
-    CALL CONFIG_INTERRUPTS
-    CALL CONFIG_TIMER
-    CALL CONFIG_ADC
-
-LOOP_MAIN;bucle del programa
-    ;entrar als modes
-    ;nota: els canvis de modes es fan dins els funcio_mode_xxxx
-    BTFSS MODE_ACTUAL,7,0
-    GOTO FUNCIO_MODE_MANUAL;aqui manual
-    GOTO FUNCIO_MODE_AUTOMATIC;aqui auto
-    
-END_LOOP_MAIN
-    ;netejar leds
-    BCF LATC,0,0
-    BCF LATC,1,0
-    BCF LATC,2,0
-    BCF LATC,3,0
-    
-    GOTO LOOP_MAIN
-    
-;-----------------------------------HIGH_RSI------------------------------------
-HIGH_RSI
-    BCF INTCON,TMR0IF,0;quan salti una interrupcio qualsevol, nomes tenim timer0 de moment
-    call CARREGA_TIMER;reiniciem el timer
     
     
-    ;BTG LATC,0,0
-    
-    movlw .250;250
-    movwf tmp_timer,0  
-;-----------------------------------FUNCIONS------------------------------------
-FUNCIO_MODE_MANUAL
-    BSF LATC, 2,0;verd
-    ;codi funcio manual
-    
-    ;codis canvi de funcions des del manual
-    
-    
+ESPERA_meitat
+    SETF tmp3,0
+BUCLE_D_1
+    SETF tmp4,0
+BUCLE2_D_1
+    DECFSZ tmp4,f,0
+    GOTO BUCLE2_D_1
+    DECFSZ tmp3,f,0
+    GOTO BUCLE_D_1
+    RETURN
     
     
-    ;NO ARRIBAR AQUI SI S'ESTÀ ENREGISTRANT
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    BTFSS PORTB,1,0;si actiu (0) canvi mode
-    CALL POLSADOR_REBOTS_CANVI_A_AUTO
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    ;canvi per P EUSART.
-    BTFSS PIR1,RCIF,0
-    GOTO END_LOOP_MAIN;no eusart
-    movf RCREG,0,0
-    movwf eusart_input,0
-    movlw 'P'
-    CPFSEQ eusart_input,0
-    GOTO END_LOOP_MAIN
-    BSF MODE_ACTUAL,7,0;activem mode auto
-    GOTO END_LOOP_MAIN
-    
-    
-    
-    
-POLSADOR_REBOTS_CANVI_A_AUTO
-  CALL ESPERA_meitat
-  CALL ESPERA_meitat
-  BTFSC PORTB,1,0
-  RETURN
-  BSF MODE_ACTUAL,7,0	;OKOKOKOKOK
-ESPERA_DESCLICAR_CANVI_A_AUTO
-  BTFSS PORTB,1,0
-  GOTO ESPERA_DESCLICAR_CANVI_A_AUTO
-  RETURN
-  
-  
 POLSADOR_REBOTS_CANVI_A_MANUAL
   CALL ESPERA_meitat
   CALL ESPERA_meitat
@@ -220,10 +148,7 @@ ESPERA_DESCLICAR_CANVI_A_MANUAL
   BTFSS PORTB,1,0
   GOTO ESPERA_DESCLICAR_CANVI_A_MANUAL
   RETURN
-    
-    
-    
-    
+  
 FUNCIO_MODE_AUTOMATIC
     BSF LATC,0,0;blau
     
@@ -242,8 +167,15 @@ FUNCIO_MODE_AUTOMATIC
     BTFSS PORTB,1,0;si cliquen manual, activem manual
     CALL POLSADOR_REBOTS_CANVI_A_MANUAL
     
-    GOTO END_LOOP_MAIN
+    GOTO NETEJA_LEDSS
     
+NETEJA_LEDSS    
+    ;netejar leds
+    BCF LATC,0,0
+    BCF LATC,1,0
+    BCF LATC,2,0
+    BCF LATC,3,0
+    RETURN
     
 PRE_AUTO_MODE
     
@@ -251,31 +183,81 @@ PRE_AUTO_MODE
     BTFSC PORTB,1,0
     GOTO PRE_AUTO_MODE_CHECK_PIR
     CALL POLSADOR_REBOTS_CANVI_A_MANUAL
-    GOTO END_LOOP_MAIN
+    GOTO NETEJA_LEDSS  
     
     ;mirar eusart
 PRE_AUTO_MODE_CHECK_PIR
     BTFSS PIR1,RCIF,0;s'ha de netejar?
     GOTO PRE_AUTO_MODE;no eusart
-    movf RCREG,0,0
-    movwf eusart_input,0
-    movlw 'P'
+    MOVF RCREG,0,0
+    MOVWF eusart_input,0
+    MOVLW 'P'
     CPFSEQ eusart_input,0
     GOTO PRE_AUTO_MODE
-    GOTO FUNCIO_MODE_AUTOMATIC
+    GOTO FUNCIO_MODE_AUTOMATIC    
     
     
-ESPERA_meitat
-    setf tmp3,0
-BUCLE_D_1
-    setf tmp4,0
-BUCLE2_D_1
-    decfsz tmp4,f,0
-    goto BUCLE2_D_1
-    decfsz tmp3,f,0
-    goto BUCLE_D_1
+POLSADOR_REBOTS_CANVI_A_AUTO
+  CALL ESPERA_meitat
+  CALL ESPERA_meitat
+  BTFSC PORTB,1,0
+  RETURN
+  BSF MODE_ACTUAL,7,0	;OKOKOKOKOK
+ESPERA_DESCLICAR_CANVI_A_AUTO
+  BTFSS PORTB,1,0
+  GOTO ESPERA_DESCLICAR_CANVI_A_AUTO
+  RETURN   
+    
+FUNCIO_MODE_MANUAL
+    BSF LATC, 2,0;verd
+    ;codi funcio manual
+    
+    ;codis canvi de funcions des del manual
+
+    ;NO ARRIBAR AQUI SI S'ESTÀ ENREGISTRANT
+
+    
+    BTFSS PORTB,1,0;si actiu (0) canvi mode
+    CALL POLSADOR_REBOTS_CANVI_A_AUTO
+    
+
+    ;canvi per P EUSART.
+    BTFSS PIR1,RCIF,0
+    GOTO NETEJA_LEDS;no eusart
+    MOVF RCREG,0,0
+    MOVWF eusart_input,0
+    MOVLW 'P'
+    CPFSEQ eusart_input,0
+    GOTO NETEJA_LEDS
+    BSF MODE_ACTUAL,7,0;activem mode auto
+    GOTO NETEJA_LEDS
+    
+NETEJA_LEDS    
+    ;netejar leds
+    BCF LATC,0,0
+    BCF LATC,1,0
+    BCF LATC,2,0
+    BCF LATC,3,0
     RETURN
     
+ 
     
+;--------------------------------------MAIN-------------------------------------
+MAIN
+    CALL CONFIG_PORTS
+    CALL INIT_VARS
+    CALL CONFIG_EUSART
+    CALL CONFIG_INTERRUPTS
+    CALL CONFIG_TIMER
+    CALL CONFIG_ADC
+LOOP_MAIN;bucle del programa
+    ;entrar als modes
+    ;nota: els canvis de modes es fan dins els funcio_mode_xxxx
+    BTFSS MODE_ACTUAL,7,0
+    CALL FUNCIO_MODE_MANUAL;aqui manual
+    CALL FUNCIO_MODE_AUTOMATIC;aqui auto
+  
+    GOTO LOOP_MAIN
     
     END
+

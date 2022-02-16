@@ -1,4 +1,4 @@
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  1
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -48,286 +48,267 @@ Warning[215]: Processor superseded by command line.  Verify processor symbol.
                       00030     ORG 0x018
 000018 0011           00031     RETFIE FAST
                       00032 
-                      00033 ;------------------------------------------------------------------------------
-00001A                00034 CONFIG_PORTS
-00001A 0E03           00035     MOVLW b'00000011'
-00001C 6E92           00036     MOVWF TRISA,0
-00001E 9489           00037     BCF LATA,2,0
-000020 9689           00038     BCF LATA,3,0
-                      00039     
-000022 8093           00040     BSF TRISB, 0, 0
-000024 8293           00041     BSF TRISB, 1, 0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  2
+                      00033 ;-----------------------------------HIGH_RSI------------------------------------
+00001A                00034 HIGH_RSI
+00001A 94F2           00035     BCF INTCON,TMR0IF,0;quan salti una interrupcio qualsevol, nomes tenim timer0 de moment
+00001C EC?? F???      00036     CALL CARREGA_TIMER;reiniciem el timer
+                      00037      
+000020 0EFA           00038     MOVLW .250;250
+000022 6E08           00039     MOVWF tmp_timer,0  
+000024 0011           00040     RETFIE FAST    
+                      00041     
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000026 8493           00042     BSF TRISB, 2, 0
-000028 8693           00043     BSF TRISB, 3, 0
-00002A 8893           00044     BSF TRISB, 4, 0
-                      00045     
-00002C 6A95           00046     CLRF TRISD,0
-00002E 6A8C           00047     CLRF LATD,0
+                      00042 ;------------------------------------------------------------------------------
+000026                00043 CONFIG_PORTS
+000026 0E03           00044     MOVLW b'00000011'
+000028 6E92           00045     MOVWF TRISA,0
+00002A 9489           00046     BCF LATA,2,0
+00002C 9689           00047     BCF LATA,3,0
                       00048     
-000030 0EC0           00049     MOVLW b'11000000'
-000032 6E94           00050     MOVWF TRISC,0
-000034 6A8B           00051     CLRF LATC,0
-                      00052     
-000036 0012           00053     RETURN
+00002E 8093           00049     BSF TRISB, 0, 0
+000030 8293           00050     BSF TRISB, 1, 0
+000032 8493           00051     BSF TRISB, 2, 0
+000034 8693           00052     BSF TRISB, 3, 0
+000036 8893           00053     BSF TRISB, 4, 0
                       00054     
-000038                00055 INIT_VARS
-000038 0E33           00056     MOVLW b'00110011'
-00003A 6E00           00057     MOVWF SEVEN_SEG_C,0
-00003C 0E4F           00058     MOVLW b'01001111'
-00003E 6E01           00059     MOVWF SEVEN_SEG_D,0
-000040 0E3B           00060     MOVLW b'00111011'
-000042 6E02           00061     MOVWF SEVEN_SEG_E,0
-000044 0E39           00062     MOVLW b'00111001'
-000046 6E03           00063     MOVWF SEVEN_SEG_F
-000048 0E7E           00064     MOVLW b'01111110'
-00004A 6E04           00065     MOVWF SEVEN_SEG_G
-00004C 0E7D           00066     MOVLW b'01111101'
-00004E 6E05           00067     MOVWF SEVEN_SEG_A
-000050 0E1F           00068     MOVLW b'00011111'
-000052 6E06           00069     MOVWF SEVEN_SEG_B
-000054 0E0B           00070     MOVLW b'00001011'
-000056 6E07           00071     MOVWF SEVEN_SEG_c
-                      00072     
-000058 6A0A           00073     CLRF MODE_ACTUAL,0
-                      00074     
-00005A 0012           00075     RETURN
-                      00076     
-00005C                00077 INIT_EUSART
-00005C 0E24           00078     movlw b'00100100'
-00005E 6EAC           00079     movwf TXSTA,0
-000060 0E90           00080     movlw b'10010000'
-000062 6EAB           00081     movwf RCSTA,0
-000064 0E08           00082     movlw b'00001000'
-000066 6EB8           00083     movwf BAUDCON,0
-000068 0E04           00084     movlw HIGH(.1040)
-00006A 6EB0           00085     movwf SPBRGH,0
-00006C 0E10           00086     movlw LOW(.1040)
-00006E 6EAF           00087     movwf SPBRG,0
-000070 0012           00088     return
-                      00089     
-000072                00090 CONFIG_ADC
-000072 80C2           00091     BSF ADCON0, ADON, 0 ;Converter module enabled.
-000074 0E0D           00092     MOVLW b'00001101'
-000076 6EC1           00093     MOVWF ADCON1,0
-000078 0E08           00094     MOVLW b'00001000'
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  3
+000038 6A95           00055     CLRF TRISD,0
+00003A 6A8C           00056     CLRF LATD,0
+                      00057     
+00003C 0EC0           00058     MOVLW b'11000000'
+00003E 6E94           00059     MOVWF TRISC,0
+000040 6A8B           00060     CLRF LATC,0
+                      00061     
+000042 0012           00062     RETURN
+                      00063     
+000044                00064 INIT_VARS
+000044 0E33           00065     MOVLW b'00110011'
+000046 6E00           00066     MOVWF SEVEN_SEG_C,0
+000048 0E4F           00067     MOVLW b'01001111'
+00004A 6E01           00068     MOVWF SEVEN_SEG_D,0
+00004C 0E3B           00069     MOVLW b'00111011'
+00004E 6E02           00070     MOVWF SEVEN_SEG_E,0
+000050 0E39           00071     MOVLW b'00111001'
+000052 6E03           00072     MOVWF SEVEN_SEG_F
+000054 0E7E           00073     MOVLW b'01111110'
+000056 6E04           00074     MOVWF SEVEN_SEG_G
+000058 0E7D           00075     MOVLW b'01111101'
+00005A 6E05           00076     MOVWF SEVEN_SEG_A
+00005C 0E1F           00077     MOVLW b'00011111'
+00005E 6E06           00078     MOVWF SEVEN_SEG_B
+000060 0E0B           00079     MOVLW b'00001011'
+000062 6E07           00080     MOVWF SEVEN_SEG_c
+000064 6A0A           00081     CLRF MODE_ACTUAL,0
+                      00082     
+000066 0012           00083     RETURN
+                      00084     
+000068                00085 CONFIG_EUSART
+000068 98AC           00086     BCF TXSTA, 4, 0
+00006A 84AC           00087     BSF TXSTA, 2, 0
+00006C 8EAB           00088     BSF RCSTA, 7, 0
+00006E 88AB           00089     BSF RCSTA, 4, 0
+000070 86B8           00090     BSF BAUDCON, 3, 0
+000072 0E04           00091     MOVLW HIGH(.1040)  ;Carreguem baudrate de 9600
+000074 6EB0           00092     MOVWF SPBRGH, 0
+000076 0E10           00093     MOVLW LOW(.1040)
+000078 6EAF           00094     MOVWF SPBRG, 0
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00007A 6EC0           00095     MOVWF ADCON2,0
-00007C 0012           00096     RETURN
-                      00097     
-00007E                00098 CONFIG_TIMER
-00007E 0E91           00099     MOVLW b'10010001'
-000080 6ED5           00100     MOVWF T0CON,0   
-000082 EC?? F???      00101     CALL CARREGA_TIMER
-000086 0012           00102     RETURN
-000088                00103 CARREGA_TIMER
-000088 0E3C           00104     MOVLW HIGH(.15536);;cada 20ms
-00008A 6ED7           00105     MOVWF TMR0H,0
-00008C 0EB0           00106     MOVLW LOW(.15536)
-00008E 6ED6           00107     MOVWF TMR0L,0
-000090 0012           00108     RETURN
-000092                00109 CONFIG_INTERRUPTS
-000092 0EE0           00110     MOVLW b'11100000'
-000094 6EF2           00111     MOVWF INTCON,0
-000096 9EF1           00112     BCF INTCON2,RBPU,0
+00007A 0012           00095     RETURN 
+                      00096     
+00007C                00097 CONFIG_ADC
+00007C 80C2           00098     BSF ADCON0, ADON, 0 ;Converter module enabled.
+00007E 0E0E           00099     MOVLW b'00001110'  ;AN0 analog
+000080 6EC1           00100     MOVWF ADCON1, 0
+000082 9EC0           00101     BCF ADCON2, ADFM, 0 ;Left justified
+000084 8AC0           00102     BSF ADCON2, 5, 0   ;Toquem aquests bits perqu? trigui m?s a convertir
+000086 88C0           00103     BSF ADCON2, 4, 0
+000088 84C0           00104     BSF ADCON2, 2, 0
+00008A 80C0           00105     BSF ADCON2, 0, 0
+00008C 0012           00106     RETURN  
+                      00107     
+00008E                00108 CONFIG_TIMER
+00008E 0E91           00109     MOVLW b'10010001'
+000090 6ED5           00110     MOVWF T0CON,0   
+000092 EC?? F???      00111     CALL CARREGA_TIMER
+000096 0012           00112     RETURN
                       00113     
-000098 0012           00114     RETURN
-                      00115 ;--------------------------------------MAIN-------------------------------------
-00009A                00116 MAIN
-                      00117 
-00009A EC?? F???      00118     CALL CONFIG_PORTS
-00009E EC?? F???      00119     CALL INIT_VARS
-0000A2 EC?? F???      00120     CALL INIT_EUSART
-0000A6 EC?? F???      00121     CALL CONFIG_INTERRUPTS
-0000AA EC?? F???      00122     CALL CONFIG_TIMER
-0000AE EC?? F???      00123     CALL CONFIG_ADC
-                      00124 
-0000B2                00125 LOOP_MAIN;bucle del programa
-                      00126     ;entrar als modes
-                      00127     ;nota: els canvis de modes es fan dins els funcio_mode_xxxx
-0000B2 AE0A           00128     BTFSS MODE_ACTUAL,7,0
-0000B4 EF?? F???      00129     GOTO FUNCIO_MODE_MANUAL;aqui manual
-0000B8 EF?? F???      00130     GOTO FUNCIO_MODE_AUTOMATIC;aqui auto
-                      00131     
-0000BC                00132 END_LOOP_MAIN
-                      00133     ;netejar leds
-0000BC 908B           00134     BCF LATC,0,0
-0000BE 928B           00135     BCF LATC,1,0
-0000C0 948B           00136     BCF LATC,2,0
-0000C2 968B           00137     BCF LATC,3,0
+000098                00114 CARREGA_TIMER
+000098 0E3C           00115     MOVLW HIGH(.15536);;cada 20ms
+00009A 6ED7           00116     MOVWF TMR0H,0
+00009C 0EB0           00117     MOVLW LOW(.15536)
+00009E 6ED6           00118     MOVWF TMR0L,0
+0000A0 0012           00119     RETURN
+                      00120     
+0000A2                00121 CONFIG_INTERRUPTS
+0000A2 0EE0           00122     MOVLW b'11100000'
+0000A4 6EF2           00123     MOVWF INTCON,0
+0000A6 9EF1           00124     BCF INTCON2,RBPU,0
+0000A8 0012           00125     RETURN
+                      00126     
+                      00127     
+0000AA                00128 ESPERA_meitat
+0000AA 680C           00129     SETF tmp3,0
+0000AC                00130 BUCLE_D_1
+0000AC 680D           00131     SETF tmp4,0
+0000AE                00132 BUCLE2_D_1
+0000AE 2E0D           00133     DECFSZ tmp4,f,0
+0000B0 EF?? F???      00134     GOTO BUCLE2_D_1
+0000B4 2E0C           00135     DECFSZ tmp3,f,0
+0000B6 EF?? F???      00136     GOTO BUCLE_D_1
+0000BA 0012           00137     RETURN
                       00138     
-0000C4 EF?? F???      00139     GOTO LOOP_MAIN
-                      00140     
-                      00141 ;-----------------------------------HIGH_RSI------------------------------------
-0000C8                00142 HIGH_RSI
-0000C8 94F2           00143     BCF INTCON,TMR0IF,0;quan salti una interrupcio qualsevol, nomes tenim timer0 de moment
-0000CA EC?? F???      00144     call CARREGA_TIMER;reiniciem el timer
-                      00145     
-                      00146     
-                      00147     ;BTG LATC,0,0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  4
+                      00139     
+0000BC                00140 POLSADOR_REBOTS_CANVI_A_MANUAL
+0000BC EC?? F???      00141   CALL ESPERA_meitat
+0000C0 EC?? F???      00142   CALL ESPERA_meitat
+                      00143   
+0000C4 B281           00144   BTFSC PORTB,1,0
+0000C6 0012           00145   RETURN
+0000C8 9E0A           00146   BCF MODE_ACTUAL,7,0   ;OKOKOKOKOK
+0000CA                00147 ESPERA_DESCLICAR_CANVI_A_MANUAL
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-                      00148     
-0000CE 0EFA           00149     movlw .250;250
-0000D0 6E08           00150     movwf tmp_timer,0  
-                      00151 ;-----------------------------------FUNCIONS------------------------------------
-0000D2                00152 FUNCIO_MODE_MANUAL
-0000D2 848B           00153     BSF LATC, 2,0;verd
-                      00154     ;codi funcio manual
-                      00155     
-                      00156     ;codis canvi de funcions des del manual
+0000CA A281           00148   BTFSS PORTB,1,0
+0000CC EF?? F???      00149   GOTO ESPERA_DESCLICAR_CANVI_A_MANUAL
+0000D0 0012           00150   RETURN
+                      00151   
+0000D2                00152 FUNCIO_MODE_AUTOMATIC
+0000D2 808B           00153     BSF LATC,0,0;blau
+                      00154     
+0000D4 AC0A           00155     BTFSS MODE_ACTUAL,6,0
+0000D6 EF?? F???      00156     GOTO PRE_AUTO_MODE
                       00157     
                       00158     
-                      00159     
+                      00159     ;codi auto
                       00160     
-                      00161     ;NO ARRIBAR AQUI SI S'ESTÀ ENREGISTRANT
-                      00162     
+                      00161     
+                      00162     ;no arribar aqui si s'esta reproduint (si abans i si despres)
                       00163     
-                      00164     
-                      00165     
+0000DA 9C0A           00164     BCF MODE_ACTUAL,6,0;netejar que espera una altra P per la seguent cançó
+                      00165     ;i tornar a reproduir una altra
                       00166     
-                      00167     
-                      00168     
+0000DC A281           00167     BTFSS PORTB,1,0;si cliquen manual, activem manual
+0000DE EC?? F???      00168     CALL POLSADOR_REBOTS_CANVI_A_MANUAL
                       00169     
-                      00170     
+0000E2 EF?? F???      00170     GOTO NETEJA_LEDSS
                       00171     
-0000D4 A281           00172     BTFSS PORTB,1,0;si actiu (0) canvi mode
-0000D6 EC?? F???      00173     CALL POLSADOR_REBOTS_CANVI_A_AUTO
-                      00174     
-                      00175     
-                      00176     
-                      00177     
-                      00178     
+0000E6                00172 NETEJA_LEDSS    
+                      00173     ;netejar leds
+0000E6 908B           00174     BCF LATC,0,0
+0000E8 928B           00175     BCF LATC,1,0
+0000EA 948B           00176     BCF LATC,2,0
+0000EC 968B           00177     BCF LATC,3,0
+0000EE 0012           00178     RETURN
                       00179     
-                      00180     
+0000F0                00180 PRE_AUTO_MODE
                       00181     
-                      00182     
-                      00183     
-                      00184     
-                      00185     
-                      00186     ;canvi per P EUSART.
-0000DA AA9E           00187     BTFSS PIR1,RCIF,0
-0000DC EF?? F???      00188     GOTO END_LOOP_MAIN;no eusart
-0000E0 50AE           00189     movf RCREG,0,0
-0000E2 6E0B           00190     movwf eusart_input,0
-0000E4 0E50           00191     movlw 'P'
-0000E6 620B           00192     CPFSEQ eusart_input,0
-0000E8 EF?? F???      00193     GOTO END_LOOP_MAIN
-0000EC 8E0A           00194     BSF MODE_ACTUAL,7,0;activem mode auto
-0000EE EF?? F???      00195     GOTO END_LOOP_MAIN
-                      00196     
-                      00197     
+                      00182     ;mirar btn
+0000F0 B281           00183     BTFSC PORTB,1,0
+0000F2 EF?? F???      00184     GOTO PRE_AUTO_MODE_CHECK_PIR
+0000F6 EC?? F???      00185     CALL POLSADOR_REBOTS_CANVI_A_MANUAL
+0000FA EF?? F???      00186     GOTO NETEJA_LEDSS  
+                      00187     
+                      00188     ;mirar eusart
+0000FE                00189 PRE_AUTO_MODE_CHECK_PIR
+0000FE AA9E           00190     BTFSS PIR1,RCIF,0;s'ha de netejar?
+000100 EF?? F???      00191     GOTO PRE_AUTO_MODE;no eusart
+000104 50AE           00192     MOVF RCREG,0,0
+000106 6E0B           00193     MOVWF eusart_input,0
+000108 0E50           00194     MOVLW 'P'
+00010A 620B           00195     CPFSEQ eusart_input,0
+00010C EF?? F???      00196     GOTO PRE_AUTO_MODE
+000110 EF?? F???      00197     GOTO FUNCIO_MODE_AUTOMATIC    
                       00198     
                       00199     
-0000F2                00200 POLSADOR_REBOTS_CANVI_A_AUTO
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  5
+000114                00200 POLSADOR_REBOTS_CANVI_A_AUTO
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0000F2 EC?? F???      00201   CALL ESPERA_meitat
-0000F6 EC?? F???      00202   CALL ESPERA_meitat
-0000FA B281           00203   BTFSC PORTB,1,0
-0000FC 0012           00204   RETURN
-0000FE 8E0A           00205   BSF MODE_ACTUAL,7,0   ;OKOKOKOKOK
-000100                00206 ESPERA_DESCLICAR_CANVI_A_AUTO
-000100 A281           00207   BTFSS PORTB,1,0
-000102 EF?? F???      00208   GOTO ESPERA_DESCLICAR_CANVI_A_AUTO
-000106 0012           00209   RETURN
-                      00210   
-                      00211   
-000108                00212 POLSADOR_REBOTS_CANVI_A_MANUAL
-000108 EC?? F???      00213   CALL ESPERA_meitat
-00010C EC?? F???      00214   CALL ESPERA_meitat
-                      00215   
-000110 B281           00216   BTFSC PORTB,1,0
-000112 0012           00217   RETURN
-000114 9E0A           00218   BCF MODE_ACTUAL,7,0   ;OKOKOKOKOK
-000116                00219 ESPERA_DESCLICAR_CANVI_A_MANUAL
-000116 A281           00220   BTFSS PORTB,1,0
-000118 EF?? F???      00221   GOTO ESPERA_DESCLICAR_CANVI_A_MANUAL
-00011C 0012           00222   RETURN
-                      00223     
-                      00224     
-                      00225     
-                      00226     
-00011E                00227 FUNCIO_MODE_AUTOMATIC
-00011E 808B           00228     BSF LATC,0,0;blau
-                      00229     
-000120 AC0A           00230     BTFSS MODE_ACTUAL,6,0
-000122 EF?? F???      00231     GOTO PRE_AUTO_MODE
-                      00232     
-                      00233     
-                      00234     ;codi auto
-                      00235     
-                      00236     
-                      00237     ;no arribar aqui si s'esta reproduint (si abans i si despres)
-                      00238     
-000126 9C0A           00239     BCF MODE_ACTUAL,6,0;netejar que espera una altra P per la seguent cançó
-                      00240     ;i tornar a reproduir una altra
-                      00241     
-000128 A281           00242     BTFSS PORTB,1,0;si cliquen manual, activem manual
-00012A EC?? F???      00243     CALL POLSADOR_REBOTS_CANVI_A_MANUAL
+000114 EC?? F???      00201   CALL ESPERA_meitat
+000118 EC?? F???      00202   CALL ESPERA_meitat
+00011C B281           00203   BTFSC PORTB,1,0
+00011E 0012           00204   RETURN
+000120 8E0A           00205   BSF MODE_ACTUAL,7,0   ;OKOKOKOKOK
+000122                00206 ESPERA_DESCLICAR_CANVI_A_AUTO
+000122 A281           00207   BTFSS PORTB,1,0
+000124 EF?? F???      00208   GOTO ESPERA_DESCLICAR_CANVI_A_AUTO
+000128 0012           00209   RETURN   
+                      00210     
+00012A                00211 FUNCIO_MODE_MANUAL
+00012A 848B           00212     BSF LATC, 2,0;verd
+                      00213     ;codi funcio manual
+                      00214     
+                      00215     ;codis canvi de funcions des del manual
+                      00216 
+                      00217     ;NO ARRIBAR AQUI SI S'ESTÀ ENREGISTRANT
+                      00218 
+                      00219     
+00012C A281           00220     BTFSS PORTB,1,0;si actiu (0) canvi mode
+00012E EC?? F???      00221     CALL POLSADOR_REBOTS_CANVI_A_AUTO
+                      00222     
+                      00223 
+                      00224     ;canvi per P EUSART.
+000132 AA9E           00225     BTFSS PIR1,RCIF,0
+000134 EF?? F???      00226     GOTO NETEJA_LEDS;no eusart
+000138 50AE           00227     MOVF RCREG,0,0
+00013A 6E0B           00228     MOVWF eusart_input,0
+00013C 0E50           00229     MOVLW 'P'
+00013E 620B           00230     CPFSEQ eusart_input,0
+000140 EF?? F???      00231     GOTO NETEJA_LEDS
+000144 8E0A           00232     BSF MODE_ACTUAL,7,0;activem mode auto
+000146 EF?? F???      00233     GOTO NETEJA_LEDS
+                      00234     
+00014A                00235 NETEJA_LEDS    
+                      00236     ;netejar leds
+00014A 908B           00237     BCF LATC,0,0
+00014C 928B           00238     BCF LATC,1,0
+00014E 948B           00239     BCF LATC,2,0
+000150 968B           00240     BCF LATC,3,0
+000152 0012           00241     RETURN
+                      00242     
+                      00243  
                       00244     
-00012E EF?? F???      00245     GOTO END_LOOP_MAIN
-                      00246     
-                      00247     
-000132                00248 PRE_AUTO_MODE
-                      00249     
-                      00250     ;mirar btn
-000132 B281           00251     BTFSC PORTB,1,0
-000134 EF?? F???      00252     GOTO PRE_AUTO_MODE_CHECK_PIR
-000138 EC?? F???      00253     CALL POLSADOR_REBOTS_CANVI_A_MANUAL
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  6
+                      00245 ;--------------------------------------MAIN-------------------------------------
+000154                00246 MAIN
+000154 EC?? F???      00247     CALL CONFIG_PORTS
+000158 EC?? F???      00248     CALL INIT_VARS
+00015C EC?? F???      00249     CALL CONFIG_EUSART
+000160 EC?? F???      00250     CALL CONFIG_INTERRUPTS
+000164 EC?? F???      00251     CALL CONFIG_TIMER
+000168 EC?? F???      00252     CALL CONFIG_ADC
+00016C                00253 LOOP_MAIN;bucle del programa
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00013C EF?? F???      00254     GOTO END_LOOP_MAIN
-                      00255     
-                      00256     ;mirar eusart
-000140                00257 PRE_AUTO_MODE_CHECK_PIR
-000140 AA9E           00258     BTFSS PIR1,RCIF,0;s'ha de netejar?
-000142 EF?? F???      00259     GOTO PRE_AUTO_MODE;no eusart
-000146 50AE           00260     movf RCREG,0,0
-000148 6E0B           00261     movwf eusart_input,0
-00014A 0E50           00262     movlw 'P'
-00014C 620B           00263     CPFSEQ eusart_input,0
-00014E EF?? F???      00264     GOTO PRE_AUTO_MODE
-000152 EF?? F???      00265     GOTO FUNCIO_MODE_AUTOMATIC
-                      00266     
-                      00267     
-000156                00268 ESPERA_meitat
-000156 680C           00269     setf tmp3,0
-000158                00270 BUCLE_D_1
-000158 680D           00271     setf tmp4,0
-00015A                00272 BUCLE2_D_1
-00015A 2E0D           00273     decfsz tmp4,f,0
-00015C EF?? F???      00274     goto BUCLE2_D_1
-000160 2E0C           00275     decfsz tmp3,f,0
-000162 EF?? F???      00276     goto BUCLE_D_1
-000166 0012           00277     RETURN
-                      00278     
-                      00279     
-                      00280     
-                      00281     END
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  7
+                      00254     ;entrar als modes
+                      00255     ;nota: els canvis de modes es fan dins els funcio_mode_xxxx
+00016C AE0A           00256     BTFSS MODE_ACTUAL,7,0
+00016E EC?? F???      00257     CALL FUNCIO_MODE_MANUAL;aqui manual
+000172 EC?? F???      00258     CALL FUNCIO_MODE_AUTOMATIC;aqui auto
+                      00259   
+000176 EF?? F???      00260     GOTO LOOP_MAIN
+                      00261     
+                      00262     END
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  7
 
 
 SYMBOL TABLE
@@ -386,7 +367,7 @@ BCLIP                             00000003
 BF                                00000000
 BGST                              00000005
 BOR                               00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  8
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  8
 
 
 SYMBOL TABLE
@@ -395,8 +376,8 @@ SYMBOL TABLE
 BRG16                             00000003
 BRGH                              00000002
 BSR                               00000FE0
-BUCLE2_D_1                        0000015A
-BUCLE_D_1                         00000158
+BUCLE2_D_1                        000000AE
+BUCLE_D_1                         000000AC
 C                                 00000000
 C1INV                             00000004
 C1N                               00000000
@@ -408,7 +389,7 @@ C2N                               00000001
 C2OUT_CMCON                       00000007
 C2OUT_PORTA                       00000005
 C2P                               00000002
-CARREGA_TIMER                     00000088
+CARREGA_TIMER                     00000098
 CCP1                              00000002
 CCP1CON                           00000FBD
 CCP1IE                            00000002
@@ -445,7 +426,7 @@ CHS2                              00000004
 CHS3                              00000005
 CIS                               00000003
 CK                                00000006
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE  9
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE  9
 
 
 SYMBOL TABLE
@@ -462,10 +443,11 @@ CMCON                             00000FB4
 CMIE                              00000006
 CMIF                              00000006
 CMIP                              00000006
-CONFIG_ADC                        00000072
-CONFIG_INTERRUPTS                 00000092
-CONFIG_PORTS                      0000001A
-CONFIG_TIMER                      0000007E
+CONFIG_ADC                        0000007C
+CONFIG_EUSART                     00000068
+CONFIG_INTERRUPTS                 000000A2
+CONFIG_PORTS                      00000026
+CONFIG_TIMER                      0000008E
 CREN                              00000004
 CS                                00000002
 CSRC                              00000007
@@ -503,21 +485,20 @@ ECCPASE                           00000007
 EEADR                             00000FA9
 EECON1                            00000FA6
 EECON2                            00000FA7
-EEDATA                            00000FA8
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 10
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 10
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+EEDATA                            00000FA8
 EEIE                              00000004
 EEIF                              00000004
 EEIP                              00000004
 EEPGD                             00000007
-END_LOOP_MAIN                     000000BC
-ESPERA_DESCLICAR_CANVI_A_AUTO     00000100
-ESPERA_DESCLICAR_CANVI_A_MANUAL   00000116
-ESPERA_meitat                     00000156
+ESPERA_DESCLICAR_CANVI_A_AUTO     00000122
+ESPERA_DESCLICAR_CANVI_A_MANUAL   000000CA
+ESPERA_meitat                     000000AA
 FAST                              00000001
 FERR                              00000002
 FLT0                              00000000
@@ -532,8 +513,8 @@ FSR1L                             00000FE1
 FSR2                              00000002
 FSR2H                             00000FDA
 FSR2L                             00000FD9
-FUNCIO_MODE_AUTOMATIC             0000011E
-FUNCIO_MODE_MANUAL                000000D2
+FUNCIO_MODE_AUTOMATIC             000000D2
+FUNCIO_MODE_MANUAL                0000012A
 GCEN                              00000007
 GIE                               00000007
 GIEH                              00000007
@@ -542,7 +523,7 @@ GIE_GIEH                          00000007
 GO                                00000001
 GO_DONE                           00000001
 GO_NOT_DONE                       00000001
-HIGH_RSI                          000000C8
+HIGH_RSI                          0000001A
 HLVDCON                           00000FD2
 HLVDEN                            00000004
 HLVDIE                            00000002
@@ -559,17 +540,16 @@ IDLEN                             00000007
 INDF0                             00000FEF
 INDF1                             00000FE7
 INDF2                             00000FDF
-INIT_EUSART                       0000005C
-INIT_VARS                         00000038
+INIT_VARS                         00000044
 INT0                              00000000
 INT0E                             00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 11
+INT0F                             00000001
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 11
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-INT0F                             00000001
 INT0IE                            00000004
 INT0IF                            00000001
 INT1                              00000001
@@ -622,13 +602,13 @@ LATB3                             00000003
 LATB4                             00000004
 LATB5                             00000005
 LATB6                             00000006
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 12
+LATB7                             00000007
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 12
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-LATB7                             00000007
 LATC                              00000F8B
 LATC0                             00000000
 LATC1                             00000001
@@ -651,7 +631,7 @@ LATE                              00000F8D
 LATE0                             00000000
 LATE1                             00000001
 LATE2                             00000002
-LOOP_MAIN                         000000B2
+LOOP_MAIN                         0000016C
 LVDCON                            00000FD2
 LVDEN                             00000004
 LVDIE                             00000002
@@ -665,10 +645,12 @@ LVV0                              00000000
 LVV1                              00000001
 LVV2                              00000002
 LVV3                              00000003
-MAIN                              0000009A
+MAIN                              00000154
 MCLR                              00000003
 MODE_ACTUAL                       0000000A
 N                                 00000004
+NETEJA_LEDS                       0000014A
+NETEJA_LEDSS                      000000E6
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
 NOT_BOR                           00000000
@@ -680,13 +662,13 @@ NOT_POR                           00000001
 NOT_RBPU                          00000007
 NOT_RD                            00000000
 NOT_RI                            00000004
-NOT_SS                            00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 13
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 13
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+NOT_SS                            00000005
 NOT_T1SYNC                        00000002
 NOT_T3SYNC                        00000002
 NOT_TO                            00000003
@@ -739,16 +721,16 @@ PIR1                              00000F9E
 PIR2                              00000FA1
 PLLEN                             00000006
 PLUSW0                            00000FEB
-PLUSW1                            00000FE3
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 14
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 14
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+PLUSW1                            00000FE3
 PLUSW2                            00000FDB
-POLSADOR_REBOTS_CANVI_A_AUTO      000000F2
-POLSADOR_REBOTS_CANVI_A_MANUAL    00000108
+POLSADOR_REBOTS_CANVI_A_AUTO      00000114
+POLSADOR_REBOTS_CANVI_A_MANUAL    000000BC
 POR                               00000001
 PORTA                             00000F80
 PORTB                             00000F81
@@ -765,8 +747,8 @@ PR2                               00000FCB
 PREINC0                           00000FEC
 PREINC1                           00000FE4
 PREINC2                           00000FDC
-PRE_AUTO_MODE                     00000132
-PRE_AUTO_MODE_CHECK_PIR           00000140
+PRE_AUTO_MODE                     000000F0
+PRE_AUTO_MODE_CHECK_PIR           000000FE
 PROD                              00000FF3
 PRODH                             00000FF4
 PRODL                             00000FF3
@@ -798,13 +780,13 @@ RA4                               00000004
 RA5                               00000005
 RA6                               00000006
 RA7                               00000007
-RB0                               00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 15
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 15
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+RB0                               00000000
 RB1                               00000001
 RB2                               00000002
 RB3                               00000003
@@ -857,13 +839,13 @@ R_NOT_W                           00000002
 R_W                               00000002
 S                                 00000003
 SBOREN                            00000006
-SCK                               00000003
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 16
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 16
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+SCK                               00000003
 SCKP                              00000004
 SCL                               00000003
 SCS0                              00000000
@@ -916,13 +898,13 @@ SYNC                              00000004
 T016BIT                           00000006
 T08BIT                            00000006
 T0CKI                             00000004
-T0CON                             00000FD5
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 17
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 17
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+T0CON                             00000FD5
 T0CS                              00000005
 T0IE                              00000005
 T0IF                              00000002
@@ -975,13 +957,13 @@ TMR1L                             00000FCE
 TMR1ON                            00000000
 TMR2                              00000FCC
 TMR2IE                            00000001
-TMR2IF                            00000001
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 18
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 18
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TMR2IF                            00000001
 TMR2IP                            00000001
 TMR2ON                            00000002
 TMR3                              00000FB2
@@ -1034,13 +1016,13 @@ TRISD1                            00000001
 TRISD2                            00000002
 TRISD3                            00000003
 TRISD4                            00000004
-TRISD5                            00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 19
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 19
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+TRISD5                            00000005
 TRISD6                            00000006
 TRISD7                            00000007
 TRISE                             00000F96
@@ -1093,13 +1075,13 @@ _BOR_SOFT_2L                      000000FB
 _CCP2MX_RB3_3H                    000000FE
 _CCP2MX_RC1_3H                    000000FF
 _CONFIG1H                         00300001
-_CONFIG2H                         00300003
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 20
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 20
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_CONFIG2H                         00300003
 _CONFIG2L                         00300002
 _CONFIG3H                         00300005
 _CONFIG4L                         00300006
@@ -1152,13 +1134,13 @@ _OSC_HS_1H                        000000F2
 _OSC_INTIO1_1H                    000000F9
 _OSC_INTIO2_1H                    000000F8
 _OSC_LP_1H                        000000F0
-_OSC_RCIO_1H                      000000F7
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-16-2022  12:01:58         PAGE 21
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-17-2022  0:37:38         PAGE 21
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
+_OSC_RCIO_1H                      000000F7
 _OSC_RC_1H                        000000F3
 _OSC_XT_1H                        000000F1
 _PBADEN_ANA_3H                    000000FF

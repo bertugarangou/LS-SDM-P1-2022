@@ -1,5 +1,5 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Wed Feb 16 12:02:00 2022
+Linker Map File - Created Thu Feb 17 00:37:39 2022
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -7,7 +7,7 @@ Linker Map File - Created Wed Feb 16 12:02:00 2022
                    .org_0       code   0x000000    program   0x000004
                    .cinit    romdata   0x000004    program   0x000002
                    .org_1       code   0x000008    program   0x000004
-                   .org_2       code   0x000018    program   0x000150
+                   .org_2       code   0x000018    program   0x000162
 .config_300001_BUILD/DEFAULT/PRODUCTION/NEWPIC_    romdata   0x300001    program   0x000001
 .config_300003_BUILD/DEFAULT/PRODUCTION/NEWPIC_    romdata   0x300003    program   0x000001
 .config_300005_BUILD/DEFAULT/PRODUCTION/NEWPIC_    romdata   0x300005    program   0x000001
@@ -20,66 +20,68 @@ Linker Map File - Created Wed Feb 16 12:02:00 2022
                            ---------   ---------      
                             0x000000    0x000005      
                             0x000008    0x00000b      
-                            0x000018    0x000167      
+                            0x000018    0x000179      
                             0x300001    0x300001      
                             0x300003    0x300003      
                             0x300005    0x300006      
-            350 out of 8472 program addresses used, program memory utilization is 4%
+            368 out of 8472 program addresses used, program memory utilization is 4%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-               BUCLE2_D_1   0x00015a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                BUCLE_D_1   0x000158    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            CARREGA_TIMER   0x000088    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               CONFIG_ADC   0x000072    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        CONFIG_INTERRUPTS   0x000092    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             CONFIG_PORTS   0x00001a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             CONFIG_TIMER   0x00007e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            END_LOOP_MAIN   0x0000bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_AUTO   0x000100    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_MANUAL   0x000116    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            ESPERA_meitat   0x000156    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    FUNCIO_MODE_AUTOMATIC   0x00011e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-       FUNCIO_MODE_MANUAL   0x0000d2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 HIGH_RSI   0x0000c8    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              INIT_EUSART   0x00005c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                INIT_VARS   0x000038    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                LOOP_MAIN   0x0000b2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     MAIN   0x00009a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_AUTO   0x0000f2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_MANUAL   0x000108    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            PRE_AUTO_MODE   0x000132    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-  PRE_AUTO_MODE_CHECK_PIR   0x000140    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               BUCLE2_D_1   0x0000ae    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                BUCLE_D_1   0x0000ac    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            CARREGA_TIMER   0x000098    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               CONFIG_ADC   0x00007c    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            CONFIG_EUSART   0x000068    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        CONFIG_INTERRUPTS   0x0000a2    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_PORTS   0x000026    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_TIMER   0x00008e    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_AUTO   0x000122    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_MANUAL   0x0000ca    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            ESPERA_meitat   0x0000aa    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    FUNCIO_MODE_AUTOMATIC   0x0000d2    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+       FUNCIO_MODE_MANUAL   0x00012a    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 HIGH_RSI   0x00001a    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                INIT_VARS   0x000044    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                LOOP_MAIN   0x00016c    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     MAIN   0x000154    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              NETEJA_LEDS   0x00014a    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             NETEJA_LEDSS   0x0000e6    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_AUTO   0x000114    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_MANUAL   0x0000bc    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            PRE_AUTO_MODE   0x0000f0    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+  PRE_AUTO_MODE_CHECK_PIR   0x0000fe    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-             CONFIG_PORTS   0x00001a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                INIT_VARS   0x000038    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              INIT_EUSART   0x00005c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               CONFIG_ADC   0x000072    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             CONFIG_TIMER   0x00007e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            CARREGA_TIMER   0x000088    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        CONFIG_INTERRUPTS   0x000092    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     MAIN   0x00009a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                LOOP_MAIN   0x0000b2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            END_LOOP_MAIN   0x0000bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 HIGH_RSI   0x0000c8    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-       FUNCIO_MODE_MANUAL   0x0000d2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_AUTO   0x0000f2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_AUTO   0x000100    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_MANUAL   0x000108    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_MANUAL   0x000116    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    FUNCIO_MODE_AUTOMATIC   0x00011e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            PRE_AUTO_MODE   0x000132    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-  PRE_AUTO_MODE_CHECK_PIR   0x000140    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            ESPERA_meitat   0x000156    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                BUCLE_D_1   0x000158    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               BUCLE2_D_1   0x00015a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 HIGH_RSI   0x00001a    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_PORTS   0x000026    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                INIT_VARS   0x000044    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            CONFIG_EUSART   0x000068    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               CONFIG_ADC   0x00007c    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_TIMER   0x00008e    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            CARREGA_TIMER   0x000098    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        CONFIG_INTERRUPTS   0x0000a2    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            ESPERA_meitat   0x0000aa    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                BUCLE_D_1   0x0000ac    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               BUCLE2_D_1   0x0000ae    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_MANUAL   0x0000bc    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_MANUAL   0x0000ca    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    FUNCIO_MODE_AUTOMATIC   0x0000d2    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             NETEJA_LEDSS   0x0000e6    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            PRE_AUTO_MODE   0x0000f0    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+  PRE_AUTO_MODE_CHECK_PIR   0x0000fe    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_AUTO   0x000114    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_AUTO   0x000122    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+       FUNCIO_MODE_MANUAL   0x00012a    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              NETEJA_LEDS   0x00014a    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     MAIN   0x000154    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                LOOP_MAIN   0x00016c    program     static C:\Users\gerar\OneDrive\Documents\GitHub\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
 
 
