@@ -1,7 +1,7 @@
 LIST P=PIC18F4321   F=INHX32
 #include <p18f4321.inc>
 
-    CONFIG OSC=HSPLL	    ;16MHz
+    CONFIG OSC=HSPLL	    
     CONFIG PBADEN=DIG	    ;PORTB com a Digital (el posem a 0)
     CONFIG WDT=OFF	    ;Desactivem el Watch Dog Timer
     CONFIG LVP=OFF	    ;Evitar resets eusart
@@ -14,7 +14,13 @@ SEVEN_SEG_G EQU 0X04
 SEVEN_SEG_A EQU 0X05
 SEVEN_SEG_B EQU 0X06
 SEVEN_SEG_c EQU 0X07
-;-------------------------------------INITS-------------------------------------
+tmp_timer EQU 0x08
+MODE_ACTUAL EQU 0x0A
+eusart_input EQU 0x0B
+ ; mode: (0s per defecte al init)
+ ; b7[0:manual, 1:automatic]
+ ; b6[0:no s'ha rebut la P encara pero estem en auto, 1:s'ha rebut la P]
+ ;
     ORG 0x000
     GOTO MAIN
     ORG 0x008
@@ -22,21 +28,26 @@ SEVEN_SEG_c EQU 0X07
     ORG 0x018
     RETFIE FAST
 
-HIGH_RSI
-    RETFIE FAST
-
+;------------------------------------------------------------------------------
 CONFIG_PORTS
-    BSF TRISB, 0, 0  ;Pols1 entrada
-    BSF TRISB, 1, 0  ;Pols2 entrada
-    BSF TRISB, 2, 0  ;Pols3 entrada
+    MOVLW b'00000011'
+    MOVWF TRISA,0
+    BCF LATA,2,0
+    BCF LATA,3,0
+    
+    BSF TRISB, 0, 0
+    BSF TRISB, 1, 0
+    BSF TRISB, 2, 0
     BSF TRISB, 3, 0
     BSF TRISB, 4, 0
-    BCF INTCON2, 7, 0;Portb pull ups
+    
     CLRF TRISD,0
     CLRF LATD,0
+    
     MOVLW b'11000000'
     MOVWF TRISC,0
-    CLRF LATC,0    
+    CLRF LATC,0
+    
     RETURN
     
 INIT_VARS
@@ -56,11 +67,9 @@ INIT_VARS
     MOVWF SEVEN_SEG_B
     MOVLW b'00001011'
     MOVWF SEVEN_SEG_c
-    RETURN
     
-CONFIG_OSC
-    ;BSF OSCCON, 5, 0	    ;HSPLL comentar els dos
-    ;BSF OSCTUNE, 6, 0
+    CLRF MODE_ACTUAL,0
+    
     RETURN
     
 INIT_EUSART
@@ -78,28 +87,129 @@ INIT_EUSART
     
 CONFIG_ADC
     BSF ADCON0, ADON, 0 ;Converter module enabled.
-    MOVLW b'00001110'  ;AN0 analog
-    MOVWF ADCON1, 0
-    BCF ADCON2, ADFM, 0 ;Left justified
-    BSF ADCON2, 5, 0   ;Toquem aquests bits perquè trigui més a convertir
-    BSF ADCON2, 4, 0
-    BSF ADCON2, 2, 0
-    BSF ADCON2, 0, 0
-    RETURN    
+    MOVLW b'00001101'
+    MOVWF ADCON1,0
+    MOVLW b'00001000'
+    MOVWF ADCON2,0
+    RETURN
+    
+CONFIG_TIMER
+    MOVLW b'10010001'
+    MOVWF T0CON,0   
+    CALL CARREGA_TIMER
+    RETURN
+CARREGA_TIMER
+    MOVLW HIGH(.15536);cada 20ms
+    MOVWF TMR0H,0
+    MOVLW LOW(.15536)
+    MOVWF TMR0L,0
+    RETURN
+CONFIG_INTERRUPTS
+    MOVLW b'11100000'
+    MOVWF INTCON,0
+    BCF INTCON2,RBPU,0
+    
+    RETURN
 ;--------------------------------------MAIN-------------------------------------
 MAIN
+
     CALL CONFIG_PORTS
     CALL INIT_VARS
-    ;CALL CONFIG_OSC
-    ;CALL CONFIG_EUSART
-    ;CALL CONFIG_INTERRUPTS
-    ;CALL CONFIG_TIMER
-    ;CALL CARREGA_TIMER
-    ;CALL CONFIG_ADC
+    CALL INIT_EUSART
+    CALL CONFIG_INTERRUPTS
+    CALL CONFIG_TIMER
+    CALL CONFIG_ADC
 
-LOOP_MAIN
+LOOP_MAIN;bucle del programa
+    ;entrar als modes
+    ;nota: els canvis de modes es fan dins els funcio_mode_xxxx
+    BTFSS MODE_ACTUAL,7,0
+    GOTO FUNCIO_MODE_MANUAL;aqui manual
+    GOTO FUNCIO_MODE_AUTOMATIC;aqui auto
+    
+END_LOOP_MAIN
+    ;netejar leds
+    BCF LATC,0,0
+    BCF LATC,1,0
+    BCF LATC,2,0
+    BCF LATC,3,0
     
     GOTO LOOP_MAIN
-    END
     
+;-----------------------------------HIGH_RSI------------------------------------
+HIGH_RSI
+    BCF INTCON,TMR0IF,0;quan salti una interrupcio qualsevol, nomes tenim timer0 de moment
+    call CARREGA_TIMER;reiniciem el timer
+    
+    
+    ;BTG LATC,0,0
+    
+    movlw .250;250
+    movwf tmp_timer,0  
 ;-----------------------------------FUNCIONS------------------------------------
+FUNCIO_MODE_MANUAL
+    BSF LATC, 2,0;verd
+    ;codi funcio manual
+    
+    ;codis canvi de funcions des del manual
+    
+    
+    
+    
+    ;NO ARRIBAR AQUI SI S'ESTÀ ENREGISTRANT
+    
+    BTFSS PORTB,1,0;si actiu (0) canvi mode
+    BSF MODE_ACTUAL,7,0
+    
+    ;canvi per P EUSART.
+    BTFSS PIR1,RCIF,0
+    GOTO END_LOOP_MAIN;no eusart
+    movf RCREG,0,0
+    movwf eusart_input,0
+    movlw 'P'
+    CPFSEQ eusart_input,0
+    GOTO END_LOOP_MAIN
+    BSF MODE_ACTUAL,7,0;activem mode auto
+    GOTO END_LOOP_MAIN
+    
+FUNCIO_MODE_AUTOMATIC
+    BSF LATC,0,0;blau
+    
+    BTFSS MODE_ACTUAL,6,0
+    GOTO PRE_AUTO_MODE
+    
+    
+    ;codi auto
+    
+    
+    ;no arribar aqui si s'esta reproduint (si abans i si despres)
+    
+    BCF MODE_ACTUAL,6,0;netejar que espera una altra P per la seguent cançó
+    ;i tornar a reproduir una altra
+    
+    BTFSS PORTB,1,0;si cliquen manual, activem manual
+    BCF MODE_ACTUAL,7,0
+    
+    GOTO END_LOOP_MAIN
+    
+    
+PRE_AUTO_MODE
+    
+    ;mirar btn
+    BTFSC PORTB,1,0
+    GOTO PRE_AUTO_MODE_CHECK_PIR
+    BCF MODE_ACTUAL,7,0
+    BCF MODE_ACTUAL,6,0
+    GOTO END_LOOP_MAIN
+    
+    ;mirar eusart
+PRE_AUTO_MODE_CHECK_PIR
+    BTFSS PIR1,RCIF,0;s'ha de netejar?
+    GOTO PRE_AUTO_MODE;no eusart
+    movf RCREG,0,0
+    movwf eusart_input,0
+    movlw 'P'
+    CPFSEQ eusart_input,0
+    GOTO PRE_AUTO_MODE
+    GOTO FUNCIO_MODE_AUTOMATIC
+    END
