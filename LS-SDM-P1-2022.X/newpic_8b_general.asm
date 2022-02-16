@@ -1,7 +1,7 @@
 LIST P=PIC18F4321   F=INHX32
 #include <p18f4321.inc>
 
-    CONFIG OSC=INTIO2	    ;16MHz
+    CONFIG OSC=HSPLL	    ;16MHz
     CONFIG PBADEN=DIG	    ;PORTB com a Digital (el posem a 0)
     CONFIG WDT=OFF	    ;Desactivem el Watch Dog Timer
     CONFIG LVP=OFF	    ;Evitar resets eusart
@@ -59,21 +59,22 @@ INIT_VARS
     RETURN
     
 CONFIG_OSC
-    BSF OSCCON, 5, 0
-    BSF OSCTUNE, 6, 0
+    ;BSF OSCCON, 5, 0	    ;HSPLL comentar els dos
+    ;BSF OSCTUNE, 6, 0
     RETURN
     
-CONFIG_EUSART
-    BCF TXSTA, 4, 0
-    BSF TXSTA, 2, 0
-    BSF RCSTA, 7, 0
-    BSF RCSTA, 4, 0
-    BSF BAUDCON, 3, 0
-    MOVLW HIGH(.1040)  ;Carreguem baudrate de 9600
-    MOVWF SPBRGH, 0
-    MOVLW LOW(.1040)
-    MOVWF SPBRG, 0
-    RETURN    
+INIT_EUSART
+    movlw b'00100100'
+    movwf TXSTA,0
+    movlw b'10010000'
+    movwf RCSTA,0
+    movlw b'00001000'
+    movwf BAUDCON,0
+    movlw HIGH(.1040)
+    movwf SPBRGH,0
+    movlw LOW(.1040)
+    movwf SPBRG,0
+    return
     
 CONFIG_ADC
     BSF ADCON0, ADON, 0 ;Converter module enabled.
