@@ -64,7 +64,7 @@ public class XylophoneView extends JFrame
         this.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
-        this.setResizable(false);
+        this.setResizable(true);
         this.setContentPane(mainView);
     }
 
@@ -167,7 +167,7 @@ public class XylophoneView extends JFrame
         southPanel.setBackground(BACKGROUND_COLOR);
 
         /* West */
-        songLabel = createLabel("Current song: .", FONT_SIZE);
+        songLabel = createLabel("Current song: nothing haha", FONT_SIZE);
 
         JPanel songPanel = new JPanel(new FlowLayout(FlowLayout.LEFT, 20, 10));
         songPanel.setBackground(BACKGROUND_COLOR);
