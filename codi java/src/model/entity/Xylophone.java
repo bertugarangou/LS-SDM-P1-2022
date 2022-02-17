@@ -17,7 +17,7 @@ public class Xylophone
     public static final Color[] COLOR_TILES =
     {
         new Color(163, 82, 194),
-        new Color(51, 99, 188),
+        new Color(220, 188, 229, 255),
         new Color(45, 148, 193),
         new Color(50, 126, 88),
         new Color(65, 152, 75),
