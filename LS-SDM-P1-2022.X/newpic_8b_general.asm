@@ -21,7 +21,7 @@ MODE_ACTUAL EQU 0x0A
  ; b6[0:no s'ha rebut la P encara pero estem en auto, 1:s'ha rebut la P]
  ; b5[0: mode manual joystick; 1: mode manual java]
  ;
-eusart_input EQU 0x0B
+EUSART_INPUT EQU 0x0B
 tmp3 EQU 0x0C
 tmp4 EQU 0x0D
 VAR_CONVER EQU 0X0E
@@ -167,6 +167,7 @@ FUNCIO_MODE_MANUAL
     
     BTFSS MODE_ACTUAL,5,0
     CALL MOVIMENT_JOYSTICK
+    CALL MOVIMENT_JAVA_MANUAL
     
     
     ;NO ARRIBAR AQUI SI S'ESTA ENREGISTRANT
@@ -176,9 +177,9 @@ FUNCIO_MODE_MANUAL
     BTFSS PIR1,RCIF,0
     GOTO END_LOOP_MAIN;no eusart
     movf RCREG,0,0
-    MOVWF eusart_input,0
+    MOVWF EUSART_INPUT,0
     MOVLW 'P'
-    CPFSEQ eusart_input,0
+    CPFSEQ EUSART_INPUT,0
     GOTO END_LOOP_MAIN
     BSF MODE_ACTUAL,7,0;activem mode auto
     GOTO END_LOOP_MAIN
@@ -266,6 +267,12 @@ RESTA
 MIRA_MODE_ENTRADA
     BTFSC PORTB,3,0
     RETURN
+    CALL ESPERA_meitat
+    CALL ESPERA_meitat
+    BTFSS PORTB,3,0
+    GOTO ESPERA_DESCLICAR_MODE_TOCAR
+    RETURN
+    
     ESPERA_DESCLICAR_MODE_TOCAR
     BTFSS PORTB,3,0
     GOTO ESPERA_DESCLICAR_MODE_TOCAR
@@ -273,6 +280,65 @@ MIRA_MODE_ENTRADA
     BTG LATC,3,0
     RETURN
     
+MOVIMENT_JAVA_MANUAL
+    BTFSS PIR1,RCIF,0
+    RETURN
+    MOVF RCREG,0,0
+    
+    
+    BCF INTCON,5,0
+    
+    
+    MOVLW 'C'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_C
+    MOVLW .39;valor init C
+    MOVWF PWM_VAR
+NEXT_C
+    MOVLW 'D'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_D
+    MOVLW .54;posicio D
+    MOVWF PWM_VAR
+NEXT_D
+    MOVLW 'E'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_E
+    MOVLW .69;posicio E
+    MOVWF PWM_VAR
+NEXT_E
+    MOVLW 'F'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_F
+    MOVLW .84;posicio F
+    MOVWF PWM_VAR
+NEXT_F
+    MOVLW 'G'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_G
+    MOVLW .99;posicio G
+    MOVWF PWM_VAR
+NEXT_G
+    MOVLW 'A'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_A
+    MOVLW .114;posicio A
+    MOVWF PWM_VAR
+NEXT_A
+    MOVLW 'B'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_B
+    MOVLW .129;posicio B
+    MOVWF PWM_VAR
+NEXT_B
+    MOVLW 'c'
+    CPFSEQ EUSART_INPUT,0
+    GOTO NEXT_c
+    MOVLW .144;posicio c'
+    MOVWF PWM_VAR
+NEXT_c
+    BSF INTCON,5,0
+RETURN
     
 ;--------------mode automatic--------------
 FUNCIO_MODE_AUTOMATIC
@@ -306,9 +372,9 @@ FUNCIO_MODE_AUTOMATIC
 	    BTFSS PIR1,RCIF,0
 	    GOTO PRE_AUTO_MODE;no eusart
 	    movf RCREG,0,0
-	    MOVWF eusart_input,0
+	    MOVWF EUSART_INPUT,0
 	    MOVLW 'P'
-	    CPFSEQ eusart_input,0
+	    CPFSEQ EUSART_INPUT,0
 	    GOTO PRE_AUTO_MODE
 	    GOTO FUNCIO_MODE_AUTOMATIC
     
