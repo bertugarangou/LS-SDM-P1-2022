@@ -19,6 +19,7 @@ MODE_ACTUAL EQU 0x0A
  ; mode: (0s per defecte al init)
  ; b7[0:manual, 1:automatic]
  ; b6[0:no s'ha rebut la P encara pero estem en auto, 1:s'ha rebut la P]
+ ; b5[0: mode manual joystick; 1: mode manual java]
  ;
 eusart_input EQU 0x0B
 tmp3 EQU 0x0C
@@ -162,6 +163,9 @@ FUNCIO_MODE_MANUAL
    
     
     ;codi funcio manual
+    CALL MIRA_MODE_ENTRADA;joystick o java
+    
+    BTFSS MODE_ACTUAL,5,0
     CALL MOVIMENT_JOYSTICK
     
     
@@ -258,6 +262,17 @@ RESTA
     MOVLW .15;dec pos
     SUBWF PWM_VAR, 1, 0  ;Hem de restar 5 graus cada vegada
     RETURN
+    
+MIRA_MODE_ENTRADA
+    BTFSC PORTB,3,0
+    RETURN
+    ESPERA_DESCLICAR_MODE_TOCAR
+    BTFSS PORTB,3,0
+    GOTO ESPERA_DESCLICAR_MODE_TOCAR
+    BTG MODE_ACTUAL,5,0;FLAG JOYSTICK O JAVA
+    BTG LATC,3,0
+    RETURN
+    
     
 ;--------------mode automatic--------------
 FUNCIO_MODE_AUTOMATIC
