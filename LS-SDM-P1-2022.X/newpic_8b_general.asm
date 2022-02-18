@@ -63,7 +63,11 @@ CONFIG_PORTS
     
     MOVLW b'11000000'
     MOVWF TRISC,0
-    CLRF LATC,0
+    
+    BCF LATC,0,0
+    BCF LATC,1,0
+    BCF LATC,2,0
+    BCF LATC,3,0
     RETURN
     
 INIT_VARS
@@ -91,16 +95,16 @@ INIT_VARS
     RETURN
     
 INIT_EUSART
-    BCF TXSTA, 4, 0
-    BSF TXSTA, 2, 0
-    BSF RCSTA, 7, 0
-    BSF RCSTA, 4, 0
-    BSF BAUDCON, 3, 0
-    MOVLW HIGH(.1040)  ;Carreguem baudrate de 9600
-    MOVWF SPBRGH, 0
-    MOVLW LOW(.1040)
-    MOVWF SPBRG, 0
-    RETURN     
+    movlw b'00100100'
+    movwf TXSTA,0
+    movlw b'10010000'
+    movwf RCSTA,0
+    movlw b'00001000'
+    movwf BAUDCON,0
+    movlw HIGH(.1040)
+    movwf SPBRGH,0
+    movlw LOW(.1040)
+    movwf SPBRG,0     
     
 CONFIG_ADC
     BSF ADCON0, ADON, 0 ;Converter module enabled.
@@ -162,11 +166,16 @@ FUNCIO_MODE_MANUAL
     BSF LATC, 2,0;verd
    
     
+    
+    
+    
+    
     ;codi funcio manual
     CALL MIRA_MODE_ENTRADA;joystick o java
     
     BTFSS MODE_ACTUAL,5,0
     CALL MOVIMENT_JOYSTICK
+    BTFSC MODE_ACTUAL,5,0
     CALL MOVIMENT_JAVA_MANUAL
     
     
@@ -279,14 +288,19 @@ MIRA_MODE_ENTRADA
     BTG MODE_ACTUAL,5,0;FLAG JOYSTICK O JAVA
     BTG LATC,3,0
     RETURN
-    
+ESPERA_TX
+    BTFSS TXSTA,TRMT,0
+    GOTO ESPERA_TX
+    RETURN   
 MOVIMENT_JAVA_MANUAL
     BTFSS PIR1,RCIF,0
     RETURN
     MOVF RCREG,0,0
+    MOVWF EUSART_INPUT,0
+    MOVFF EUSART_INPUT,TXREG
+    CALL ESPERA_TX
     
     
-    BCF INTCON,5,0
     
     
     MOVLW 'C'
@@ -337,12 +351,13 @@ NEXT_B
     MOVLW .144;posicio c'
     MOVWF PWM_VAR
 NEXT_c
-    BSF INTCON,5,0
+    
 RETURN
     
 ;--------------mode automatic--------------
 FUNCIO_MODE_AUTOMATIC
     BSF LATC,0,0;blau
+    BCF LATC,3,0
     BTFSS MODE_ACTUAL,6,0
     GOTO PRE_AUTO_MODE
     
@@ -405,6 +420,10 @@ LOOP_MAIN;bucle del programa
     BTFSS MODE_ACTUAL,7,0
     GOTO FUNCIO_MODE_MANUAL;aqui manual
     GOTO FUNCIO_MODE_AUTOMATIC;aqui auto
+    
+    
+    
+    
     
     END_LOOP_MAIN
 	;netejar leds
