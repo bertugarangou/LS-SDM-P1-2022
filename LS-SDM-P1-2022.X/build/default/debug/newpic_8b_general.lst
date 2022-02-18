@@ -1,4 +1,4 @@
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  1
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[215]: Processor superseded by command line.  Verify processor symbol.
 000008 EF?? F???      00039     GOTO HIGH_RSI
                       00040     ORG 0x018
 000018 0011           00041     RETFIE FAST
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  2
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000068                00092 INIT_EUSART
 000068 98AC           00093     BCF TXSTA, 4, 0
 00006A 84AC           00094     BSF TXSTA, 2, 0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  3
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -133,7 +133,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00103     
 00007C                00104 CONFIG_ADC
 00007C 80C2           00105     BSF ADCON0, ADON, 0 ;Converter module enabled.
-00007E 0E0D           00106     MOVLW b'00001101'  ;AN0 analog
+00007E 0E0E           00106     MOVLW b'00001110'  ;AN0 analog
 000080 6EC1           00107     MOVWF ADCON1, 0
 000082 9EC0           00108     BCF ADCON2, ADFM, 0 ;Left justified
 000084 8AC0           00109     BSF ADCON2, 5, 0   ;Toquem aquests bits perqu? trigui m?s a convertir
@@ -175,7 +175,7 @@ Warning[207]: Found label after column 1. (LOOP_ESPERAPWM)
 0000BC EC?? F???      00144         CALL ESPERA_GRAUS
 0000C0 2E10           00145         DECFSZ PWM_VAR,1,0
 0000C2 EF?? F???      00146         GOTO LOOP_ESPERAPWM
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  4
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ Warning[207]: Found label after column 1. (ESPERA_DESCLICAR_CANVI_A_AUTO)
 000118 EC?? F???      00195   CALL ESPERA_meitat
 00011C B281           00196   BTFSC PORTB,1,0
 00011E 0012           00197   RETURN
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  5
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -249,7 +249,7 @@ Warning[207]: Found label after column 1. (ESPERA_DESCLICAR_CANVI_A_MANUAL)
                       00203     
 00012A                00204 MOVIMENT_JOYSTICK
                       00205 
-00012A 84C2           00206         BSF ADCON0,CHS0,0
+00012A 94C2           00206         BCF ADCON0,CHS0,0
 Warning[207]: Found label after column 1. (LOOP_ANALOG)
 00012C                00207         LOOP_ANALOG
 00012C 82C2           00208             BSF ADCON0, 1, 0  ;Fem la conversió
@@ -266,7 +266,7 @@ Warning[207]: Found label after column 1. (LOOP_CONVER)
 000144 EC?? F???      00218             CALL DECREMENT_ANALOG  ;Si estem per sota de 15 decrementem PWM
 000148 0012           00219         RETURN
 00014A                00220 INCREMENT_ANALOG
-00014A 0E90           00221         MOVLW .144;144=notes+39init
+00014A 0E9A           00221         MOVLW .154;194;174=notes+39init
 00014C 5C10           00222         SUBWF PWM_VAR, 0, 0
 00014E A4D8           00223         BTFSS STATUS, Z, 0  ;Si la suma no dona 0, decrementem
 000150 EC?? F???      00224         CALL SUMA
@@ -293,7 +293,7 @@ Warning[207]: Found label after column 1. (LOOP_WAITD)
 000176                00242     LOOP_WAITD  ;Esperem a que el joystick torni a la seva posició
 000176 82C2           00243         BSF ADCON0, 1, 0  ;Fem la conversió
 Warning[207]: Found label after column 1. (LOOP_DWAIT)
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  6
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -309,11 +309,11 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000188 EF?? F???      00251         GOTO LOOP_WAITD
 00018C 0012           00252     RETURN
 00018E                00253 SUMA
-00018E 0E0F           00254     MOVLW .15;increment pos
+00018E 0E14           00254     MOVLW .20
 000190 2610           00255     ADDWF PWM_VAR, 1, 0  ;Hem de sumar 5 graus cada vegada
 000192 0012           00256     RETURN
 000194                00257 RESTA
-000194 0E0F           00258     MOVLW .15;dec pos
+000194 0E14           00258     MOVLW .20 
 000196 5E10           00259     SUBWF PWM_VAR, 1, 0  ;Hem de restar 5 graus cada vegada
 000198 0012           00260     RETURN
                       00261     
@@ -352,7 +352,7 @@ Warning[207]: Found label after column 1. (PRE_AUTO_MODE_CHECK_PIR)
 0001BE EF?? F???      00292             GOTO PRE_AUTO_MODE;no eusart
 0001C2 50AE           00293             movf RCREG,0,0
 0001C4 6E0B           00294             MOVWF eusart_input,0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  7
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -402,7 +402,7 @@ Warning[207]: Found label after column 1. (END_LOOP_MAIN)
 00020C EF?? F???      00335         GOTO LOOP_MAIN
 Warning[205]: Found directive in column 1. (END)
                       00336 END
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  8
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  8
 
 
 SYMBOL TABLE
@@ -461,7 +461,7 @@ BCLIF                             00000003
 BCLIP                             00000003
 BF                                00000000
 BGST                              00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE  9
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE  9
 
 
 SYMBOL TABLE
@@ -520,7 +520,7 @@ CHS1                              00000003
 CHS2                              00000004
 CHS3                              00000005
 CIS                               00000003
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 10
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 10
 
 
 SYMBOL TABLE
@@ -579,7 +579,7 @@ ECCPAS1                           00000005
 ECCPAS2                           00000006
 ECCPASE                           00000007
 EEADR                             00000FA9
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 11
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 11
 
 
 SYMBOL TABLE
@@ -638,7 +638,7 @@ IDLEN                             00000007
 INCREMENT_ANALOG                  0000014A
 INDF0                             00000FEF
 INDF1                             00000FE7
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 12
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 12
 
 
 SYMBOL TABLE
@@ -697,7 +697,7 @@ LATA7                             00000007
 LATB                              00000F8A
 LATB0                             00000000
 LATB1                             00000001
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 13
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 13
 
 
 SYMBOL TABLE
@@ -756,7 +756,7 @@ LVV3                              00000003
 MAIN                              000001E4
 MCLR                              00000003
 MODE_ACTUAL                       0000000A
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 14
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 14
 
 
 SYMBOL TABLE
@@ -815,7 +815,7 @@ PDC2                              00000002
 PDC3                              00000003
 PDC4                              00000004
 PDC5                              00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 15
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 15
 
 
 SYMBOL TABLE
@@ -874,7 +874,7 @@ PSPIF                             00000007
 PSPIP                             00000007
 PSPMODE                           00000004
 PSSAC0                            00000002
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 16
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 16
 
 
 SYMBOL TABLE
@@ -933,7 +933,7 @@ RD2                               00000002
 RD3                               00000003
 RD4                               00000004
 RD5                               00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 17
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 17
 
 
 SYMBOL TABLE
@@ -992,7 +992,7 @@ SSPEN                             00000005
 SSPIE                             00000003
 SSPIF                             00000003
 SSPIP                             00000003
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 18
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 18
 
 
 SYMBOL TABLE
@@ -1051,7 +1051,7 @@ TABLAT                            00000FF5
 TBLPTR                            00000FF6
 TBLPTRH                           00000FF7
 TBLPTRL                           00000FF6
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 19
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 19
 
 
 SYMBOL TABLE
@@ -1110,7 +1110,7 @@ TRISB1                            00000001
 TRISB2                            00000002
 TRISB3                            00000003
 TRISB4                            00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 20
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 20
 
 
 SYMBOL TABLE
@@ -1169,7 +1169,7 @@ VREFP                             00000003
 W                                 00000000
 WCOL                              00000007
 WDTCON                            00000FD1
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 21
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 21
 
 
 SYMBOL TABLE
@@ -1228,7 +1228,7 @@ _FCMEN_ON_1H                      000000FF
 _IDLOC0                           00200000
 _IDLOC1                           00200001
 _IDLOC2                           00200002
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 22
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 22
 
 
 SYMBOL TABLE
@@ -1287,7 +1287,7 @@ _WRT1_OFF_6L                      000000FF
 _WRT1_ON_6L                       000000FD
 _WRTB_OFF_6H                      000000FF
 _WRTB_ON_6H                       000000BF
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  16:04:05         PAGE 23
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-18-2022  15:55:04         PAGE 23
 
 
 SYMBOL TABLE
@@ -1300,6 +1300,8 @@ _WRTD_ON_6H                       0000007F
 _XINST_OFF_4L                     000000BF
 _XINST_ON_4L                      000000FF
 __18F4321                         00000001
+__DEBUG                           
+__MPLAB_DEBUGGER_PK3              1
 eusart_input                      0000000B
 tmp3                              0000000C
 tmp4                              0000000D

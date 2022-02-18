@@ -103,7 +103,7 @@ INIT_EUSART
     
 CONFIG_ADC
     BSF ADCON0, ADON, 0 ;Converter module enabled.
-    MOVLW b'00001110'  ;AN0 analog
+    MOVLW b'00001101'  ;AN0 analog
     MOVWF ADCON1, 0
     BCF ADCON2, ADFM, 0 ;Left justified
     BSF ADCON2, 5, 0   ;Toquem aquests bits perqu? trigui m?s a convertir
@@ -203,7 +203,7 @@ POLSADOR_REBOTS_CANVI_A_MANUAL
     
 MOVIMENT_JOYSTICK
 
-	BCF ADCON0,CHS0,0
+	BSF ADCON0,CHS0,0   ;activar hoystick X PORTA0 per lectura
 	LOOP_ANALOG
 	    BSF ADCON0, 1, 0  ;Fem la conversió
 	    LOOP_CONVER
@@ -218,7 +218,7 @@ MOVIMENT_JOYSTICK
 	    CALL DECREMENT_ANALOG  ;Si estem per sota de 15 decrementem PWM
 	RETURN
 INCREMENT_ANALOG
-	MOVLW .194
+	MOVLW .144;144=notes+39init
 	SUBWF PWM_VAR, 0, 0
 	BTFSS STATUS, Z, 0  ;Si la suma no dona 0, decrementem
 	CALL SUMA
@@ -232,7 +232,7 @@ INCREMENT_ANALOG
 		SUBWF VAR_COMP, 0, 0
 		BTFSS STATUS, N, 0  ;Si es negatiu vol dir que ja esta a la posicio inicial
 	    GOTO LOOP_WAIT	
-	RETURN
+	
 	RETURN
 DECREMENT_ANALOG
     MOVLW .39
@@ -251,11 +251,11 @@ DECREMENT_ANALOG
 	GOTO LOOP_WAITD
     RETURN
 SUMA
-    MOVLW .20
+    MOVLW .15;increment pos
     ADDWF PWM_VAR, 1, 0  ;Hem de sumar 5 graus cada vegada
     RETURN
 RESTA
-    MOVLW .20 
+    MOVLW .15;dec pos
     SUBWF PWM_VAR, 1, 0  ;Hem de restar 5 graus cada vegada
     RETURN
     
