@@ -14,21 +14,29 @@ SEVEN_SEG_G EQU 0X04
 SEVEN_SEG_A EQU 0X05
 SEVEN_SEG_B EQU 0X06
 SEVEN_SEG_c EQU 0X07
-tmp_timer EQU 0x08
+TMP_timer EQU 0x08
 MODE_ACTUAL EQU 0x0A
  ; mode: (0s per defecte al init)
  ; b7[0:manual, 1:automatic]
  ; b6[0:no s'ha rebut la P encara pero estem en auto, 1:s'ha rebut la P]
  ; b5[0: mode manual joystick; 1: mode manual java]
- ;
+ ; b4[0: pwm al servo X; 1: pwm al servo Y]
 EUSART_INPUT EQU 0x0B
-tmp3 EQU 0x0C
-tmp4 EQU 0x0D
+
+TMP3 EQU 0x0C
+TMP4 EQU 0x0D
 VAR_CONVER EQU 0X0E
 VAR_COMP EQU 0X0F
 PWM_VAR EQU 0X10
 PWM_AUX EQU 0X11
 COMPT_GRAUS EQU 0X12
+TMP EQU 0x13
+TMP2 EQU 0x14
+VAR_CONVER2 EQU 0X15
+VAR_COMP2 EQU 0X16
+PWM_VAR2 EQU 0X17
+PWM_AUX2 EQU 0X18
+COMPT_GRAUS2 EQU 0X1A
 
 
 
@@ -92,6 +100,7 @@ INIT_VARS
     
     MOVLW .39
     MOVWF PWM_VAR,0
+    MOVWF PWM_VAR2,0
     RETURN
     
 INIT_EUSART
@@ -139,7 +148,13 @@ CONFIG_INTERRUPTS
 ACTION_TMR
     CALL CARREGA_TIMER;reiniciem el timer
     BCF INTCON,TMR0IF,0;quan salti una interrupcio qualsevol, nomes tenim timer0 de moment
-    CALL PWM
+    
+    BTFSS MODE_ACTUAL,4,0
+    CALL PWM;si es 0 fem el normal X
+    BTFSC MODE_ACTUAL,4,0
+    CALL PWM2;si es 1 fem l'Y
+    
+    BCF MODE_ACTUAL,4,0
     
     RETURN
 PWM
@@ -160,7 +175,27 @@ ESPERA_GRAUS
 	DECFSZ COMPT_GRAUS,1,0
 	GOTO LOOP_GRAUS
     RETURN
-	
+;------------
+PWM2
+    
+    MOVFF PWM_VAR2, PWM_AUX2
+    BSF LATA,3,0
+    LOOP_ESPERAPWM2
+	CALL ESPERA_GRAUS2
+	DECFSZ PWM_VAR2,1,0
+	GOTO LOOP_ESPERAPWM2
+    BCF LATA,3,0
+    MOVFF PWM_AUX2, PWM_VAR2
+    RETURN
+    
+ESPERA_GRAUS2
+    MOVLW .41
+    MOVWF COMPT_GRAUS2,0
+    LOOP_GRAUS2
+	DECFSZ COMPT_GRAUS2,1,0
+	GOTO LOOP_GRAUS2
+    RETURN
+    ;---------
 ;--------------mode manual--------------
 FUNCIO_MODE_MANUAL
     BSF LATC, 2,0;verd
@@ -185,7 +220,7 @@ FUNCIO_MODE_MANUAL
     ;canvi per P EUSART.
     BTFSS PIR1,RCIF,0
     GOTO END_LOOP_MAIN;no eusart
-    movf RCREG,0,0
+    MOVF RCREG,0,0
     MOVWF EUSART_INPUT,0
     MOVLW 'P'
     CPFSEQ EUSART_INPUT,0
@@ -216,21 +251,22 @@ POLSADOR_REBOTS_CANVI_A_MANUAL
       RETURN
     
 MOVIMENT_JOYSTICK
+    CALL PICAR_NOTA
 
-	BSF ADCON0,CHS0,0   ;activar hoystick X PORTA0 per lectura
-	LOOP_ANALOG
-	    BSF ADCON0, 1, 0  ;Fem la conversió
-	    LOOP_CONVER
-		BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
-		GOTO LOOP_CONVER
-	    MOVFF ADRESH, VAR_CONVER  ;Passem la conversió a la nostra variable
-	    MOVLW .200
-	    CPFSLT VAR_CONVER, 0
-	    CALL INCREMENT_ANALOG  ;Si estem per sobre de 240 incrementem PWM
-	    MOVLW .15
-	    CPFSGT VAR_CONVER, 0
-	    CALL DECREMENT_ANALOG  ;Si estem per sota de 15 decrementem PWM
-	RETURN
+    BSF ADCON0,CHS0,0   ;activar hoystick X PORTA0 per lectura
+    LOOP_ANALOG
+	BSF ADCON0, 1, 0  ;Fem la conversió
+	LOOP_CONVER
+	    BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
+	    GOTO LOOP_CONVER
+	MOVFF ADRESH, VAR_CONVER  ;Passem la conversió a la nostra variable
+	MOVLW .200
+	CPFSLT VAR_CONVER, 0
+	CALL INCREMENT_ANALOG  ;Si estem per sobre de 240 incrementem PWM
+	MOVLW .15
+	CPFSGT VAR_CONVER, 0
+	CALL DECREMENT_ANALOG  ;Si estem per sota de 15 decrementem PWM
+    RETURN
 INCREMENT_ANALOG
 	MOVLW .144;144=notes+39init
 	SUBWF PWM_VAR, 0, 0
@@ -273,6 +309,59 @@ RESTA
     SUBWF PWM_VAR, 1, 0  ;Hem de restar 5 graus cada vegada
     RETURN
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+PICAR_NOTA
+   BCF ADCON0,CHS0,0;joystick Y AN0
+   BSF ADCON0,1,0 ; Comencem la conversió
+   ESPERA_CONVERSIO
+   BTFSC ADCON0,1,0
+   GOTO ESPERA_CONVERSIO
+   
+    CLRF TMP,0
+    CLRF TMP2,0
+BUCLE_T
+    MOVF TMP,0
+    CPFSGT ADRESH,0
+    GOTO T_TROBAT
+    INCF TMP,1,0
+    BTFSC STATUS,C,0;val C per TMP?
+    GOTO T_TROBAT
+    INCF TMP2,1,0
+    
+    MOVF TMP,0
+    CPFSGT ADRESH,0
+    GOTO T_TROBAT
+    INCF TMP,1,0
+    INCF TMP,1,0
+    BTFSC STATUS,C,0;val C per TMP?
+    GOTO T_TROBAT
+    INCF TMP2,1,0
+    GOTO BUCLE_T
+T_TROBAT
+    ;filtre maxim
+    MOVLW .40;posicio minima joystick Y
+    CPFSGT TMP2,0
+    CALL CORREGIR
+    
+    FINAL_T
+    MOVFf TMP2, PWM_VAR2
+    BSF MODE_ACTUAL,4,0
+    RETURN
+CORREGIR
+    MOVLW .40;posicio minima joystick Y
+    MOVWF TMP2,0
+RETURN
+  
+    
+    
 MIRA_MODE_ENTRADA
     BTFSC PORTB,3,0
     RETURN
@@ -299,10 +388,7 @@ MOVIMENT_JAVA_MANUAL
     MOVWF EUSART_INPUT,0
     MOVFF EUSART_INPUT,TXREG
     CALL ESPERA_TX
-    
-    
-    
-    
+
     MOVLW 'C'
     CPFSEQ EUSART_INPUT,0
     GOTO NEXT_C
@@ -386,7 +472,7 @@ FUNCIO_MODE_AUTOMATIC
 	PRE_AUTO_MODE_CHECK_PIR
 	    BTFSS PIR1,RCIF,0
 	    GOTO PRE_AUTO_MODE;no eusart
-	    movf RCREG,0,0
+	    MOVF RCREG,0,0
 	    MOVWF EUSART_INPUT,0
 	    MOVLW 'P'
 	    CPFSEQ EUSART_INPUT,0
@@ -394,13 +480,13 @@ FUNCIO_MODE_AUTOMATIC
 	    GOTO FUNCIO_MODE_AUTOMATIC
     
 ESPERA_meitat
-    SETF tmp3,0
+    SETF TMP3,0
 BUCLE_D_1
-    SETF tmp4,0
+    SETF TMP4,0
 BUCLE2_D_1
-    DECFSZ tmp4,f,0
+    DECFSZ TMP4,f,0
     GOTO BUCLE2_D_1
-    DECFSZ tmp3,f,0
+    DECFSZ TMP3,f,0
     GOTO BUCLE_D_1
     RETURN
      
