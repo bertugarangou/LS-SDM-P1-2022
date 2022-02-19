@@ -497,6 +497,8 @@ NEXT_B
     MOVLW .144;posicio c'
     MOVWF PWM_VAR
 NEXT_c
+
+    CALL MOSTRAR_NOTA
     
 RETURN
     
@@ -576,7 +578,6 @@ LOOP_MAIN;bucle del programa
 	BCF LATC,0,0
 	BCF LATC,1,0
 	BCF LATC,2,0
-	;BCF LATC,3,0
 	CLRF LATD,0
 
 	GOTO LOOP_MAIN
