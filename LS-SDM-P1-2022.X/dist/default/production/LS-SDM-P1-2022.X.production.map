@@ -1,5 +1,5 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Sat Feb 19 14:18:29 2022
+Linker Map File - Created Tue Feb 22 10:48:20 2022
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -7,7 +7,7 @@ Linker Map File - Created Sat Feb 19 14:18:29 2022
                    .org_0       code   0x000000    program   0x000004
                    .cinit    romdata   0x000004    program   0x000002
                    .org_1       code   0x000008    program   0x000004
-                   .org_2       code   0x000018    program   0x0003e4
+                   .org_2       code   0x000018    program   0x000408
 .config_300001_BUILD/DEFAULT/PRODUCTION/NEWPIC_    romdata   0x300001    program   0x000001
 .config_300003_BUILD/DEFAULT/PRODUCTION/NEWPIC_    romdata   0x300003    program   0x000001
 .config_300005_BUILD/DEFAULT/PRODUCTION/NEWPIC_    romdata   0x300005    program   0x000001
@@ -20,172 +20,178 @@ Linker Map File - Created Sat Feb 19 14:18:29 2022
                            ---------   ---------      
                             0x000000    0x000005      
                             0x000008    0x00000b      
-                            0x000018    0x0003fb      
+                            0x000018    0x00041f      
                             0x300001    0x300001      
                             0x300003    0x300003      
                             0x300005    0x300006      
-            1010 out of 8472 program addresses used, program memory utilization is 11%
+            1046 out of 8472 program addresses used, program memory utilization is 12%
 
 
 
                               Symbols - Sorted by Name
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-               ACTION_TMR   0x0000b2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               BUCLE2_D_1   0x0003c0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                BUCLE_D_1   0x0003be    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                  BUCLE_T   0x0001f0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            CARREGA_TIMER   0x0000a0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               CONFIG_ADC   0x000084    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        CONFIG_INTERRUPTS   0x0000aa    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             CONFIG_PORTS   0x000022    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             CONFIG_TIMER   0x000096    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 CORREGIR   0x000232    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         DECREMENT_ANALOG   0x0001b2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            END_LOOP_MAIN   0x0003f0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         ESPERA_CONVERSIO   0x0001e6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_AUTO   0x00014c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_MANUAL   0x000162    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_MODE_TOCAR   0x0002b8    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             ESPERA_GRAUS   0x0000de    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            ESPERA_GRAUS2   0x000102    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                ESPERA_TX   0x0002c4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            ESPERA_meitat   0x0003bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                  FINAL_T   0x00022a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    FUNCIO_MODE_AUTOMATIC   0x000382    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-       FUNCIO_MODE_MANUAL   0x00010e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 HIGH_RSI   0x00001a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         INCREMENT_ANALOG   0x000190    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              INIT_EUSART   0x000070    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                INIT_VARS   0x000046    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              LOOP_ANALOG   0x000172    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              LOOP_CONVER   0x000174    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_CWAIT   0x00019c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_DWAIT   0x0001be    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-           LOOP_ESPERAPWM   0x0000cc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          LOOP_ESPERAPWM2   0x0000f0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-      LOOP_ESPERA_BAIXADA   0x000362    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    LOOP_ESPERA_BAIXADA_2   0x000366    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    LOOP_ESPERA_BAIXADA_3   0x00036a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            LOOP_ESPERA_X   0x00033a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          LOOP_ESPERA_X_2   0x00033e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          LOOP_ESPERA_X_3   0x000342    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_GRAUS   0x0000e2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              LOOP_GRAUS2   0x000106    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                LOOP_MAIN   0x0003e6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                LOOP_WAIT   0x00019a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_WAITD   0x0001bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     MAIN   0x0003ce    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        MIRA_MODE_ENTRADA   0x0002a4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             MOSTRAR_NOTA   0x000238    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_A   0x000274    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_B   0x00027a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_C   0x000280    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-           MOSTRA_C_MENOR   0x00029e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_D   0x000286    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_E   0x00028c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_F   0x000292    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_G   0x000298    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-     MOVIMENT_JAVA_MANUAL   0x0002cc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        MOVIMENT_JOYSTICK   0x00016a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_A   0x00031e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_B   0x00032a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_C   0x0002e2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_D   0x0002ee    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_E   0x0002fa    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_F   0x000306    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_G   0x000312    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_c   0x000336    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               PICAR_NOTA   0x0001e0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_AUTO   0x00013e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_MANUAL   0x000154    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            PRE_AUTO_MODE   0x000398    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-  PRE_AUTO_MODE_CHECK_PIR   0x0003a6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                      PWM   0x0000c6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     PWM2   0x0000ea    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                    RESTA   0x0001da    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     SUMA   0x0001d4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 T_TROBAT   0x00021a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               ACTION_TMR   0x0000b4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               BUCLE2_D_1   0x0003e6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                BUCLE_D_1   0x0003e4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                  BUCLE_T   0x00020a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            CARREGA_TIMER   0x0000a2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               CONFIG_ADC   0x000086    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        CONFIG_INTERRUPTS   0x0000ac    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_PORTS   0x000022    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_TIMER   0x000098    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 CORREGIR   0x00024c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         DECREMENT_ANALOG   0x0001cc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            END_LOOP_MAIN   0x000416    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         ESPERA_CONVERSIO   0x000200    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_AUTO   0x000166    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_MANUAL   0x00017c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_MODE_TOCAR   0x0002d2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             ESPERA_GRAUS   0x0000f8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            ESPERA_GRAUS2   0x00011c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                ESPERA_TX   0x0002ea    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            ESPERA_meitat   0x0003e2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                  FINAL_T   0x000244    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    FUNCIO_MODE_AUTOMATIC   0x0003a8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+       FUNCIO_MODE_MANUAL   0x000128    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 HIGH_RSI   0x00001a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+           INCREMENTA_VAR   0x0000d0    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         INCREMENT_ANALOG   0x0001aa    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              INIT_EUSART   0x000072    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                INIT_VARS   0x000046    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              LOOP_ANALOG   0x00018c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              LOOP_CONVER   0x00018e    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_CWAIT   0x0001b6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_DWAIT   0x0001d8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+           LOOP_ESPERAPWM   0x0000e6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          LOOP_ESPERAPWM2   0x00010a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+      LOOP_ESPERA_BAIXADA   0x000388    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    LOOP_ESPERA_BAIXADA_2   0x00038c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    LOOP_ESPERA_BAIXADA_3   0x000390    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            LOOP_ESPERA_X   0x000360    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          LOOP_ESPERA_X_2   0x000364    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          LOOP_ESPERA_X_3   0x000368    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_GRAUS   0x0000fc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              LOOP_GRAUS2   0x000120    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                LOOP_MAIN   0x00040c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                LOOP_WAIT   0x0001b4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_WAITD   0x0001d6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     MAIN   0x0003f4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        MIRA_MODE_ENTRADA   0x0002be    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             MOSTRAR_NOTA   0x000252    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_A   0x00028e    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_B   0x000294    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_C   0x00029a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+           MOSTRA_C_MENOR   0x0002b8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_D   0x0002a0    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_E   0x0002a6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_F   0x0002ac    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_G   0x0002b2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+     MOVIMENT_JAVA_MANUAL   0x0002f2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        MOVIMENT_JOYSTICK   0x000184    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_A   0x000344    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_B   0x000350    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_C   0x000308    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_D   0x000314    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_E   0x000320    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_F   0x00032c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_G   0x000338    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_c   0x00035c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               PICAR_NOTA   0x0001fa    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_AUTO   0x000158    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_MANUAL   0x00016e    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            PRE_AUTO_MODE   0x0003be    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+  PRE_AUTO_MODE_CHECK_PIR   0x0003cc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                      PWM   0x0000e0    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     PWM2   0x000104    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   RECORD   0x0002e4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                RESET_VAR   0x0000dc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                    RESTA   0x0001f4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     SUMA   0x0001ee    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 T_TROBAT   0x000234    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
 
 
 
                               Symbols - Sorted by Address
                      Name    Address   Location    Storage File                     
                 ---------  ---------  ---------  --------- ---------                
-                 HIGH_RSI   0x00001a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             CONFIG_PORTS   0x000022    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                INIT_VARS   0x000046    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              INIT_EUSART   0x000070    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               CONFIG_ADC   0x000084    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             CONFIG_TIMER   0x000096    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            CARREGA_TIMER   0x0000a0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        CONFIG_INTERRUPTS   0x0000aa    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               ACTION_TMR   0x0000b2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                      PWM   0x0000c6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-           LOOP_ESPERAPWM   0x0000cc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             ESPERA_GRAUS   0x0000de    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_GRAUS   0x0000e2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     PWM2   0x0000ea    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          LOOP_ESPERAPWM2   0x0000f0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            ESPERA_GRAUS2   0x000102    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              LOOP_GRAUS2   0x000106    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-       FUNCIO_MODE_MANUAL   0x00010e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_AUTO   0x00013e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_AUTO   0x00014c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-POLSADOR_REBOTS_CANVI_A_MANUAL   0x000154    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_CANVI_A_MANUAL   0x000162    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        MOVIMENT_JOYSTICK   0x00016a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              LOOP_ANALOG   0x000172    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-              LOOP_CONVER   0x000174    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         INCREMENT_ANALOG   0x000190    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                LOOP_WAIT   0x00019a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_CWAIT   0x00019c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         DECREMENT_ANALOG   0x0001b2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_WAITD   0x0001bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_DWAIT   0x0001be    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     SUMA   0x0001d4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                    RESTA   0x0001da    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               PICAR_NOTA   0x0001e0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         ESPERA_CONVERSIO   0x0001e6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                  BUCLE_T   0x0001f0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 T_TROBAT   0x00021a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                  FINAL_T   0x00022a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 CORREGIR   0x000232    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-             MOSTRAR_NOTA   0x000238    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_A   0x000274    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_B   0x00027a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_C   0x000280    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_D   0x000286    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_E   0x00028c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_F   0x000292    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                 MOSTRA_G   0x000298    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-           MOSTRA_C_MENOR   0x00029e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-        MIRA_MODE_ENTRADA   0x0002a4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-ESPERA_DESCLICAR_MODE_TOCAR   0x0002b8    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                ESPERA_TX   0x0002c4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-     MOVIMENT_JAVA_MANUAL   0x0002cc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_C   0x0002e2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_D   0x0002ee    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_E   0x0002fa    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_F   0x000306    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_G   0x000312    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_A   0x00031e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_B   0x00032a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                   NEXT_c   0x000336    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            LOOP_ESPERA_X   0x00033a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          LOOP_ESPERA_X_2   0x00033e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          LOOP_ESPERA_X_3   0x000342    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-      LOOP_ESPERA_BAIXADA   0x000362    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    LOOP_ESPERA_BAIXADA_2   0x000366    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    LOOP_ESPERA_BAIXADA_3   0x00036a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-    FUNCIO_MODE_AUTOMATIC   0x000382    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            PRE_AUTO_MODE   0x000398    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-  PRE_AUTO_MODE_CHECK_PIR   0x0003a6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            ESPERA_meitat   0x0003bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                BUCLE_D_1   0x0003be    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               BUCLE2_D_1   0x0003c0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                     MAIN   0x0003ce    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                LOOP_MAIN   0x0003e6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            END_LOOP_MAIN   0x0003f0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 HIGH_RSI   0x00001a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_PORTS   0x000022    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                INIT_VARS   0x000046    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              INIT_EUSART   0x000072    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               CONFIG_ADC   0x000086    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             CONFIG_TIMER   0x000098    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            CARREGA_TIMER   0x0000a2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        CONFIG_INTERRUPTS   0x0000ac    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               ACTION_TMR   0x0000b4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+           INCREMENTA_VAR   0x0000d0    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                RESET_VAR   0x0000dc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                      PWM   0x0000e0    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+           LOOP_ESPERAPWM   0x0000e6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             ESPERA_GRAUS   0x0000f8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_GRAUS   0x0000fc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     PWM2   0x000104    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          LOOP_ESPERAPWM2   0x00010a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            ESPERA_GRAUS2   0x00011c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              LOOP_GRAUS2   0x000120    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+       FUNCIO_MODE_MANUAL   0x000128    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_AUTO   0x000158    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_AUTO   0x000166    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+POLSADOR_REBOTS_CANVI_A_MANUAL   0x00016e    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_CANVI_A_MANUAL   0x00017c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        MOVIMENT_JOYSTICK   0x000184    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              LOOP_ANALOG   0x00018c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+              LOOP_CONVER   0x00018e    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         INCREMENT_ANALOG   0x0001aa    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                LOOP_WAIT   0x0001b4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_CWAIT   0x0001b6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         DECREMENT_ANALOG   0x0001cc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_WAITD   0x0001d6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_DWAIT   0x0001d8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     SUMA   0x0001ee    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                    RESTA   0x0001f4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               PICAR_NOTA   0x0001fa    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         ESPERA_CONVERSIO   0x000200    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                  BUCLE_T   0x00020a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 T_TROBAT   0x000234    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                  FINAL_T   0x000244    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 CORREGIR   0x00024c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+             MOSTRAR_NOTA   0x000252    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_A   0x00028e    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_B   0x000294    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_C   0x00029a    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_D   0x0002a0    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_E   0x0002a6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_F   0x0002ac    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                 MOSTRA_G   0x0002b2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+           MOSTRA_C_MENOR   0x0002b8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+        MIRA_MODE_ENTRADA   0x0002be    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+ESPERA_DESCLICAR_MODE_TOCAR   0x0002d2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   RECORD   0x0002e4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                ESPERA_TX   0x0002ea    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+     MOVIMENT_JAVA_MANUAL   0x0002f2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_C   0x000308    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_D   0x000314    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_E   0x000320    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_F   0x00032c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_G   0x000338    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_A   0x000344    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_B   0x000350    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                   NEXT_c   0x00035c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            LOOP_ESPERA_X   0x000360    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          LOOP_ESPERA_X_2   0x000364    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          LOOP_ESPERA_X_3   0x000368    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+      LOOP_ESPERA_BAIXADA   0x000388    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    LOOP_ESPERA_BAIXADA_2   0x00038c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    LOOP_ESPERA_BAIXADA_3   0x000390    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+    FUNCIO_MODE_AUTOMATIC   0x0003a8    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            PRE_AUTO_MODE   0x0003be    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+  PRE_AUTO_MODE_CHECK_PIR   0x0003cc    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            ESPERA_meitat   0x0003e2    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                BUCLE_D_1   0x0003e4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               BUCLE2_D_1   0x0003e6    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                     MAIN   0x0003f4    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                LOOP_MAIN   0x00040c    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            END_LOOP_MAIN   0x000416    program     static C:\Users\gerar\Documents\Uni\3r Telecos\Compus P2_FaseA\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
 
 
