@@ -180,11 +180,12 @@ ACTION_TMR
     
     INCREMENTA_HIGH
 	INCF TEMPS_HIGH, 1, 0
+	CLRF TEMPS_LOW, 0
     GOTO NEXT
     
     INCREMENTA_LOW
 	INCF TEMPS_LOW, 1, 0
-    
+
     NEXT
     
     ;Comprovar si es prem pulsador change mode actual, mes d'1 segon
@@ -250,12 +251,21 @@ ENREGISTRAR
     MOVFF ULTIMA_NOTA, POSTINC1
     INCF COMPTADOR_RAM,1,0
     
-    MOVLW .255
+    MOVLW b'11101010'
     SUBWF TEMPS_HIGH, 0, 0
     BTFSC STATUS, Z, 0
-    BCF MODE_ACTUAL, 2, 0  ;Si ha passat mes d'1 segon, sortim d'enregistrar
-    CLRF TEMPS_LOW, 0      ;Despres de guardar a la ram, netegem variables sempre
-    CLRF TEMPS_HIGH, 0
+    GOTO COMPROVA_TEMPS_LOW
+    GOTO CLEAN_VARS
+    
+    COMPROVA_TEMPS_LOW
+	MOVLW b'01100000'
+	SUBWF TEMPS_LOW, 0, 0
+	BTFSC STATUS, Z, 0
+	BCF MODE_ACTUAL, 2, 0  ;Si ha passat mes d'1 minut (60.000 -- 1110 1010 0110 0000), sortim d'enregistrar
+    
+    CLEAN_VARS
+	CLRF TEMPS_LOW, 0      ;Despres de guardar a la ram, netegem variables SEMPRE
+	CLRF TEMPS_HIGH, 0
     RETURN
     
 FUNCIO_MODE_MANUAL
