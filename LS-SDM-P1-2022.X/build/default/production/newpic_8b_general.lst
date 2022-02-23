@@ -1,4 +1,4 @@
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  1
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[215]: Processor superseded by command line.  Verify processor symbol.
   00000017            00039 PWM_VAR2 EQU 0X17
   00000018            00040 PWM_AUX2 EQU 0X18
   0000001A            00041 COMPT_GRAUS2 EQU 0X1A
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  2
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000050 6E02           00092     MOVWF SEVEN_SEG_E,0
 000052 0E39           00093     MOVLW b'00111001'
 000054 6E03           00094     MOVWF SEVEN_SEG_F
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  3
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0000A8 6ED5           00145     MOVWF T0CON,0   
 0000AA EC?? F???      00146     CALL CARREGA_TIMER
 0000AE 0012           00147     RETURN
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  4
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ Warning[207]: Found label after column 1. (NEXT)
                       00195     
 Warning[207]: Found label after column 1. (INCREMENTA_VAR)
 0000FC                00196     INCREMENTA_VAR
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  5
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -293,7 +293,7 @@ Warning[207]: Found label after column 1. (LOOP_GRAUS2)
 00014C                00242     LOOP_GRAUS2
 00014C 2E1A           00243         DECFSZ COMPT_GRAUS2,1,0
 00014E EF?? F???      00244         GOTO LOOP_GRAUS2
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  6
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -352,7 +352,7 @@ Warning[207]: Found label after column 1. (POLLANCRE)
                       00289     
                       00290     ;codi funcio manual
 000192 EC?? F???      00291     CALL MIRA_MODE_ENTRADA;joystick o java
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  7
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -411,7 +411,7 @@ Warning[207]: Found label after column 1. (ESPERA_DESCLICAR_CANVI_A_MANUAL)
                       00340     
 0001F2                00341 MOVIMENT_JOYSTICK
 0001F2 EC?? F???      00342     CALL PICAR_NOTA
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  8
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -470,7 +470,7 @@ Warning[207]: Found label after column 1. (LOOP_DWAIT)
 00024C CFC4 F00F      00387             MOVFF ADRESH, VAR_COMP  ;Passem la conversió a la nostra variable
 000250 0E64           00388             MOVLW .100
 000252 5C0F           00389             SUBWF VAR_COMP, 0, 0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE  9
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -529,7 +529,7 @@ Warning[207]: Found label after column 1. (ESPERA_CONVERSIO)
 00029E EF?? F???      00439     GOTO BUCLE_T
 0002A2                00440 T_TROBAT
                       00441     ;ENCENDRE NOTA
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 10
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -588,7 +588,7 @@ Warning[203]: Found opcode in column 1. (RETURN)
 Warning[207]: Found label after column 1. (MOSTRA_A)
 000302                00490         MOSTRA_A
 000302 C005 FF8C      00491             MOVFF SEVEN_SEG_A, LATD
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 11
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -647,7 +647,7 @@ Warning[207]: Found label after column 1. (MOSTRA_C_MENOR)
                       00535     
 000352                00536 MIRA_MODE_ENTRADA
 000352 B681           00537     BTFSC PORTB,3,0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 12
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 12
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -706,7 +706,7 @@ Warning[207]: Found label after column 1. (BUCLE_NETEJA_RAM)
 0003A2 0E43           00585     MOVLW 'C'
 0003A4 620B           00586     CPFSEQ EUSART_INPUT,0
 0003A6 EF?? F???      00587     GOTO NEXT_C
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 13
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 13
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -765,7 +765,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00638     
                       00639     ;ESPEREM X MOGUT -----llarg
 000402 0EFF           00640     MOVLW .255
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 14
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 14
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -824,7 +824,7 @@ Warning[207]: Found label after column 1. (LOOP_ESPERA_BAIXADA_3)
                       00685     
                       00686     
 Warning[203]: Found opcode in column 1. (RETURN)
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 15
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 15
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -883,7 +883,7 @@ Warning[207]: Found label after column 1. (PRE_AUTO_MODE_CHECK_PIR)
 000492 2E0C           00735     DECFSZ TMP3,f,0
 000494 EF?? F???      00736     GOTO BUCLE_D_1
 000498 0012           00737     RETURN
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 16
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 16
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -922,7 +922,7 @@ Warning[207]: Found label after column 1. (END_LOOP_MAIN)
 0004C4 EF?? F???      00767         GOTO LOOP_MAIN
 Warning[205]: Found directive in column 1. (END)
                       00768 END
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 17
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 17
 
 
 SYMBOL TABLE
@@ -981,7 +981,7 @@ BCLIF                             00000003
 BCLIP                             00000003
 BF                                00000000
 BGST                              00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 18
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 18
 
 
 SYMBOL TABLE
@@ -1040,7 +1040,7 @@ CFGS                              00000006
 CHS0                              00000002
 CHS1                              00000003
 CHS2                              00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 19
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 19
 
 
 SYMBOL TABLE
@@ -1099,7 +1099,7 @@ DONE                              00000001
 D_A                               00000005
 D_NOT_A                           00000005
 ECCP1AS                           00000FB6
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 20
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 20
 
 
 SYMBOL TABLE
@@ -1158,7 +1158,7 @@ GO_NOT_DONE                       00000001
 HIGH_RSI                          0000001A
 HLVDCON                           00000FD2
 HLVDEN                            00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 21
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 21
 
 
 SYMBOL TABLE
@@ -1217,7 +1217,7 @@ IPR2                              00000FA2
 IRCF0                             00000004
 IRCF1                             00000005
 IRCF2                             00000006
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 22
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 22
 
 
 SYMBOL TABLE
@@ -1276,7 +1276,7 @@ LOOP_ESPERAPWM                    00000112
 LOOP_ESPERAPWM2                   00000136
 LOOP_ESPERA_BAIXADA               0000042E
 LOOP_ESPERA_BAIXADA_2             00000432
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 23
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 23
 
 
 SYMBOL TABLE
@@ -1335,7 +1335,7 @@ NOT_BOR                           00000000
 NOT_CS                            00000002
 NOT_DONE                          00000001
 NOT_MCLR                          00000003
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 24
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 24
 
 
 SYMBOL TABLE
@@ -1394,7 +1394,7 @@ PGC                               00000006
 PGD                               00000007
 PGM                               00000005
 PICAR_NOTA                        00000268
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 25
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 25
 
 
 SYMBOL TABLE
@@ -1453,7 +1453,7 @@ PSSBD1                            00000001
 PWM                               0000010C
 PWM1CON                           00000FB7
 PWM2                              00000130
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 26
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 26
 
 
 SYMBOL TABLE
@@ -1512,7 +1512,7 @@ RD5                               00000005
 RD6                               00000006
 RD7                               00000007
 RE0                               00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 27
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 27
 
 
 SYMBOL TABLE
@@ -1571,7 +1571,7 @@ SSPIE                             00000003
 SSPIF                             00000003
 SSPIP                             00000003
 SSPM0                             00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 28
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 28
 
 
 SYMBOL TABLE
@@ -1630,7 +1630,7 @@ TBLPTR                            00000FF6
 TBLPTRH                           00000FF7
 TBLPTRL                           00000FF6
 TBLPTRU                           00000FF8
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 29
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 29
 
 
 SYMBOL TABLE
@@ -1689,7 +1689,7 @@ TRISA4                            00000004
 TRISA5                            00000005
 TRISA6                            00000006
 TRISA7                            00000007
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 30
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 30
 
 
 SYMBOL TABLE
@@ -1748,7 +1748,7 @@ ULTIMA_NOTA                       0000001C
 VAR_COMP                          0000000F
 VAR_COMP2                         00000016
 VAR_CONVER                        0000000E
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 31
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 31
 
 
 SYMBOL TABLE
@@ -1807,7 +1807,7 @@ _CPD_OFF_5H                       000000FF
 _CPD_ON_5H                        0000007F
 _DEBUG_OFF_4L                     000000FF
 _DEBUG_ON_4L                      0000007F
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 32
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 32
 
 
 SYMBOL TABLE
@@ -1866,7 +1866,7 @@ _WDTPS_2_2H                       000000E3
 _WDTPS_32768_2H                   000000FF
 _WDTPS_32_2H                      000000EB
 _WDTPS_4096_2H                    000000F9
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  0:19:44         PAGE 33
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   2-23-2022  9:46:45         PAGE 33
 
 
 SYMBOL TABLE

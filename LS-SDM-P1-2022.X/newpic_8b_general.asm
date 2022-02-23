@@ -44,6 +44,7 @@ ULTIMA_NOTA EQU 0X1C
 COMPTADOR_RAM EQU 0X1D
 TEMPS_LOW EQU 0X1E
 TEMPS_HIGH EQU 0X1F
+FLAGS2 EQU 0x20
 
 
 
@@ -116,6 +117,7 @@ INIT_VARS
     CLRF ULTIMA_NOTA,0
     CLRF TEMPS_HIGH, 0
     CLRF TEMPS_LOW, 0
+    
     RETURN
     
 INIT_EUSART
@@ -314,6 +316,7 @@ FUNCIO_MODE_MANUAL
     CPFSEQ EUSART_INPUT,0
     GOTO END_LOOP_MAIN
     BSF MODE_ACTUAL,7,0;activem mode auto
+    BSF MODE_ACTUAL,6,0;ACTIVEM AUTO AMB P JA REBUDA
     GOTO END_LOOP_MAIN
         
 POLSADOR_REBOTS_CANVI_A_AUTO
@@ -580,7 +583,7 @@ MOVIMENT_JAVA_MANUAL
     MOVF RCREG,0,0
     MOVWF EUSART_INPUT,0
     
-    BCF MODE_ACTUAL,4,0
+    BCF MODE_ACTUAL,4,0;CANVI SERVO TOCANT
 
     MOVLW 'C'
     CPFSEQ EUSART_INPUT,0
@@ -626,11 +629,14 @@ NEXT_A
 NEXT_B
     MOVLW 'c'
     CPFSEQ EUSART_INPUT,0
-    GOTO NEXT_c
+    GOTO FAIL_INPUT
     MOVLW .144;posicio c'
     MOVWF PWM_VAR
-NEXT_c
-
+    GOTO NEXT_c
+    FAIL_INPUT
+	RETURN
+    NEXT_c
+    
     
     ;BAIXAR EL BRAÇ------------------
     
@@ -687,24 +693,37 @@ NEXT_c
 RETURN
     
 ;--------------mode automatic--------------
+ENVIA_K
+    MOVLW 'K'
+    MOVWF TXREG,0
+    CALL ESPERA_TX
+RETURN
+    
+    
 FUNCIO_MODE_AUTOMATIC
     BSF LATC,0,0;blau
     BCF LATC,3,0
     BTFSS MODE_ACTUAL,6,0
     GOTO PRE_AUTO_MODE
     
+    BTFSS FLAGS2,7,0
+    CALL ENVIA_K
     
+    ;INICI CANÇÓ
+    REPRODUINT_AUTO_BUCLE
+	;BSF FLAGS2,7,0 ;DESCOMENTAR  SI FA FALTA
+	
+	CALL MOVIMENT_JAVA_MANUAL;EL MANUAL AMB JAVA JA ENS SERVEIX PEL AUTO
+	
+	;MIRAR SI S'HA ACABAT LA CANÇÓ
+	MOVLW 'S'
+	CPFSEQ EUSART_INPUT,0
+	GOTO REPRODUINT_AUTO_BUCLE;1: NO HA SALTAT
+	BCF MODE_ACTUAL,6,0;netejar que espera una altra P per la seguent canço
+    FI_SONG
     
-    ;codi auto
-    
-    
-    
-    ;no arribar aqui si s'esta reproduint (si abans i si despres)
-    BCF MODE_ACTUAL,6,0;netejar que espera una altra P per la seguent canco
-    ;i tornar a reproduir una altra
-    
-    BTFSS PORTB,1,0;si cliquen manual, activem manual
-    CALL POLSADOR_REBOTS_CANVI_A_MANUAL
+    ;BTFSS PORTB,1,0;si cliquen manual, activem manual
+    ;CALL POLSADOR_REBOTS_CANVI_A_MANUAL
     GOTO END_LOOP_MAIN
     
     
@@ -723,6 +742,7 @@ FUNCIO_MODE_AUTOMATIC
 	    MOVLW 'P'
 	    CPFSEQ EUSART_INPUT,0
 	    GOTO PRE_AUTO_MODE
+	    BSF MODE_ACTUAL,6,0
 	    GOTO FUNCIO_MODE_AUTOMATIC
     
 ESPERA_meitat
