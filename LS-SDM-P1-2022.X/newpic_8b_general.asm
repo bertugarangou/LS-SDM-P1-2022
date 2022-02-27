@@ -50,6 +50,12 @@ FLAGS2 EQU 0x20
 FLAGS3 EQU 0x21
 FLAGS4 EQU 0x22
 OFFSET EQU 0x23
+NOTA_RAM EQU 0x24
+TEMPS_HIGH_RAM EQU 0x25
+TEMPS_LOW_RAM EQU 0x26
+FLAG_ESPERAL EQU 0x27
+FLAG_ESPERAH EQU 0x28
+FLAG_TEMPS EQU 0x29
 
     ORG 0x000
     GOTO MAIN
@@ -107,6 +113,7 @@ INIT_VARS
     
     CLRF MODE_ACTUAL,0
     CLRF VAR_TOKEN2, 0
+    CLRF FLAG_TEMPS, 0
     
     MOVLW .39
     MOVWF PWM_VAR,0
@@ -260,9 +267,9 @@ ESPERA_GRAUS2
     ;---------
 ;--------------mode manual--------------
 ENREGISTRAR
+    MOVFF ULTIMA_NOTA, POSTINC1
     MOVFF TEMPS_LOW, POSTINC1
     MOVFF TEMPS_HIGH, POSTINC1
-    MOVFF ULTIMA_NOTA, POSTINC1
     INCF COMPTADOR_RAM,1,0
     
     MOVLW b'11101010'
@@ -463,7 +470,7 @@ T_TROBAT
     CPFSGT TMP2
     CALL MOSTRAR_NOTA
     
-    BTFSC MODE_ACTUAL,2,0; SI ESTEM ENREGISTRAT¡NT, GUARDAR LA NOTA
+    BTFSC MODE_ACTUAL,2,0; SI ESTEM ENREGISTRANT, GUARDAR LA NOTA
 	CALL ENREGISTRAR
     
     ;filtre maxim
@@ -803,8 +810,51 @@ BUCLE2_D_1
  
     
 PLAY_RAM_SONG
-    
+    CLRF FSR1L, 0
+    LOOP_LLEGEIX
+	MOVFF POSTINC1, NOTA_RAM
+	;CALL TOCA_NOTA
+	MOVFF POSTINC1, TEMPS_LOW_RAM
+	MOVFF POSTINC1, TEMPS_HIGH_RAM
+	LOOP_TEMPS
+	    CALL ESPERA_MS
+	    BTFSC FLAG_TEMPS, 0, 0
+	    GOTO LAST_ITERACIO
+	    DECF TEMPS_LOW_RAM, 1, 0
+	    BTFSC STATUS, Z, 0 ;Mirem si hem arribat a 0
+	    CALL RESET_VARR
+	    GOTO LOOP_TEMPS
+	    LAST_ITERACIO
+	    DECF TEMPS_LOW_RAM, 1, 0
+	    BTFSS STATUS, Z, 0 ;Si es ultima iteracio i arribem a 0, sortim
+	    GOTO LOOP_TEMPS
+	DECFSZ COMPTADOR_RAM, 1, 0  ;Llegim tot el que tenim guardat
+	GOTO LOOP_LLEGEIX
+	CLRF FLAG_TEMPS, 0
     RETURN
+
+RESET_VARR
+    MOVLW .255
+    MOVWF TEMPS_LOW_RAM
+    DECF TEMPS_HIGH_RAM, 1, 0
+    BTFSC STATUS, Z, 0 ;Mirem si hem arribat a 0
+    BSF FLAG_TEMPS, 0, 0
+    RETURN
+    
+ESPERA_MS ;1ms --> 10.000 cicles
+    MOVLW HIGH(.3325)    ;1 cicle
+    MOVWF FLAG_ESPERAH, 0     ;1 cicle
+    MOVLW LOW(.3325)    ;1 cicle
+    MOVWF FLAG_ESPERAL, 0
+    LOOP_MS
+	DCFSNZ FLAG_ESPERAL, 1, 0
+	DECFSZ FLAG_ESPERAH, 1, 0  ;Iteracio sense salt = 3 cicles
+	GOTO LOOP_MS	       ;Iteracio amb salt = 2 cicles
+				   ;10000-2-2-1-1-22  --> 3*(x-1)+2 = 9982   x = 3325
+    NOP  ;1 cicle
+    NOP  ;1 cicle
+    RETURN  ;2 cicles 
+
 ;--------------------------------------MAIN-------------------------------------
 MAIN
 
