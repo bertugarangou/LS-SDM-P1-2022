@@ -182,9 +182,31 @@ ACTION_TMR
     BTFSC MODE_ACTUAL,4,0
     CALL PWM2;si es 1 fem l'Y
 
+    
+    
     ;Comptar temps entre nota i nota
     BTFSS MODE_ACTUAL,2,0
     GOTO NEXT
+    
+    ;Comprovar si ha estat mes d'1 minut inactiu
+    MOVLW b'11101010'
+    SUBWF TEMPS_HIGH, 0, 0
+    BTFSC STATUS, Z, 0
+    GOTO COMPROVA_TEMPS_LOW ;60000 part high OK
+    GOTO INCREMENTA_LOW  ;Sino cap a incrementar low normal
+    
+    COMPROVA_TEMPS_LOW
+	MOVLW b'01100000'
+	SUBWF TEMPS_LOW, 0, 0
+	BTFSC STATUS, Z, 0
+	GOTO MINUT
+	GOTO INCREMENTA_LOW
+	
+    
+    MINUT
+	BCF MODE_ACTUAL, 2, 0  ;Si ha passat mes d'1 minut (60.000 -- 1110 1010 0110 0000), sortim d'enregistrar
+	GOTO NEXT
+    
     
     INCREMENTA_LOW
 	MOVFF TEMPS_LOW, FLAGS3 ;Movem el valor abans de sumar per no perdre'l en cas d'OV
@@ -208,6 +230,7 @@ ACTION_TMR
     INCREMENTA_HIGH
 	INCF TEMPS_HIGH, 1, 0
 
+    
     NEXT
     
     ;Comprovar si es prem pulsador change mode actual, mes d'1 segon
@@ -269,25 +292,12 @@ ESPERA_GRAUS2
 ;--------------mode manual--------------
 ENREGISTRAR
     MOVFF ULTIMA_NOTA, POSTINC1
+    MOVFF ULTIMA_NOTA, LATD
     MOVFF TEMPS_LOW, POSTINC1
     MOVFF TEMPS_HIGH, POSTINC1
     INCF COMPTADOR_RAM,1,0
-    
-    MOVLW b'11101010'
-    SUBWF TEMPS_HIGH, 0, 0
-    BTFSC STATUS, Z, 0
-    GOTO COMPROVA_TEMPS_LOW
-    GOTO CLEAN_VARS
-    
-    COMPROVA_TEMPS_LOW
-	MOVLW b'01100000'
-	SUBWF TEMPS_LOW, 0, 0
-	BTFSC STATUS, Z, 0
-	BCF MODE_ACTUAL, 2, 0  ;Si ha passat mes d'1 minut (60.000 -- 1110 1010 0110 0000), sortim d'enregistrar
-    
-    CLEAN_VARS
-	CLRF TEMPS_LOW, 0      ;Despres de guardar a la ram, netegem variables SEMPRE
-	CLRF TEMPS_HIGH, 0
+    CLRF TEMPS_LOW, 0      ;Despres de guardar a la ram, netegem variables SEMPRE
+    CLRF TEMPS_HIGH, 0
     RETURN
     
 FUNCIO_MODE_MANUAL
@@ -325,6 +335,9 @@ FUNCIO_MODE_MANUAL
     
     
     ;NO ARRIBAR AQUI SI S'ESTA ENREGISTRANT
+    
+    
+    
     BTFSS PORTB,2,0
     CALL CONTROL_REBOTS_PLAY_BUTTON ;MIRAR SI PLAY
     
@@ -477,7 +490,7 @@ T_TROBAT
     CALL MOSTRAR_NOTA
     
     BTFSC MODE_ACTUAL,2,0; SI ESTEM ENREGISTRANT, GUARDAR LA NOTA mode manual-joystick
-	;CALL ENREGISTRAR
+	CALL ENREGISTRAR
     
     CAGARRO
     ;filtre maxim
@@ -823,10 +836,17 @@ BUCLE2_D_1
  
     
 PLAY_RAM_SONG
+    MOVLW .0
+    SUBWF COMPTADOR_RAM,0,0
+    BTFSC STATUS,Z,0
+    RETURN
+    
+    
     BSF MODE_ACTUAL,1,0;FLAG REPRODUINT
     CLRF FSR1L, 0
     LOOP_LLEGEIX
 	MOVFF POSTINC1, NOTA_RAM
+	MOVFF NOTA_RAM, LATD
 	MOVFF POSTINC1, TEMPS_LOW_RAM
 	MOVFF POSTINC1, TEMPS_HIGH_RAM
 	LOOP_TEMPS
