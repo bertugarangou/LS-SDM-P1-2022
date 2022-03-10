@@ -386,7 +386,7 @@ MOVIMENT_JOYSTICK
 	CALL DECREMENT_ANALOG  ;Si estem per sota de 15 decrementem PWM
     RETURN
 INCREMENT_ANALOG
-	MOVLW .144;144=notes+39init
+	MOVLW .123;144=7notes+39init
 	SUBWF PWM_VAR, 0, 0
 	BTFSS STATUS, Z, 0  ;Si la suma no dona 0, decrementem
 	CALL SUMA
@@ -419,11 +419,11 @@ DECREMENT_ANALOG
 	GOTO LOOP_WAITD
     RETURN
 SUMA
-    MOVLW .15;increment pos
+    MOVLW .12;increment pos
     ADDWF PWM_VAR, 1, 0  ;Hem de sumar 5 graus cada vegada
     RETURN
 RESTA
-    MOVLW .15;dec pos
+    MOVLW .12;dec pos
     SUBWF PWM_VAR, 1, 0  ;Hem de restar 5 graus cada vegada
     RETURN
     
@@ -475,7 +475,7 @@ T_TROBAT
 	CALL ENREGISTRAR
     
     ;filtre maxim
-    MOVLW .40;posicio minima joystick Y
+    MOVLW .39;posicio minima joystick Y
     CPFSGT TMP2,0
     CALL CORREGIR
     
@@ -487,30 +487,30 @@ T_TROBAT
     RETURN
     
 CORREGIR
-    MOVLW .40;posicio minima joystick Y
+    MOVLW .39;posicio minima joystick Y
     MOVWF TMP2,0
 RETURN
     
 MOSTRAR_NOTA
-    MOVLW .40;VALOR_INIT+1+NOTA
+    MOVLW .40;VALOR_INIT+1
     CPFSGT PWM_VAR,0
 	GOTO MOSTRA_C
-    MOVLW .55;VALOR_INIT+1+NOTA+NOTA
+    MOVLW .52;VALOR_INIT+1+NOTA
     CPFSGT PWM_VAR,0
 	GOTO MOSTRA_D
-    MOVLW .70;...
+    MOVLW .64;...
     CPFSGT PWM_VAR,0
 	GOTO MOSTRA_E
-    MOVLW .85
+    MOVLW .76
     CPFSGT PWM_VAR,0
 	GOTO MOSTRA_F
-    MOVLW .100
+    MOVLW .88
     CPFSGT PWM_VAR,0
 	GOTO MOSTRA_G
-    MOVLW .115
+    MOVLW .100
     CPFSGT PWM_VAR,0
 	GOTO MOSTRA_A
-    MOVLW .130
+    MOVLW .112
     CPFSGT PWM_VAR,0
 	GOTO MOSTRA_B
 	GOTO MOSTRA_C_MENOR
@@ -622,49 +622,49 @@ NEXT_C
     MOVLW 'D'
     CPFSEQ EUSART_INPUT,0
     GOTO NEXT_D
-    MOVLW .54;posicio D
+    MOVLW .51;posicio D
     MOVWF PWM_VAR
     GOTO TROBAT_NOTA
 NEXT_D
     MOVLW 'E'
     CPFSEQ EUSART_INPUT,0
     GOTO NEXT_E
-    MOVLW .69;posicio E
+    MOVLW .63;posicio E
     MOVWF PWM_VAR
     GOTO TROBAT_NOTA
 NEXT_E
     MOVLW 'F'
     CPFSEQ EUSART_INPUT,0
     GOTO NEXT_F
-    MOVLW .84;posicio F
+    MOVLW .75;posicio F
     MOVWF PWM_VAR
     GOTO TROBAT_NOTA
 NEXT_F
     MOVLW 'G'
     CPFSEQ EUSART_INPUT,0
     GOTO NEXT_G
-    MOVLW .99;posicio G
+    MOVLW .87;posicio G
     MOVWF PWM_VAR
     GOTO TROBAT_NOTA
 NEXT_G
     MOVLW 'A'
     CPFSEQ EUSART_INPUT,0
     GOTO NEXT_A
-    MOVLW .114;posicio A
+    MOVLW .99;posicio A
     MOVWF PWM_VAR
     GOTO TROBAT_NOTA
 NEXT_A
     MOVLW 'B'
     CPFSEQ EUSART_INPUT,0
     GOTO NEXT_B
-    MOVLW .129;posicio B
+    MOVLW .111;posicio B
     MOVWF PWM_VAR
     GOTO TROBAT_NOTA
 NEXT_B
     MOVLW 'c'
     CPFSEQ EUSART_INPUT,0
     GOTO FAIL_INPUT
-    MOVLW .144;posicio c'
+    MOVLW .123;posicio c'
     MOVWF PWM_VAR
     GOTO TROBAT_NOTA
     FAIL_INPUT
