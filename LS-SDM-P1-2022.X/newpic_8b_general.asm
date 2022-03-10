@@ -204,7 +204,7 @@ ACTION_TMR
 	
     
     MINUT
-	BCF MODE_ACTUAL, 2, 0  ;Si ha passat mes d'1 minut (60.000 -- 1110 1010 0110 0000), sortim d'enregistrar
+	BCF MODE_ACTUAL,2, 0  ;Si ha passat mes d'1 minut (60.000 -- 1110 1010 0110 0000), sortim d'enregistrar
 	GOTO NEXT
     
     
