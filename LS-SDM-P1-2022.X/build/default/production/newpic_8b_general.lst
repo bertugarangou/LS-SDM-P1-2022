@@ -1,4 +1,4 @@
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  1
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  1
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -57,7 +57,7 @@ Warning[215]: Processor superseded by command line.  Verify processor symbol.
   00000014            00040 TMP2 EQU 0X14
   00000015            00041 VAR_CONVER2 EQU 0X15
   00000016            00042 VAR_COMP2 EQU 0X16
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  2
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  2
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -116,7 +116,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 00003C 908B           00093     BCF LATC,0,0
 00003E 928B           00094     BCF LATC,1,0
 000040 948B           00095     BCF LATC,2,0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  3
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  3
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -175,7 +175,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000092 0E10           00146     movlw LOW(.1040)
 000094 6EAF           00147     movwf SPBRG,0     
                       00148     
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  4
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  4
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -234,7 +234,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 0000E6 EF?? F???      00199     GOTO INCREMENTA_LOW  ;Sino cap a incrementar low normal
                       00200     
 Warning[207]: Found label after column 1. (COMPROVA_TEMPS_LOW)
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  5
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  5
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -293,7 +293,7 @@ Warning[207]: Found label after column 1. (INCREMENTA_VAR)
 000130                00244     INCREMENTA_VAR
 000130 2A1B           00245         INCF VAR_TOKEN2, 1, 0
 000132 0E32           00246         MOVLW .50
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  6
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  6
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -352,7 +352,7 @@ Warning[207]: Found label after column 1. (LOOP_GRAUS2)
 000182 EF?? F???      00292         GOTO LOOP_GRAUS2
 000186 0012           00293     RETURN
                       00294     ;---------
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  7
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  7
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -368,7 +368,7 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
 000198 6A1F           00302     CLRF TEMPS_HIGH, 0
                       00303     
                       00304     ;COMPROVAR QUE ARRIBEM A LES 64 NOTES
-00019A 0E05           00305     MOVLW .5
+00019A 0E40           00305     MOVLW .64
 00019C 5C1D           00306     SUBWF COMPTADOR_RAM,0,0
 00019E B4D8           00307     BTFSC STATUS,Z,0
 0001A0 940A           00308     BCF MODE_ACTUAL,2,0
@@ -411,7 +411,7 @@ Warning[207]: Found label after column 1. (POLLANCRE)
 0001CA EF?? F???      00342     GOTO FUNCIO_MODE_MANUAL
                       00343     
                       00344     
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  8
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  8
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
@@ -458,93 +458,93 @@ Warning[207]: Found label after column 1. (ESPERA_DESCLICAR_CANVI_A_AUTO)
 000212 B281           00382   BTFSC PORTB,1,0
 000214 0012           00383   RETURN
 000216 9E0A           00384   BCF MODE_ACTUAL,7,0   ;OKOKOKOKOK
+                      00385   ;NOU
+000218 9A0A           00386   BCF MODE_ACTUAL,5,0
 Warning[207]: Found label after column 1. (ESPERA_DESCLICAR_CANVI_A_MANUAL)
-000218                00385     ESPERA_DESCLICAR_CANVI_A_MANUAL
-000218 A281           00386       BTFSS PORTB,1,0
-00021A EF?? F???      00387       GOTO ESPERA_DESCLICAR_CANVI_A_MANUAL
-00021E 0012           00388       RETURN
-                      00389     
-000220                00390 MOVIMENT_JOYSTICK
+00021A                00387     ESPERA_DESCLICAR_CANVI_A_MANUAL
+00021A A281           00388       BTFSS PORTB,1,0
+00021C EF?? F???      00389       GOTO ESPERA_DESCLICAR_CANVI_A_MANUAL
+000220 0012           00390       RETURN
                       00391     
-000220 EC?? F???      00392     CALL PICAR_NOTA
-000224 6A8C           00393     CLRF LATD,0
-000226 980A           00394     BCF MODE_ACTUAL,4,0
-                      00395 
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE  9
+000222                00392 MOVIMENT_JOYSTICK
+                      00393     
+000222 EC?? F???      00394     CALL PICAR_NOTA
+000226 6A8C           00395     CLRF LATD,0
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE  9
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000228 84C2           00396     BSF ADCON0,CHS0,0   ;activar hoystick X PORTA0 per lectura
+000228 980A           00396     BCF MODE_ACTUAL,4,0
+                      00397 
+00022A 84C2           00398     BSF ADCON0,CHS0,0   ;activar hoystick X PORTA0 per lectura
 Warning[207]: Found label after column 1. (LOOP_ANALOG)
-00022A                00397     LOOP_ANALOG
-00022A 82C2           00398         BSF ADCON0, 1, 0  ;Fem la conversió
+00022C                00399     LOOP_ANALOG
+00022C 82C2           00400         BSF ADCON0, 1, 0  ;Fem la conversió
 Warning[207]: Found label after column 1. (LOOP_CONVER)
-00022C                00399         LOOP_CONVER
-00022C B2C2           00400             BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
-00022E EF?? F???      00401             GOTO LOOP_CONVER
-000232 CFC4 F00E      00402         MOVFF ADRESH, VAR_CONVER  ;Passem la conversió a la nostra variable
-000236 0EC8           00403         MOVLW .200
-000238 600E           00404         CPFSLT VAR_CONVER, 0
-00023A EC?? F???      00405         CALL INCREMENT_ANALOG  ;Si estem per sobre de 240 incrementem PWM
-00023E 0E0F           00406         MOVLW .15
-000240 640E           00407         CPFSGT VAR_CONVER, 0
-000242 EC?? F???      00408         CALL DECREMENT_ANALOG  ;Si estem per sota de 15 decrementem PWM
-000246 0012           00409     RETURN
-000248                00410 INCREMENT_ANALOG
-000248 0E7B           00411         MOVLW .123;144=7notes+39init
-00024A 5C10           00412         SUBWF PWM_VAR, 0, 0
-00024C A4D8           00413         BTFSS STATUS, Z, 0  ;Si la suma no dona 0, decrementem
-00024E EC?? F???      00414         CALL SUMA
+00022E                00401         LOOP_CONVER
+00022E B2C2           00402             BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
+000230 EF?? F???      00403             GOTO LOOP_CONVER
+000234 CFC4 F00E      00404         MOVFF ADRESH, VAR_CONVER  ;Passem la conversió a la nostra variable
+000238 0EC8           00405         MOVLW .200
+00023A 600E           00406         CPFSLT VAR_CONVER, 0
+00023C EC?? F???      00407         CALL INCREMENT_ANALOG  ;Si estem per sobre de 240 incrementem PWM
+000240 0E0F           00408         MOVLW .15
+000242 640E           00409         CPFSGT VAR_CONVER, 0
+000244 EC?? F???      00410         CALL DECREMENT_ANALOG  ;Si estem per sota de 15 decrementem PWM
+000248 0012           00411     RETURN
+00024A                00412 INCREMENT_ANALOG
+00024A 0E7B           00413         MOVLW .123;144=7notes+39init
+00024C 5C10           00414         SUBWF PWM_VAR, 0, 0
+00024E A4D8           00415         BTFSS STATUS, Z, 0  ;Si la suma no dona 0, decrementem
+000250 EC?? F???      00416         CALL SUMA
 Warning[207]: Found label after column 1. (LOOP_WAIT)
-000252                00415         LOOP_WAIT
-000252 82C2           00416             BSF ADCON0, 1, 0  ;Fem la conversió
+000254                00417         LOOP_WAIT
+000254 82C2           00418             BSF ADCON0, 1, 0  ;Fem la conversió
 Warning[207]: Found label after column 1. (LOOP_CWAIT)
-000254                00417             LOOP_CWAIT
-000254 B2C2           00418                 BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
-000256 EF?? F???      00419                 GOTO LOOP_CWAIT
-00025A CFC4 F00F      00420                 MOVFF ADRESH, VAR_COMP  ;Passem la conversió a la nostra variable
-00025E 0E8C           00421                 MOVLW .140
-000260 5C0F           00422                 SUBWF VAR_COMP, 0, 0
-000262 A8D8           00423                 BTFSS STATUS, N, 0  ;Si es negatiu vol dir que ja esta a la posicio inicial
-000264 EF?? F???      00424             GOTO LOOP_WAIT      
-                      00425         
-000268 0012           00426         RETURN
-00026A                00427 DECREMENT_ANALOG
-00026A 0E27           00428     MOVLW .39
-00026C 5C10           00429     SUBWF PWM_VAR, 0, 0
-00026E A4D8           00430     BTFSS STATUS, Z, 0  ;Si la resta no dona 0, decrementem
-000270 EC?? F???      00431     CALL RESTA
+000256                00419             LOOP_CWAIT
+000256 B2C2           00420                 BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
+000258 EF?? F???      00421                 GOTO LOOP_CWAIT
+00025C CFC4 F00F      00422                 MOVFF ADRESH, VAR_COMP  ;Passem la conversió a la nostra variable
+000260 0E8C           00423                 MOVLW .140
+000262 5C0F           00424                 SUBWF VAR_COMP, 0, 0
+000264 A8D8           00425                 BTFSS STATUS, N, 0  ;Si es negatiu vol dir que ja esta a la posicio inicial
+000266 EF?? F???      00426             GOTO LOOP_WAIT      
+                      00427         
+00026A 0012           00428         RETURN
+00026C                00429 DECREMENT_ANALOG
+00026C 0E27           00430     MOVLW .39
+00026E 5C10           00431     SUBWF PWM_VAR, 0, 0
+000270 A4D8           00432     BTFSS STATUS, Z, 0  ;Si la resta no dona 0, decrementem
+000272 EC?? F???      00433     CALL RESTA
 Warning[207]: Found label after column 1. (LOOP_WAITD)
-000274                00432     LOOP_WAITD  ;Esperem a que el joystick torni a la seva posició
-000274 82C2           00433         BSF ADCON0, 1, 0  ;Fem la conversió
+000276                00434     LOOP_WAITD  ;Esperem a que el joystick torni a la seva posició
+000276 82C2           00435         BSF ADCON0, 1, 0  ;Fem la conversió
 Warning[207]: Found label after column 1. (LOOP_DWAIT)
-000276                00434         LOOP_DWAIT
-000276 B2C2           00435             BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
-000278 EF?? F???      00436             GOTO LOOP_DWAIT
-00027C CFC4 F00F      00437             MOVFF ADRESH, VAR_COMP  ;Passem la conversió a la nostra variable
-000280 0E64           00438             MOVLW .100
-000282 5C0F           00439             SUBWF VAR_COMP, 0, 0
-000284 B8D8           00440             BTFSC STATUS, N, 0
-000286 EF?? F???      00441         GOTO LOOP_WAITD
-00028A 0012           00442     RETURN
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 10
+000278                00436         LOOP_DWAIT
+000278 B2C2           00437             BTFSC ADCON0, 1, 0  ;Esperem a que es faci la conversió i mirem què obtenim
+00027A EF?? F???      00438             GOTO LOOP_DWAIT
+00027E CFC4 F00F      00439             MOVFF ADRESH, VAR_COMP  ;Passem la conversió a la nostra variable
+000282 0E64           00440             MOVLW .100
+000284 5C0F           00441             SUBWF VAR_COMP, 0, 0
+000286 B8D8           00442             BTFSC STATUS, N, 0
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 10
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00028C                00443 SUMA
-00028C 0E0C           00444     MOVLW .12;increment pos
-00028E 2610           00445     ADDWF PWM_VAR, 1, 0  ;Hem de sumar 5 graus cada vegada
-000290 0012           00446     RETURN
-000292                00447 RESTA
-000292 0E0C           00448     MOVLW .12;dec pos
-000294 5E10           00449     SUBWF PWM_VAR, 1, 0  ;Hem de restar 5 graus cada vegada
-000296 0012           00450     RETURN
-                      00451     
-                      00452     
+000288 EF?? F???      00443         GOTO LOOP_WAITD
+00028C 0012           00444     RETURN
+00028E                00445 SUMA
+00028E 0E0C           00446     MOVLW .12;increment pos
+000290 2610           00447     ADDWF PWM_VAR, 1, 0  ;Hem de sumar 5 graus cada vegada
+000292 0012           00448     RETURN
+000294                00449 RESTA
+000294 0E0C           00450     MOVLW .12;dec pos
+000296 5E10           00451     SUBWF PWM_VAR, 1, 0  ;Hem de restar 5 graus cada vegada
+000298 0012           00452     RETURN
                       00453     
                       00454     
                       00455     
@@ -553,610 +553,607 @@ LOC  OBJECT CODE     LINE SOURCE TEXT
                       00458     
                       00459     
                       00460     
-000298                00461 PICAR_NOTA
-000298 880A           00462    BSF MODE_ACTUAL,4,0
-                      00463     
-00029A 94C2           00464    BCF ADCON0,CHS0,0;joystick Y AN0
-00029C 82C2           00465    BSF ADCON0,1,0 ; Comencem la conversió
+                      00461     
+                      00462     
+00029A                00463 PICAR_NOTA
+00029A 880A           00464    BSF MODE_ACTUAL,4,0
+                      00465     
+00029C 94C2           00466    BCF ADCON0,CHS0,0;joystick Y AN0
+00029E 82C2           00467    BSF ADCON0,1,0 ; Comencem la conversió
 Warning[207]: Found label after column 1. (ESPERA_CONVERSIO)
-00029E                00466    ESPERA_CONVERSIO
-00029E B2C2           00467    BTFSC ADCON0,1,0
-0002A0 EF?? F???      00468    GOTO ESPERA_CONVERSIO
-                      00469    
-0002A4 6A13           00470     CLRF TMP,0
-0002A6 6A14           00471     CLRF TMP2,0
-0002A8                00472 BUCLE_T
-0002A8 5013           00473     MOVF TMP,0
-0002AA 64C4           00474     CPFSGT ADRESH,0
-0002AC EF?? F???      00475     GOTO T_TROBAT
-0002B0 2A13           00476     INCF TMP,1,0
-0002B2 B0D8           00477     BTFSC STATUS,C,0;val C per TMP?
-0002B4 EF?? F???      00478     GOTO T_TROBAT
-0002B8 2A14           00479     INCF TMP2,1,0
-                      00480     
-0002BA 5013           00481     MOVF TMP,0
-0002BC 64C4           00482     CPFSGT ADRESH,0
-0002BE EF?? F???      00483     GOTO T_TROBAT
-0002C2 2A13           00484     INCF TMP,1,0
-0002C4 2A13           00485     INCF TMP,1,0
-0002C6 B0D8           00486     BTFSC STATUS,C,0;val C per TMP?
-0002C8 EF?? F???      00487     GOTO T_TROBAT
-0002CC 2A14           00488     INCF TMP2,1,0
-0002CE EF?? F???      00489     GOTO BUCLE_T
-0002D2                00490 T_TROBAT
-                      00491     ;ENCENDRE NOTA
-0002D2 0E05           00492     MOVLW .5
-0002D4 6414           00493     CPFSGT TMP2,0
-0002D6 EF?? F???      00494     GOTO CAGARRO2
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 11
+0002A0                00468    ESPERA_CONVERSIO
+0002A0 B2C2           00469    BTFSC ADCON0,1,0
+0002A2 EF?? F???      00470    GOTO ESPERA_CONVERSIO
+                      00471    
+0002A6 6A13           00472     CLRF TMP,0
+0002A8 6A14           00473     CLRF TMP2,0
+0002AA                00474 BUCLE_T
+0002AA 5013           00475     MOVF TMP,0
+0002AC 64C4           00476     CPFSGT ADRESH,0
+0002AE EF?? F???      00477     GOTO T_TROBAT
+0002B2 2A13           00478     INCF TMP,1,0
+0002B4 B0D8           00479     BTFSC STATUS,C,0;val C per TMP?
+0002B6 EF?? F???      00480     GOTO T_TROBAT
+0002BA 2A14           00481     INCF TMP2,1,0
+                      00482     
+0002BC 5013           00483     MOVF TMP,0
+0002BE 64C4           00484     CPFSGT ADRESH,0
+0002C0 EF?? F???      00485     GOTO T_TROBAT
+0002C4 2A13           00486     INCF TMP,1,0
+0002C6 2A13           00487     INCF TMP,1,0
+0002C8 B0D8           00488     BTFSC STATUS,C,0;val C per TMP?
+0002CA EF?? F???      00489     GOTO T_TROBAT
+0002CE 2A14           00490     INCF TMP2,1,0
+0002D0 EF?? F???      00491     GOTO BUCLE_T
+0002D4                00492 T_TROBAT
+                      00493     ;ENCENDRE NOTA
+0002D4 0E05           00494     MOVLW .5
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 11
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0002DA EF?? F???      00495     GOTO CAGARRO
-                      00496     
+0002D6 6414           00495     CPFSGT TMP2,0
+0002D8 EF?? F???      00496     GOTO CAGARRO2
+0002DC EF?? F???      00497     GOTO CAGARRO
+                      00498     
 Warning[207]: Found label after column 1. (CAGARRO2)
-0002DE                00497     CAGARRO2
-0002DE EC?? F???      00498     CALL MOSTRAR_NOTA
-                      00499     
-0002E2 B40A           00500     BTFSC MODE_ACTUAL,2,0; SI ESTEM ENREGISTRANT, GUARDAR LA NOTA mode manual-joystick
-0002E4 EF?? F???      00501         GOTO ZONA_ENREGISTRAR
-0002E8 EF?? F???      00502         GOTO CAGARRO
-                      00503         
+0002E0                00499     CAGARRO2
+0002E0 EC?? F???      00500     CALL MOSTRAR_NOTA
+                      00501     
+0002E4 B40A           00502     BTFSC MODE_ACTUAL,2,0; SI ESTEM ENREGISTRANT, GUARDAR LA NOTA mode manual-joystick
+0002E6 EF?? F???      00503         GOTO ZONA_ENREGISTRAR
+0002EA EF?? F???      00504         GOTO CAGARRO
+                      00505         
 Warning[207]: Found label after column 1. (ZONA_ENREGISTRAR)
-0002EC                00504     ZONA_ENREGISTRAR
-0002EC A00A           00505         BTFSS MODE_ACTUAL,0,0
-0002EE EC?? F???      00506         CALL ENREGISTRAR
-0002F2 800A           00507         BSF MODE_ACTUAL,0,0
-                      00508 
+0002EE                00506     ZONA_ENREGISTRAR
+0002EE A00A           00507         BTFSS MODE_ACTUAL,0,0
+0002F0 EC?? F???      00508         CALL ENREGISTRAR
+0002F4 800A           00509         BSF MODE_ACTUAL,0,0
+                      00510 
 Warning[207]: Found label after column 1. (CAGARRO)
-0002F4                00509     CAGARRO
-0002F4 0E64           00510     MOVLW .100; COMPARADOR AMB HISTÈRESIS
-0002F6 60C4           00511     CPFSLT ADRESH,0
-0002F8 900A           00512     BCF MODE_ACTUAL,0,0
-                      00513     
-                      00514     ;filtre maxim
-0002FA 0E27           00515     MOVLW .39;posicio minima joystick Y
-0002FC 6414           00516     CPFSGT TMP2,0
-0002FE EC?? F???      00517     CALL CORREGIR
-                      00518     
+0002F6                00511     CAGARRO
+0002F6 0E64           00512     MOVLW .100; COMPARADOR AMB HISTÈRESIS
+0002F8 60C4           00513     CPFSLT ADRESH,0
+0002FA 900A           00514     BCF MODE_ACTUAL,0,0
+                      00515     
+                      00516     ;filtre maxim
+0002FC 0E27           00517     MOVLW .39;posicio minima joystick Y
+0002FE 6414           00518     CPFSGT TMP2,0
+000300 EC?? F???      00519     CALL CORREGIR
+                      00520     
 Warning[207]: Found label after column 1. (FINAL_T)
-000302                00519     FINAL_T
-                      00520     ;ENVIAR POSICIO
-000302 C014 F017      00521     MOVFF TMP2, PWM_VAR2
-000306 880A           00522     BSF MODE_ACTUAL,4,0
-                      00523 
-                      00524     
-000308 0012           00525     RETURN
+000304                00521     FINAL_T
+                      00522     ;ENVIAR POSICIO
+000304 C014 F017      00523     MOVFF TMP2, PWM_VAR2
+000308 880A           00524     BSF MODE_ACTUAL,4,0
+                      00525 
                       00526     
-00030A                00527 CORREGIR
-00030A 0E27           00528     MOVLW .39;posicio minima joystick Y
-00030C 6E14           00529     MOVWF TMP2,0
+00030A 0012           00527     RETURN
+                      00528     
+00030C                00529 CORREGIR
+00030C 0E27           00530     MOVLW .39;posicio minima joystick Y
+00030E 6E14           00531     MOVWF TMP2,0
 Warning[203]: Found opcode in column 1. (RETURN)
-00030E 0012           00530 RETURN
-                      00531     
-000310                00532 MOSTRAR_NOTA
-000310 0E28           00533     MOVLW .40;VALOR_INIT+1
-000312 6410           00534     CPFSGT PWM_VAR,0
-000314 EF?? F???      00535         GOTO MOSTRA_C
-000318 0E34           00536     MOVLW .52;VALOR_INIT+1+NOTA
-00031A 6410           00537     CPFSGT PWM_VAR,0
-00031C EF?? F???      00538         GOTO MOSTRA_D
-000320 0E40           00539     MOVLW .64;...
-000322 6410           00540     CPFSGT PWM_VAR,0
-000324 EF?? F???      00541         GOTO MOSTRA_E
-000328 0E4C           00542     MOVLW .76
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 12
+000310 0012           00532 RETURN
+                      00533     
+000312                00534 MOSTRAR_NOTA
+000312 0E28           00535     MOVLW .40;VALOR_INIT+1
+000314 6410           00536     CPFSGT PWM_VAR,0
+000316 EF?? F???      00537         GOTO MOSTRA_C
+00031A 0E34           00538     MOVLW .52;VALOR_INIT+1+NOTA
+00031C 6410           00539     CPFSGT PWM_VAR,0
+00031E EF?? F???      00540         GOTO MOSTRA_D
+000322 0E40           00541     MOVLW .64;...
+000324 6410           00542     CPFSGT PWM_VAR,0
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 12
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00032A 6410           00543     CPFSGT PWM_VAR,0
-00032C EF?? F???      00544         GOTO MOSTRA_F
-000330 0E58           00545     MOVLW .88
-000332 6410           00546     CPFSGT PWM_VAR,0
-000334 EF?? F???      00547         GOTO MOSTRA_G
-000338 0E64           00548     MOVLW .100
-00033A 6410           00549     CPFSGT PWM_VAR,0
-00033C EF?? F???      00550         GOTO MOSTRA_A
-000340 0E70           00551     MOVLW .112
-000342 6410           00552     CPFSGT PWM_VAR,0
-000344 EF?? F???      00553         GOTO MOSTRA_B
-000348 EF?? F???      00554         GOTO MOSTRA_C_MENOR
-                      00555 
+000326 EF?? F???      00543         GOTO MOSTRA_E
+00032A 0E4C           00544     MOVLW .76
+00032C 6410           00545     CPFSGT PWM_VAR,0
+00032E EF?? F???      00546         GOTO MOSTRA_F
+000332 0E58           00547     MOVLW .88
+000334 6410           00548     CPFSGT PWM_VAR,0
+000336 EF?? F???      00549         GOTO MOSTRA_G
+00033A 0E64           00550     MOVLW .100
+00033C 6410           00551     CPFSGT PWM_VAR,0
+00033E EF?? F???      00552         GOTO MOSTRA_A
+000342 0E70           00553     MOVLW .112
+000344 6410           00554     CPFSGT PWM_VAR,0
+000346 EF?? F???      00555         GOTO MOSTRA_B
+00034A EF?? F???      00556         GOTO MOSTRA_C_MENOR
+                      00557 
 Warning[207]: Found label after column 1. (MOSTRA_A)
-00034C                00556         MOSTRA_A
-00034C C005 FF8C      00557             MOVFF SEVEN_SEG_A, LATD
-000350 0E41           00558             MOVLW 'A'
-000352 6E1C           00559             MOVWF ULTIMA_NOTA,0
-000354 0012           00560         RETURN
+00034E                00558         MOSTRA_A
+00034E C005 FF8C      00559             MOVFF SEVEN_SEG_A, LATD
+000352 0E41           00560             MOVLW 'A'
+000354 6E1C           00561             MOVWF ULTIMA_NOTA,0
+000356 0012           00562         RETURN
 Warning[207]: Found label after column 1. (MOSTRA_B)
-000356                00561         MOSTRA_B
-000356 C006 FF8C      00562             MOVFF SEVEN_SEG_B, LATD
-00035A 0E42           00563             MOVLW 'B'
-00035C 6E1C           00564             MOVWF ULTIMA_NOTA, 0
-00035E 0012           00565         RETURN
+000358                00563         MOSTRA_B
+000358 C006 FF8C      00564             MOVFF SEVEN_SEG_B, LATD
+00035C 0E42           00565             MOVLW 'B'
+00035E 6E1C           00566             MOVWF ULTIMA_NOTA, 0
+000360 0012           00567         RETURN
 Warning[207]: Found label after column 1. (MOSTRA_C)
-000360                00566         MOSTRA_C
-000360 C000 FF8C      00567             MOVFF SEVEN_SEG_C, LATD
-000364 0E43           00568             MOVLW 'C'
-000366 6E1C           00569             MOVWF ULTIMA_NOTA, 0
-000368 0012           00570         RETURN
+000362                00568         MOSTRA_C
+000362 C000 FF8C      00569             MOVFF SEVEN_SEG_C, LATD
+000366 0E43           00570             MOVLW 'C'
+000368 6E1C           00571             MOVWF ULTIMA_NOTA, 0
+00036A 0012           00572         RETURN
 Warning[207]: Found label after column 1. (MOSTRA_D)
-00036A                00571         MOSTRA_D
-00036A C001 FF8C      00572             MOVFF SEVEN_SEG_D, LATD
-00036E 0E44           00573             MOVLW 'D' 
-000370 6E1C           00574             MOVWF ULTIMA_NOTA, 0
-000372 0012           00575         RETURN
+00036C                00573         MOSTRA_D
+00036C C001 FF8C      00574             MOVFF SEVEN_SEG_D, LATD
+000370 0E44           00575             MOVLW 'D' 
+000372 6E1C           00576             MOVWF ULTIMA_NOTA, 0
+000374 0012           00577         RETURN
 Warning[207]: Found label after column 1. (MOSTRA_E)
-000374                00576         MOSTRA_E
-000374 C002 FF8C      00577             MOVFF SEVEN_SEG_E,LATD
-000378 0E45           00578             MOVLW 'E'
-00037A 6E1C           00579             MOVWF ULTIMA_NOTA, 0
-00037C 0012           00580         RETURN
+000376                00578         MOSTRA_E
+000376 C002 FF8C      00579             MOVFF SEVEN_SEG_E,LATD
+00037A 0E45           00580             MOVLW 'E'
+00037C 6E1C           00581             MOVWF ULTIMA_NOTA, 0
+00037E 0012           00582         RETURN
 Warning[207]: Found label after column 1. (MOSTRA_F)
-00037E                00581         MOSTRA_F
-00037E C003 FF8C      00582             MOVFF SEVEN_SEG_F,LATD
-000382 0E46           00583             MOVLW 'F'
-000384 6E1C           00584             MOVWF ULTIMA_NOTA, 0
-000386 0012           00585         RETURN
+000380                00583         MOSTRA_F
+000380 C003 FF8C      00584             MOVFF SEVEN_SEG_F,LATD
+000384 0E46           00585             MOVLW 'F'
+000386 6E1C           00586             MOVWF ULTIMA_NOTA, 0
+000388 0012           00587         RETURN
 Warning[207]: Found label after column 1. (MOSTRA_G)
-000388                00586         MOSTRA_G
-000388 C004 FF8C      00587             MOVFF SEVEN_SEG_G,LATD
-00038C 0E47           00588             MOVLW 'G'
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 13
+00038A                00588         MOSTRA_G
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 13
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00038E 6E1C           00589             MOVWF ULTIMA_NOTA, 0
-000390 0012           00590         RETURN
+00038A C004 FF8C      00589             MOVFF SEVEN_SEG_G,LATD
+00038E 0E47           00590             MOVLW 'G'
+000390 6E1C           00591             MOVWF ULTIMA_NOTA, 0
+000392 0012           00592         RETURN
 Warning[207]: Found label after column 1. (MOSTRA_C_MENOR)
-000392                00591         MOSTRA_C_MENOR
-000392 C007 FF8C      00592             MOVFF SEVEN_SEG_C_MENOR,LATD
-000396 0E63           00593             MOVLW 'c'
-000398 6E1C           00594             MOVWF ULTIMA_NOTA, 0
-00039A 0012           00595         RETURN
-                      00596     
-                      00597     
+000394                00593         MOSTRA_C_MENOR
+000394 C007 FF8C      00594             MOVFF SEVEN_SEG_C_MENOR,LATD
+000398 0E63           00595             MOVLW 'c'
+00039A 6E1C           00596             MOVWF ULTIMA_NOTA, 0
+00039C 0012           00597         RETURN
                       00598     
-                      00599     
-                      00600     
-                      00601     
-00039C                00602 MIRA_MODE_ENTRADA
-00039C B681           00603     BTFSC PORTB,3,0
-00039E 0012           00604     RETURN
-0003A0 EC?? F???      00605     CALL ESPERA_meitat
-0003A4 EC?? F???      00606     CALL ESPERA_meitat
-0003A8 A681           00607     BTFSS PORTB,3,0
-0003AA EF?? F???      00608     GOTO ESPERA_DESCLICAR_MODE_TOCAR
-0003AE 0012           00609     RETURN
-                      00610     
+00039E                00599 MIRA_MODE_ENTRADA
+00039E B681           00600     BTFSC PORTB,3,0
+0003A0 0012           00601     RETURN
+0003A2 EC?? F???      00602     CALL ESPERA_meitat
+0003A6 EC?? F???      00603     CALL ESPERA_meitat
+0003AA A681           00604     BTFSS PORTB,3,0
+0003AC EF?? F???      00605     GOTO ESPERA_DESCLICAR_MODE_TOCAR
+0003B0 0012           00606     RETURN
+                      00607     
 Warning[207]: Found label after column 1. (ESPERA_DESCLICAR_MODE_TOCAR)
-0003B0                00611     ESPERA_DESCLICAR_MODE_TOCAR
-0003B0 A681           00612     BTFSS PORTB,3,0
-0003B2 EF?? F???      00613     GOTO ESPERA_DESCLICAR_MODE_TOCAR
-                      00614     
-0003B6 B60A           00615     BTFSC MODE_ACTUAL, 3, 0
-0003B8 EF?? F???      00616     GOTO CANVIS_1S
-                      00617 
-0003BC 7A0A           00618     BTG MODE_ACTUAL,5,0;FLAG JOYSTICK O JAVA
-0003BE 768B           00619     BTG LATC,3,0
-0003C0 0012           00620     RETURN
+0003B2                00608     ESPERA_DESCLICAR_MODE_TOCAR
+0003B2 A681           00609     BTFSS PORTB,3,0
+0003B4 EF?? F???      00610     GOTO ESPERA_DESCLICAR_MODE_TOCAR
+                      00611     
+0003B8 B60A           00612     BTFSC MODE_ACTUAL, 3, 0
+0003BA EF?? F???      00613     GOTO CANVIS_1S
+                      00614 
+0003BE 7A0A           00615     BTG MODE_ACTUAL,5,0;FLAG JOYSTICK O JAVA
+0003C0 768B           00616     BTG LATC,3,0
+0003C2 0012           00617     RETURN
+                      00618     
 Warning[207]: Found label after column 1. (CANVIS_1S)
-0003C2                00621     CANVIS_1S
-0003C2 A40A           00622     BTFSS MODE_ACTUAL,2,0
-0003C4 EF?? F???      00623     GOTO NETEJAR_RAM
-0003C8 940A           00624     BCF MODE_ACTUAL, 2, 0
-0003CA 960A           00625     BCF MODE_ACTUAL, 3, 0;Resetegem flag
-0003CC 0012           00626     RETURN
-                      00627     
-                      00628     
+0003C4                00619     CANVIS_1S
+0003C4 A40A           00620     BTFSS MODE_ACTUAL,2,0
+0003C6 EF?? F???      00621     GOTO NETEJAR_RAM
+0003CA 940A           00622     BCF MODE_ACTUAL, 2, 0
+0003CC 960A           00623     BCF MODE_ACTUAL, 3, 0;Resetegem flag
+0003CE 0012           00624     RETURN
+                      00625     
+                      00626     
 Warning[207]: Found label after column 1. (NETEJAR_RAM)
-0003CE                00629     NETEJAR_RAM
-0003CE 960A           00630         BCF MODE_ACTUAL, 3, 0;Resetegem flag
-0003D0 840A           00631         BSF MODE_ACTUAL,2,0
-0003D2 0EBF           00632         MOVLW b'10111111'  ;Netegem 191 --> 64*3 = 192
-0003D4 6E1D           00633         MOVWF COMPTADOR_RAM,0
-                      00634         
-                      00635         ;NETEJAR RAM
-0003D6 6AE9           00636         CLRF FSR0L,0
+0003D0                00627     NETEJAR_RAM
+0003D0 960A           00628         BCF MODE_ACTUAL, 3, 0;Resetegem flag
+0003D2 840A           00629         BSF MODE_ACTUAL,2,0
+0003D4 0EBF           00630         MOVLW b'10111111'  ;Netegem 191 --> 64*3 = 192
+0003D6 6E1D           00631         MOVWF COMPTADOR_RAM,0
+                      00632         
+                      00633         ;NETEJAR RAM
+0003D8 6AE9           00634         CLRF FSR0L,0
 Warning[207]: Found label after column 1. (BUCLE_NETEJA_RAM)
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 14
+0003DA                00635         BUCLE_NETEJA_RAM
+0003DA 0E00           00636             MOVLW b'00000000'
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 14
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0003D8                00637         BUCLE_NETEJA_RAM
-0003D8 0E00           00638             MOVLW b'00000000'
-0003DA 6EEE           00639             MOVWF POSTINC0,0
-0003DC 2E1D           00640             DECFSZ COMPTADOR_RAM,1,0
-0003DE EF?? F???      00641             GOTO BUCLE_NETEJA_RAM
-0003E2 6AE9           00642     CLRF FSR0L,0
-0003E4 0012           00643     RETURN
-                      00644     
-0003E6                00645 ESPERA_TX
-0003E6 A2AC           00646     BTFSS TXSTA,TRMT,0
-0003E8 EF?? F???      00647     GOTO ESPERA_TX
-0003EC 0012           00648     RETURN   
-                      00649     
-0003EE                00650 MOVIMENT_JAVA_MANUAL
-0003EE AA9E           00651     BTFSS PIR1,RCIF,0
-0003F0 0012           00652     RETURN
-0003F2 50AE           00653     MOVF RCREG,0,0
-0003F4 6E0B           00654     MOVWF EUSART_INPUT,0
-                      00655     
+0003DC 6EEE           00637             MOVWF POSTINC0,0
+0003DE 2E1D           00638             DECFSZ COMPTADOR_RAM,1,0
+0003E0 EF?? F???      00639             GOTO BUCLE_NETEJA_RAM
+0003E4 6AE9           00640     CLRF FSR0L,0
+0003E6 0012           00641     RETURN
+                      00642     
+0003E8                00643 ESPERA_TX
+0003E8 A2AC           00644     BTFSS TXSTA,TRMT,0
+0003EA EF?? F???      00645     GOTO ESPERA_TX
+0003EE 0012           00646     RETURN   
+                      00647     
+0003F0                00648 MOVIMENT_JAVA_MANUAL
+0003F0 AA9E           00649     BTFSS PIR1,RCIF,0
+0003F2 0012           00650     RETURN
+0003F4 50AE           00651     MOVF RCREG,0,0
+0003F6 6E0B           00652     MOVWF EUSART_INPUT,0
+                      00653     
 Warning[208]: Label truncated at 32 characters. (MOVIMENT_JAVA_MANUAL_SI_ENREGISTRAR_TAMBE)
-0003F6                00656 MOVIMENT_JAVA_MANUAL_SI_ENREGISTRAR_TAMBE
-                      00657     
-0003F6 980A           00658     BCF MODE_ACTUAL,4,0;CANVI SERVO TOCANT
-0003F8 6A8C           00659     CLRF LATD,0
-0003FA 0E43           00660     MOVLW 'C'
-0003FC 620B           00661     CPFSEQ EUSART_INPUT,0
-0003FE EF?? F???      00662     GOTO NEXT_C
-000402 0E27           00663     MOVLW .39;valor init C
-000404 6E10           00664     MOVWF PWM_VAR
-000406 EF?? F???      00665     GOTO TROBAT_NOTA
-00040A                00666 NEXT_C
-00040A 0E44           00667     MOVLW 'D'
-00040C 620B           00668     CPFSEQ EUSART_INPUT,0
-00040E EF?? F???      00669     GOTO NEXT_D
-000412 0E33           00670     MOVLW .51;posicio D
-000414 6E10           00671     MOVWF PWM_VAR
-000416 EF?? F???      00672     GOTO TROBAT_NOTA
-00041A                00673 NEXT_D
-00041A 0E45           00674     MOVLW 'E'
-00041C 620B           00675     CPFSEQ EUSART_INPUT,0
-00041E EF?? F???      00676     GOTO NEXT_E
-000422 0E3F           00677     MOVLW .63;posicio E
-000424 6E10           00678     MOVWF PWM_VAR
-000426 EF?? F???      00679     GOTO TROBAT_NOTA
-00042A                00680 NEXT_E
-00042A 0E46           00681     MOVLW 'F'
-00042C 620B           00682     CPFSEQ EUSART_INPUT,0
-00042E EF?? F???      00683     GOTO NEXT_F
-000432 0E4B           00684     MOVLW .75;posicio F
-000434 6E10           00685     MOVWF PWM_VAR
-000436 EF?? F???      00686     GOTO TROBAT_NOTA
-00043A                00687 NEXT_F
-00043A 0E47           00688     MOVLW 'G'
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 15
+0003F8                00654 MOVIMENT_JAVA_MANUAL_SI_ENREGISTRAR_TAMBE
+                      00655     
+0003F8 980A           00656     BCF MODE_ACTUAL,4,0;CANVI SERVO TOCANT
+0003FA 6A8C           00657     CLRF LATD,0
+0003FC 0E43           00658     MOVLW 'C'
+0003FE 620B           00659     CPFSEQ EUSART_INPUT,0
+000400 EF?? F???      00660     GOTO NEXT_C
+000404 0E27           00661     MOVLW .39;valor init C
+000406 6E10           00662     MOVWF PWM_VAR
+000408 EF?? F???      00663     GOTO TROBAT_NOTA
+00040C                00664 NEXT_C
+00040C 0E44           00665     MOVLW 'D'
+00040E 620B           00666     CPFSEQ EUSART_INPUT,0
+000410 EF?? F???      00667     GOTO NEXT_D
+000414 0E33           00668     MOVLW .51;posicio D
+000416 6E10           00669     MOVWF PWM_VAR
+000418 EF?? F???      00670     GOTO TROBAT_NOTA
+00041C                00671 NEXT_D
+00041C 0E45           00672     MOVLW 'E'
+00041E 620B           00673     CPFSEQ EUSART_INPUT,0
+000420 EF?? F???      00674     GOTO NEXT_E
+000424 0E3F           00675     MOVLW .63;posicio E
+000426 6E10           00676     MOVWF PWM_VAR
+000428 EF?? F???      00677     GOTO TROBAT_NOTA
+00042C                00678 NEXT_E
+00042C 0E46           00679     MOVLW 'F'
+00042E 620B           00680     CPFSEQ EUSART_INPUT,0
+000430 EF?? F???      00681     GOTO NEXT_F
+000434 0E4B           00682     MOVLW .75;posicio F
+000436 6E10           00683     MOVWF PWM_VAR
+000438 EF?? F???      00684     GOTO TROBAT_NOTA
+00043C                00685 NEXT_F
+00043C 0E47           00686     MOVLW 'G'
+00043E 620B           00687     CPFSEQ EUSART_INPUT,0
+000440 EF?? F???      00688     GOTO NEXT_G
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 15
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-00043C 620B           00689     CPFSEQ EUSART_INPUT,0
-00043E EF?? F???      00690     GOTO NEXT_G
-000442 0E57           00691     MOVLW .87;posicio G
-000444 6E10           00692     MOVWF PWM_VAR
-000446 EF?? F???      00693     GOTO TROBAT_NOTA
-00044A                00694 NEXT_G
-00044A 0E41           00695     MOVLW 'A'
-00044C 620B           00696     CPFSEQ EUSART_INPUT,0
-00044E EF?? F???      00697     GOTO NEXT_A
-000452 0E63           00698     MOVLW .99;posicio A
-000454 6E10           00699     MOVWF PWM_VAR
-000456 EF?? F???      00700     GOTO TROBAT_NOTA
-00045A                00701 NEXT_A
-00045A 0E42           00702     MOVLW 'B'
-00045C 620B           00703     CPFSEQ EUSART_INPUT,0
-00045E EF?? F???      00704     GOTO NEXT_B
-000462 0E6F           00705     MOVLW .111;posicio B
-000464 6E10           00706     MOVWF PWM_VAR
-000466 EF?? F???      00707     GOTO TROBAT_NOTA
-00046A                00708 NEXT_B
-00046A 0E63           00709     MOVLW 'c'
-00046C 620B           00710     CPFSEQ EUSART_INPUT,0
-00046E EF?? F???      00711     GOTO FAIL_INPUT
-000472 0E7B           00712     MOVLW .123;posicio c'
-000474 6E10           00713     MOVWF PWM_VAR
-000476 EF?? F???      00714     GOTO TROBAT_NOTA
+000444 0E57           00689     MOVLW .87;posicio G
+000446 6E10           00690     MOVWF PWM_VAR
+000448 EF?? F???      00691     GOTO TROBAT_NOTA
+00044C                00692 NEXT_G
+00044C 0E41           00693     MOVLW 'A'
+00044E 620B           00694     CPFSEQ EUSART_INPUT,0
+000450 EF?? F???      00695     GOTO NEXT_A
+000454 0E63           00696     MOVLW .99;posicio A
+000456 6E10           00697     MOVWF PWM_VAR
+000458 EF?? F???      00698     GOTO TROBAT_NOTA
+00045C                00699 NEXT_A
+00045C 0E42           00700     MOVLW 'B'
+00045E 620B           00701     CPFSEQ EUSART_INPUT,0
+000460 EF?? F???      00702     GOTO NEXT_B
+000464 0E6F           00703     MOVLW .111;posicio B
+000466 6E10           00704     MOVWF PWM_VAR
+000468 EF?? F???      00705     GOTO TROBAT_NOTA
+00046C                00706 NEXT_B
+00046C 0E63           00707     MOVLW 'c'
+00046E 620B           00708     CPFSEQ EUSART_INPUT,0
+000470 EF?? F???      00709     GOTO FAIL_INPUT
+000474 0E7B           00710     MOVLW .123;posicio c'
+000476 6E10           00711     MOVWF PWM_VAR
+000478 EF?? F???      00712     GOTO TROBAT_NOTA
 Warning[207]: Found label after column 1. (FAIL_INPUT)
-00047A                00715     FAIL_INPUT
-00047A 0012           00716         RETURN
+00047C                00713     FAIL_INPUT
+00047C 0012           00714         RETURN
 Warning[207]: Found label after column 1. (TROBAT_NOTA)
-00047C                00717     TROBAT_NOTA
+00047E                00715     TROBAT_NOTA
+                      00716     
+                      00717     ;BAIXAR EL BRAÇ------------------
                       00718     
-                      00719     ;BAIXAR EL BRAÇ------------------
+                      00719     ;CALL MOSTRAR_NOTA ;DESCOMENTAR SI ES VOL VEURE LA NOTA ABANS
                       00720     
-                      00721     ;CALL MOSTRAR_NOTA ;DESCOMENTAR SI ES VOL VEURE LA NOTA ABANS
-                      00722     
-                      00723     ;ESPEREM X MOGUT -----llarg
-00047C 0EFF           00724     MOVLW .255
-00047E 6E13           00725     MOVWF TMP,0
+                      00721     ;ESPEREM X MOGUT -----llarg
+00047E 0EFF           00722     MOVLW .255
+000480 6E13           00723     MOVWF TMP,0
 Warning[207]: Found label after column 1. (LOOP_ESPERA_X)
-000480                00726     LOOP_ESPERA_X
-000480 0EFF           00727         MOVLW .255
-000482 6E14           00728         MOVWF TMP2,0
+000482                00724     LOOP_ESPERA_X
+000482 0EFF           00725         MOVLW .255
+000484 6E14           00726         MOVWF TMP2,0
 Warning[207]: Found label after column 1. (LOOP_ESPERA_X_2)
-000484                00729         LOOP_ESPERA_X_2
-000484 0E08           00730             MOVLW .8;TEMPS ESPERA ENTRE X I Y
-000486 6E0C           00731             MOVWF TMP3,0
+000486                00727         LOOP_ESPERA_X_2
+000486 0E08           00728             MOVLW .8;TEMPS ESPERA ENTRE X I Y
+000488 6E0C           00729             MOVWF TMP3,0
 Warning[207]: Found label after column 1. (LOOP_ESPERA_X_3)
-000488                00732             LOOP_ESPERA_X_3
-000488 2E0C           00733                 DECFSZ TMP3,1,0
-00048A EF?? F???      00734                 GOTO LOOP_ESPERA_X_3
-00048E 2E14           00735             DECFSZ TMP2,1,0
-000490 EF?? F???      00736             GOTO LOOP_ESPERA_X_2
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 16
+00048A                00730             LOOP_ESPERA_X_3
+00048A 2E0C           00731                 DECFSZ TMP3,1,0
+00048C EF?? F???      00732                 GOTO LOOP_ESPERA_X_3
+000490 2E14           00733             DECFSZ TMP2,1,0
+000492 EF?? F???      00734             GOTO LOOP_ESPERA_X_2
+000496 2E13           00735         DECFSZ TMP,1,0
+000498 EF?? F???      00736         GOTO LOOP_ESPERA_X
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 16
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000494 2E13           00737         DECFSZ TMP,1,0
-000496 EF?? F???      00738         GOTO LOOP_ESPERA_X
-                      00739     
-                      00740 ;MOVEM Y ABALL
-00049A EC?? F???      00741     CALL MOSTRAR_NOTA
-                      00742     
-00049E 0E27           00743     MOVLW .39;POSICIO ABALL
-0004A0 6E17           00744     MOVWF PWM_VAR2
-                      00745     
-0004A2 880A           00746     BSF MODE_ACTUAL,4,0;activar PWM Y
-                      00747     ;ESPEREM QUE BAIXI
-                      00748     
-0004A4 0EFF           00749     MOVLW .255
-0004A6 6E13           00750     MOVWF TMP,0
+                      00737     
+                      00738 ;MOVEM Y ABALL
+00049C EC?? F???      00739     CALL MOSTRAR_NOTA
+                      00740     
+0004A0 0E27           00741     MOVLW .39;POSICIO ABALL
+0004A2 6E17           00742     MOVWF PWM_VAR2
+                      00743     
+0004A4 880A           00744     BSF MODE_ACTUAL,4,0;activar PWM Y
+                      00745     ;ESPEREM QUE BAIXI
+                      00746     
+0004A6 0EFF           00747     MOVLW .255
+0004A8 6E13           00748     MOVWF TMP,0
 Warning[207]: Found label after column 1. (LOOP_ESPERA_BAIXADA)
-0004A8                00751     LOOP_ESPERA_BAIXADA
-0004A8 0EFF           00752         MOVLW .255
-0004AA 6E14           00753         MOVWF TMP2,0
+0004AA                00749     LOOP_ESPERA_BAIXADA
+0004AA 0EFF           00750         MOVLW .255
+0004AC 6E14           00751         MOVWF TMP2,0
 Warning[207]: Found label after column 1. (LOOP_ESPERA_BAIXADA_2)
-0004AC                00754         LOOP_ESPERA_BAIXADA_2
-0004AC 0E02           00755             MOVLW .2;TEMPS ESPERA ENTRE PUJAR I BAIXAR Y
-0004AE 6E0C           00756             MOVWF TMP3
+0004AE                00752         LOOP_ESPERA_BAIXADA_2
+0004AE 0E02           00753             MOVLW .2;TEMPS ESPERA ENTRE PUJAR I BAIXAR Y
+0004B0 6E0C           00754             MOVWF TMP3
 Warning[207]: Found label after column 1. (LOOP_ESPERA_BAIXADA_3)
-0004B0                00757             LOOP_ESPERA_BAIXADA_3
-0004B0 2E0C           00758                 DECFSZ TMP3,1,0
-0004B2 EF?? F???      00759                 GOTO LOOP_ESPERA_BAIXADA_3
-0004B6 2E14           00760             DECFSZ TMP2,1,0
-0004B8 EF?? F???      00761             GOTO LOOP_ESPERA_BAIXADA_2
-0004BC 2E13           00762     DECFSZ TMP,1,0
-0004BE EF?? F???      00763     GOTO LOOP_ESPERA_BAIXADA
-                      00764     
-                      00765     ;PUGEM Y
-                      00766 
-0004C2 0E37           00767     MOVLW .55;posicio elevada en manual-java
-0004C4 6E17           00768     MOVWF PWM_VAR2,0
-                      00769     
-                      00770     ;gravar nota en mode pc-manual-eusart-sio
-0004C6 B40A           00771     BTFSC MODE_ACTUAL,2,0
-0004C8 EC?? F???      00772         CALL ENREGISTRAR
-                      00773     
+0004B2                00755             LOOP_ESPERA_BAIXADA_3
+0004B2 2E0C           00756                 DECFSZ TMP3,1,0
+0004B4 EF?? F???      00757                 GOTO LOOP_ESPERA_BAIXADA_3
+0004B8 2E14           00758             DECFSZ TMP2,1,0
+0004BA EF?? F???      00759             GOTO LOOP_ESPERA_BAIXADA_2
+0004BE 2E13           00760     DECFSZ TMP,1,0
+0004C0 EF?? F???      00761     GOTO LOOP_ESPERA_BAIXADA
+                      00762     
+                      00763     ;PUGEM Y
+                      00764 
+0004C4 0E37           00765     MOVLW .55;posicio elevada en manual-java
+0004C6 6E17           00766     MOVWF PWM_VAR2,0
+                      00767     
+                      00768     ;gravar nota en mode pc-manual-eusart-sio
+0004C8 B40A           00769     BTFSC MODE_ACTUAL,2,0
+0004CA EC?? F???      00770         CALL ENREGISTRAR
+                      00771     
+                      00772     
+Warning[203]: Found opcode in column 1. (RETURN)
+0004CE 0012           00773 RETURN
                       00774     
+                      00775 ;--------------mode automatic--------------
+0004D0                00776 ENVIA_K
+0004D0 0E4B           00777     MOVLW 'K'
+0004D2 6EAD           00778     MOVWF TXREG,0
+0004D4 EC?? F???      00779     CALL ESPERA_TX
 Warning[203]: Found opcode in column 1. (RETURN)
-0004CC 0012           00775 RETURN
-                      00776     
-                      00777 ;--------------mode automatic--------------
-0004CE                00778 ENVIA_K
-0004CE 0E4B           00779     MOVLW 'K'
-0004D0 6EAD           00780     MOVWF TXREG,0
-0004D2 EC?? F???      00781     CALL ESPERA_TX
-Warning[203]: Found opcode in column 1. (RETURN)
-0004D6 0012           00782 RETURN
-                      00783     
-                      00784     
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 17
+0004D8 0012           00780 RETURN
+                      00781     
+                      00782     
+0004DA                00783 FUNCIO_MODE_AUTOMATIC
+0004DA 808B           00784     BSF LATC,0,0;blau
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 17
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0004D8                00785 FUNCIO_MODE_AUTOMATIC
-0004D8 808B           00786     BSF LATC,0,0;blau
-0004DA 968B           00787     BCF LATC,3,0
-0004DC AC0A           00788     BTFSS MODE_ACTUAL,6,0
-0004DE EF?? F???      00789     GOTO PRE_AUTO_MODE
-                      00790     
-0004E2 AE20           00791     BTFSS FLAGS2,7,0
-0004E4 EC?? F???      00792     CALL ENVIA_K
-                      00793     
-                      00794     ;INICI CANÇÓ
+0004DC 968B           00785     BCF LATC,3,0
+0004DE AC0A           00786     BTFSS MODE_ACTUAL,6,0
+0004E0 EF?? F???      00787     GOTO PRE_AUTO_MODE
+                      00788     
+0004E4 AE20           00789     BTFSS FLAGS2,7,0
+0004E6 EC?? F???      00790     CALL ENVIA_K
+                      00791     
+                      00792     ;INICI CANÇÓ
 Warning[207]: Found label after column 1. (REPRODUINT_AUTO_BUCLE)
-0004E8                00795     REPRODUINT_AUTO_BUCLE
-                      00796         ;BSF FLAGS2,7,0 ;DESCOMENTAR  SI FA FALTA
-                      00797         
-0004E8 EC?? F???      00798         CALL MOVIMENT_JAVA_MANUAL;EL MANUAL AMB JAVA JA ENS SERVEIX PEL AUTO
-0004EC 6A8C           00799         CLRF LATD,0;NETEJA LA PANTALLA PER LA SEGUENT NOTA
-                      00800         ;MIRAR SI S'HA ACABAT LA CANÇÓ
-0004EE 0E53           00801         MOVLW 'S'
-0004F0 620B           00802         CPFSEQ EUSART_INPUT,0
-0004F2 EF?? F???      00803         GOTO REPRODUINT_AUTO_BUCLE;1: NO HA SALTAT
-0004F6 9C0A           00804         BCF MODE_ACTUAL,6,0;netejar que espera una altra P per la seguent canço
+0004EA                00793     REPRODUINT_AUTO_BUCLE
+                      00794         ;BSF FLAGS2,7,0 ;DESCOMENTAR  SI FA FALTA
+                      00795         
+0004EA EC?? F???      00796         CALL MOVIMENT_JAVA_MANUAL;EL MANUAL AMB JAVA JA ENS SERVEIX PEL AUTO
+0004EE 6A8C           00797         CLRF LATD,0;NETEJA LA PANTALLA PER LA SEGUENT NOTA
+                      00798         ;MIRAR SI S'HA ACABAT LA CANÇÓ
+0004F0 0E53           00799         MOVLW 'S'
+0004F2 620B           00800         CPFSEQ EUSART_INPUT,0
+0004F4 EF?? F???      00801         GOTO REPRODUINT_AUTO_BUCLE;1: NO HA SALTAT
+0004F8 9C0A           00802         BCF MODE_ACTUAL,6,0;netejar que espera una altra P per la seguent canço
 Warning[207]: Found label after column 1. (FI_SONG)
-0004F8                00805     FI_SONG
-                      00806     
-                      00807     ;BTFSS PORTB,1,0;si cliquen manual, activem manual
-                      00808     ;CALL POLSADOR_REBOTS_CANVI_A_MANUAL
-0004F8 EF?? F???      00809     GOTO END_LOOP_MAIN
-                      00810     
-                      00811     
+0004FA                00803     FI_SONG
+                      00804     
+                      00805 
+0004FA EF?? F???      00806     GOTO END_LOOP_MAIN
+                      00807     
+                      00808     
 Warning[207]: Found label after column 1. (PRE_AUTO_MODE)
-0004FC                00812     PRE_AUTO_MODE
-                      00813 
-                      00814         ;mirar btn
-0004FC B281           00815         BTFSC PORTB,1,0
-0004FE EF?? F???      00816         GOTO PRE_AUTO_MODE_CHECK_PLAY_BUTTON
-000502 EC?? F???      00817         CALL POLSADOR_REBOTS_CANVI_A_MANUAL
-000506 EF?? F???      00818         GOTO END_LOOP_MAIN
-                      00819         
+0004FE                00809     PRE_AUTO_MODE
+                      00810 
+                      00811         ;mirar btn
+0004FE B281           00812         BTFSC PORTB,1,0
+000500 EF?? F???      00813         GOTO PRE_AUTO_MODE_CHECK_PLAY_BUTTON
+000504 EC?? F???      00814         CALL POLSADOR_REBOTS_CANVI_A_MANUAL
+000508 EF?? F???      00815         GOTO END_LOOP_MAIN
+                      00816         
 Warning[207]: Found label after column 1. (PRE_AUTO_MODE_CHECK_PLAY_BUTTON)
-00050A                00820         PRE_AUTO_MODE_CHECK_PLAY_BUTTON
-00050A A481           00821             BTFSS PORTB,2,0
-00050C EC?? F???      00822             CALL CONTROL_REBOTS_PLAY_BUTTON
-                      00823         
+00050C                00817         PRE_AUTO_MODE_CHECK_PLAY_BUTTON
+00050C A481           00818             BTFSS PORTB,2,0
+00050E EC?? F???      00819             CALL CONTROL_REBOTS_PLAY_BUTTON
+                      00820         
 Warning[207]: Found label after column 1. (PRE_AUTO_MODE_CHECK_PIR)
-000510                00824         PRE_AUTO_MODE_CHECK_PIR
-000510 AA9E           00825             BTFSS PIR1,RCIF,0
-000512 EF?? F???      00826             GOTO PRE_AUTO_MODE;no eusart
-000516 50AE           00827             MOVF RCREG,0,0
-000518 6E0B           00828             MOVWF EUSART_INPUT,0
-00051A 0E50           00829             MOVLW 'P'
-00051C 620B           00830             CPFSEQ EUSART_INPUT,0
-00051E EF?? F???      00831             GOTO PRE_AUTO_MODE
-000522 8C0A           00832             BSF MODE_ACTUAL,6,0
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 18
+000512                00821         PRE_AUTO_MODE_CHECK_PIR
+000512 AA9E           00822             BTFSS PIR1,RCIF,0
+000514 EF?? F???      00823             GOTO PRE_AUTO_MODE;no eusart
+000518 50AE           00824             MOVF RCREG,0,0
+00051A 6E0B           00825             MOVWF EUSART_INPUT,0
+00051C 0E50           00826             MOVLW 'P'
+00051E 620B           00827             CPFSEQ EUSART_INPUT,0
+000520 EF?? F???      00828             GOTO PRE_AUTO_MODE
+000524 8C0A           00829             BSF MODE_ACTUAL,6,0
+000526 EF?? F???      00830             GOTO FUNCIO_MODE_AUTOMATIC
+                      00831             
+                      00832             
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 18
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-000524 EF?? F???      00833             GOTO FUNCIO_MODE_AUTOMATIC
-                      00834             
-                      00835             
-000528                00836 CONTROL_REBOTS_PLAY_BUTTON
-000528 EC?? F???      00837     CALL ESPERA_meitat
-00052C EC?? F???      00838     CALL ESPERA_meitat
-000530 B481           00839     BTFSC PORTB,2,0
-000532 0012           00840     RETURN    ;ERA FAKE NAH BRO
+00052A                00833 CONTROL_REBOTS_PLAY_BUTTON
+00052A EC?? F???      00834     CALL ESPERA_meitat
+00052E EC?? F???      00835     CALL ESPERA_meitat
+000532 B481           00836     BTFSC PORTB,2,0
+000534 0012           00837     RETURN    ;ERA FAKE NAH BRO
 Warning[208]: Label truncated at 32 characters. (CONTROL_REBOTS_PLAY_BUTTON_DESCLICAR)
-000534                00841 CONTROL_REBOTS_PLAY_BUTTON_DESCLICAR
-000534 A481           00842     BTFSS PORTB,2,0
-000536 EF?? F???      00843     GOTO CONTROL_REBOTS_PLAY_BUTTON_DESCLICAR       ;ENCARA CLICA EL RATA
+000536                00838 CONTROL_REBOTS_PLAY_BUTTON_DESCLICAR
+000536 A481           00839     BTFSS PORTB,2,0
+000538 EF?? F???      00840     GOTO CONTROL_REBOTS_PLAY_BUTTON_DESCLICAR       ;ENCARA CLICA EL RATA
 Warning[208]: Label truncated at 32 characters. (CONTROL_REBOTS_PLAY_BUTTON_BAIXADA)
-00053A                00844 CONTROL_REBOTS_PLAY_BUTTON_BAIXADA
-00053A EC?? F???      00845     CALL ESPERA_meitat
-00053E EC?? F???      00846     CALL ESPERA_meitat
-000542 A481           00847     BTFSS PORTB,2,0                 ;EL MOLT PUTA ENS HA FET LA PUA, NO HA CLICAT EN REALITAT
-000544 EF?? F???      00848     GOTO CONTROL_REBOTS_PLAY_BUTTON_BAIXADA
-000548 EC?? F???      00849     CALL PLAY_RAM_SONG ;EL NOM DE LA FUNCIO AMB CALL/RETURN QUE REPRODUEIX EL QUE ESTIGUI A LA RAM
-00054C 0012           00850     RETURN
-                      00851 
-00054E                00852 ESPERA_meitat
-00054E 680C           00853     SETF TMP3,0
-000550                00854 BUCLE_D_1
-000550 680D           00855     SETF TMP4,0
-000552                00856 BUCLE2_D_1
-000552 2E0D           00857     DECFSZ TMP4,f,0
-000554 EF?? F???      00858     GOTO BUCLE2_D_1
-000558 2E0C           00859     DECFSZ TMP3,f,0
-00055A EF?? F???      00860     GOTO BUCLE_D_1
-00055E 0012           00861     RETURN
-                      00862  
-                      00863     
-000560                00864 PLAY_RAM_SONG
-000560 0E00           00865     MOVLW .0
-000562 5C1D           00866     SUBWF COMPTADOR_RAM,0,0
-000564 B4D8           00867     BTFSC STATUS,Z,0
-000566 0012           00868     RETURN;NO MIRAR RES SI NO HI HA NOTES
-                      00869     
-000568 C01D F030      00870     MOVFF COMPTADOR_RAM, COPY_RAM
-                      00871     
-00056C 820A           00872     BSF MODE_ACTUAL,1,0;FLAG REPRODUINT
-00056E 6AE9           00873     CLRF FSR0L, 0
+00053C                00841 CONTROL_REBOTS_PLAY_BUTTON_BAIXADA
+00053C EC?? F???      00842     CALL ESPERA_meitat
+000540 EC?? F???      00843     CALL ESPERA_meitat
+000544 A481           00844     BTFSS PORTB,2,0                 ;EL MOLT PUTA ENS HA FET LA PUA, NO HA CLICAT EN REALITAT
+000546 EF?? F???      00845     GOTO CONTROL_REBOTS_PLAY_BUTTON_BAIXADA
+00054A EC?? F???      00846     CALL PLAY_RAM_SONG ;EL NOM DE LA FUNCIO AMB CALL/RETURN QUE REPRODUEIX EL QUE ESTIGUI A LA RAM
+00054E 0012           00847     RETURN
+                      00848 
+000550                00849 ESPERA_meitat
+000550 680C           00850     SETF TMP3,0
+000552                00851 BUCLE_D_1
+000552 680D           00852     SETF TMP4,0
+000554                00853 BUCLE2_D_1
+000554 2E0D           00854     DECFSZ TMP4,f,0
+000556 EF?? F???      00855     GOTO BUCLE2_D_1
+00055A 2E0C           00856     DECFSZ TMP3,f,0
+00055C EF?? F???      00857     GOTO BUCLE_D_1
+000560 0012           00858     RETURN
+                      00859  
+                      00860     
+000562                00861 PLAY_RAM_SONG
+000562 0E00           00862     MOVLW .0
+000564 5C1D           00863     SUBWF COMPTADOR_RAM,0,0
+000566 B4D8           00864     BTFSC STATUS,Z,0
+000568 0012           00865     RETURN;NO MIRAR RES SI NO HI HA NOTES
+                      00866     
+00056A C01D F030      00867     MOVFF COMPTADOR_RAM, COPY_RAM
+                      00868     
+00056E 820A           00869     BSF MODE_ACTUAL,1,0;FLAG REPRODUINT
+000570 6AE9           00870     CLRF FSR0L, 0
 Warning[207]: Found label after column 1. (LOOP_LLEGEIX)
-000570                00874     LOOP_LLEGEIX
-000570 CFEE F024      00875         MOVFF POSTINC0, NOTA_RAM
-000574 CFEE F026      00876         MOVFF POSTINC0, TEMPS_LOW_RAM
-000578 CFEE F025      00877         MOVFF POSTINC0, TEMPS_HIGH_RAM
-                      00878         
-                      00879         ;NOTA PANTALLA I NOTA MOVIMENT --START
-00057C C024 F00B      00880             MOVFF NOTA_RAM, EUSART_INPUT;PER APROFITAT LA FUNCIO QUE JA TENIM DEL JAVA ENGANYEM D'ON ENS
+000572                00871     LOOP_LLEGEIX
+000572 CFEE F024      00872         MOVFF POSTINC0, NOTA_RAM
+000576 CFEE F026      00873         MOVFF POSTINC0, TEMPS_LOW_RAM
+00057A CFEE F025      00874         MOVFF POSTINC0, TEMPS_HIGH_RAM
+                      00875         
+                      00876         ;NOTA PANTALLA I NOTA MOVIMENT --START
+00057E C024 F00B      00877             MOVFF NOTA_RAM, EUSART_INPUT;PER APROFITAT LA FUNCIO QUE JA TENIM DEL JAVA ENGANYEM D'ON ENS
                              VE LA NOTA
-000580 EC?? F???      00881             CALL MOVIMENT_JAVA_MANUAL_SI_ENREGISTRAR_TAMBE
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 19
-
-
-LOC  OBJECT CODE     LINE SOURCE TEXT
-  VALUE
-
-                      00882             ;NOTA PANTALLA I NOTA MOVIMENT --END
-                      00883         
+000582 EC?? F???      00878             CALL MOVIMENT_JAVA_MANUAL_SI_ENREGISTRAR_TAMBE
+                      00879             ;NOTA PANTALLA I NOTA MOVIMENT --END
+                      00880         
 Warning[207]: Found label after column 1. (LOOP_TEMPS)
-000584                00884         LOOP_TEMPS
-000584 EC?? F???      00885             CALL ESPERA_MS
-000588 B029           00886             BTFSC FLAG_TEMPS, 0, 0
-00058A EF?? F???      00887             GOTO LAST_ITERACIO
-00058E 0626           00888             DECF TEMPS_LOW_RAM, 1, 0
-000590 B4D8           00889             BTFSC STATUS, Z, 0 ;Mirem si hem arribat a 0
-000592 EC?? F???      00890             CALL RESET_VARR
-000596 EF?? F???      00891             GOTO LOOP_TEMPS
-Warning[207]: Found label after column 1. (LAST_ITERACIO)
-00059A                00892             LAST_ITERACIO
-00059A 0626           00893             DECF TEMPS_LOW_RAM, 1, 0
-00059C A4D8           00894             BTFSS STATUS, Z, 0 ;Si es ultima iteracio i arribem a 0, sortim
-00059E EF?? F???      00895             GOTO LOOP_TEMPS
-                      00896             
-                      00897             
-                      00898             
-                      00899 
-                      00900             
-0005A2 2E1D           00901         DECFSZ COMPTADOR_RAM, 1, 0  ;Llegim tot el que tenim guardat
-0005A4 EF?? F???      00902         GOTO LOOP_LLEGEIX
-0005A8 6A29           00903         CLRF FLAG_TEMPS, 0
-0005AA 920A           00904         BCF MODE_ACTUAL,1,0;FLAG REPRODUINT
-0005AC C030 F01D      00905             MOVFF COPY_RAM, COMPTADOR_RAM
-                      00906             
-0005B0 0012           00907     RETURN
-                      00908 
-0005B2                00909 RESET_VARR
-0005B2 0EFF           00910     MOVLW .255
-0005B4 6E26           00911     MOVWF TEMPS_LOW_RAM
-0005B6 0625           00912     DECF TEMPS_HIGH_RAM, 1, 0
-0005B8 B4D8           00913     BTFSC STATUS, Z, 0 ;Mirem si hem arribat a 0
-0005BA 8029           00914     BSF FLAG_TEMPS, 0, 0
-0005BC 0012           00915     RETURN
-                      00916     
-0005BE                00917 ESPERA_MS ;1ms --> 10.000 cicles
-0005BE 0E0C           00918     MOVLW HIGH(.3325)    ;1 cicle
-0005C0 6E28           00919     MOVWF FLAG_ESPERAH, 0     ;1 cicle
-0005C2 0EFD           00920     MOVLW LOW(.3325)    ;1 cicle
-0005C4 6E27           00921     MOVWF FLAG_ESPERAL, 0
-Warning[207]: Found label after column 1. (LOOP_MS)
-0005C6                00922     LOOP_MS
-0005C6 4E27           00923         DCFSNZ FLAG_ESPERAL, 1, 0
-0005C8 2E28           00924         DECFSZ FLAG_ESPERAH, 1, 0  ;Iteracio sense salt = 3 cicles
-0005CA EF?? F???      00925         GOTO LOOP_MS           ;Iteracio amb salt = 2 cicles
-                      00926                                    ;10000-2-2-1-1-22  --> 3*(x-1)+2 = 9982   x = 3325
-0005CE 0000           00927     NOP  ;1 cicle
-0005D0 0000           00928     NOP  ;1 cicle
-0005D2 0012           00929     RETURN  ;2 cicles 
-                      00930 
-                      00931 ;--------------------------------------MAIN-------------------------------------
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 20
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 19
 
 
 LOC  OBJECT CODE     LINE SOURCE TEXT
   VALUE
 
-0005D4                00932 MAIN
-                      00933 
-0005D4 EC?? F???      00934     CALL CONFIG_PORTS
-0005D8 EC?? F???      00935     CALL INIT_VARS
-0005DC EC?? F???      00936     CALL INIT_EUSART
-0005E0 EC?? F???      00937     CALL CONFIG_INTERRUPTS
-0005E4 EC?? F???      00938     CALL CONFIG_TIMER
-0005E8 EC?? F???      00939     CALL CONFIG_ADC
-                      00940 
-0005EC                00941 LOOP_MAIN;bucle del programa
-                      00942     ;entrar als modes
-                      00943     ;nota: els canvis de modes es fan dins els funcio_mode_xxxx
-0005EC AE0A           00944     BTFSS MODE_ACTUAL,7,0
-0005EE EF?? F???      00945     GOTO FUNCIO_MODE_MANUAL;aqui manual
-0005F2 EF?? F???      00946     GOTO FUNCIO_MODE_AUTOMATIC;aqui auto
+000586                00881         LOOP_TEMPS
+000586 EC?? F???      00882             CALL ESPERA_MS
+00058A B029           00883             BTFSC FLAG_TEMPS, 0, 0
+00058C EF?? F???      00884             GOTO LAST_ITERACIO
+000590 0626           00885             DECF TEMPS_LOW_RAM, 1, 0
+000592 B4D8           00886             BTFSC STATUS, Z, 0 ;Mirem si hem arribat a 0
+000594 EC?? F???      00887             CALL RESET_VARR
+000598 EF?? F???      00888             GOTO LOOP_TEMPS
+Warning[207]: Found label after column 1. (LAST_ITERACIO)
+00059C                00889             LAST_ITERACIO
+00059C 0626           00890             DECF TEMPS_LOW_RAM, 1, 0
+00059E A4D8           00891             BTFSS STATUS, Z, 0 ;Si es ultima iteracio i arribem a 0, sortim
+0005A0 EF?? F???      00892             GOTO LOOP_TEMPS
+                      00893             
+                      00894             
+                      00895             
+                      00896 
+                      00897             
+0005A4 2E1D           00898         DECFSZ COMPTADOR_RAM, 1, 0  ;Llegim tot el que tenim guardat
+0005A6 EF?? F???      00899         GOTO LOOP_LLEGEIX
+0005AA 6A29           00900         CLRF FLAG_TEMPS, 0
+0005AC 920A           00901         BCF MODE_ACTUAL,1,0;FLAG REPRODUINT
+0005AE C030 F01D      00902             MOVFF COPY_RAM, COMPTADOR_RAM
+                      00903             
+0005B2 0012           00904     RETURN
+                      00905 
+0005B4                00906 RESET_VARR
+0005B4 0EFF           00907     MOVLW .255
+0005B6 6E26           00908     MOVWF TEMPS_LOW_RAM
+0005B8 0625           00909     DECF TEMPS_HIGH_RAM, 1, 0
+0005BA B4D8           00910     BTFSC STATUS, Z, 0 ;Mirem si hem arribat a 0
+0005BC 8029           00911     BSF FLAG_TEMPS, 0, 0
+0005BE 0012           00912     RETURN
+                      00913     
+0005C0                00914 ESPERA_MS ;1ms --> 10.000 cicles
+0005C0 0E0C           00915     MOVLW HIGH(.3325)    ;1 cicle
+0005C2 6E28           00916     MOVWF FLAG_ESPERAH, 0     ;1 cicle
+0005C4 0EFD           00917     MOVLW LOW(.3325)    ;1 cicle
+0005C6 6E27           00918     MOVWF FLAG_ESPERAL, 0
+Warning[207]: Found label after column 1. (LOOP_MS)
+0005C8                00919     LOOP_MS
+0005C8 4E27           00920         DCFSNZ FLAG_ESPERAL, 1, 0
+0005CA 2E28           00921         DECFSZ FLAG_ESPERAH, 1, 0  ;Iteracio sense salt = 3 cicles
+0005CC EF?? F???      00922         GOTO LOOP_MS           ;Iteracio amb salt = 2 cicles
+                      00923                                    ;10000-2-2-1-1-22  --> 3*(x-1)+2 = 9982   x = 3325
+0005D0 0000           00924     NOP  ;1 cicle
+0005D2 0000           00925     NOP  ;1 cicle
+0005D4 0012           00926     RETURN  ;2 cicles 
+                      00927 
+                      00928 ;--------------------------------------MAIN-------------------------------------
+0005D6                00929 MAIN
+                      00930 
+0005D6 EC?? F???      00931     CALL CONFIG_PORTS
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 20
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0005DA EC?? F???      00932     CALL INIT_VARS
+0005DE EC?? F???      00933     CALL INIT_EUSART
+0005E2 EC?? F???      00934     CALL CONFIG_INTERRUPTS
+0005E6 EC?? F???      00935     CALL CONFIG_TIMER
+0005EA EC?? F???      00936     CALL CONFIG_ADC
+                      00937 
+0005EE                00938 LOOP_MAIN;bucle del programa
+                      00939     ;entrar als modes
+                      00940     ;nota: els canvis de modes es fan dins els funcio_mode_xxxx
+0005EE AE0A           00941     BTFSS MODE_ACTUAL,7,0
+0005F0 EF?? F???      00942     GOTO FUNCIO_MODE_MANUAL;aqui manual
+0005F4 EF?? F???      00943     GOTO FUNCIO_MODE_AUTOMATIC;aqui auto
+                      00944     
+                      00945     
+                      00946     
                       00947     
                       00948     
-                      00949     
-                      00950     
-                      00951     
 Warning[207]: Found label after column 1. (END_LOOP_MAIN)
-0005F6                00952     END_LOOP_MAIN
-                      00953         ;netejar leds
-0005F6 908B           00954         BCF LATC,0,0
-0005F8 928B           00955         BCF LATC,1,0
-0005FA 948B           00956         BCF LATC,2,0
-0005FC 6A8C           00957         CLRF LATD,0
-                      00958 
-0005FE EF?? F???      00959         GOTO LOOP_MAIN
+0005F8                00949     END_LOOP_MAIN
+                      00950         ;netejar leds
+0005F8 908B           00951         BCF LATC,0,0
+0005FA 928B           00952         BCF LATC,1,0
+0005FC 948B           00953         BCF LATC,2,0
+0005FE 6A8C           00954         CLRF LATD,0
+                      00955 
+000600 EF?? F???      00956         GOTO LOOP_MAIN
 Warning[205]: Found directive in column 1. (END)
-                      00960 END
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 21
+                      00957 END
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 21
 
 
 SYMBOL TABLE
@@ -1215,7 +1212,7 @@ BCLIF                             00000003
 BCLIP                             00000003
 BF                                00000000
 BGST                              00000005
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 22
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 22
 
 
 SYMBOL TABLE
@@ -1225,10 +1222,10 @@ BOR                               00000000
 BRG16                             00000003
 BRGH                              00000002
 BSR                               00000FE0
-BUCLE2_D_1                        00000552
-BUCLE_D_1                         00000550
-BUCLE_NETEJA_RAM                  000003D8
-BUCLE_T                           000002A8
+BUCLE2_D_1                        00000554
+BUCLE_D_1                         00000552
+BUCLE_NETEJA_RAM                  000003DA
+BUCLE_T                           000002AA
 C                                 00000000
 C1INV                             00000004
 C1N                               00000000
@@ -1240,9 +1237,9 @@ C2N                               00000001
 C2OUT_CMCON                       00000007
 C2OUT_PORTA                       00000005
 C2P                               00000002
-CAGARRO                           000002F4
-CAGARRO2                          000002DE
-CANVIS_1S                         000003C2
+CAGARRO                           000002F6
+CAGARRO2                          000002E0
+CANVIS_1S                         000003C4
 CARREGA_TIMER                     000000B2
 CCP1                              00000002
 CCP1CON                           00000FBD
@@ -1274,7 +1271,7 @@ CCPR2                             00000FBB
 CCPR2H                            00000FBC
 CCPR2L                            00000FBB
 CFGS                              00000006
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 23
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 23
 
 
 SYMBOL TABLE
@@ -1305,11 +1302,11 @@ CONFIG_ADC                        00000096
 CONFIG_INTERRUPTS                 000000BC
 CONFIG_PORTS                      00000022
 CONFIG_TIMER                      000000A8
-CONTROL_REBOTS_PLAY_BUTTON        00000528
-CONTROL_REBOTS_PLAY_BUTTON_BAIXA  0000053A
-CONTROL_REBOTS_PLAY_BUTTON_DESCL  00000534
+CONTROL_REBOTS_PLAY_BUTTON        0000052A
+CONTROL_REBOTS_PLAY_BUTTON_BAIXA  0000053C
+CONTROL_REBOTS_PLAY_BUTTON_DESCL  00000536
 COPY_RAM                          00000030
-CORREGIR                          0000030A
+CORREGIR                          0000030C
 CREN                              00000004
 CS                                00000002
 CSRC                              00000007
@@ -1333,14 +1330,14 @@ DDRA                              TRISA
 DDRB                              TRISB
 DDRC                              TRISC
 DDRD                              TRISD
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 24
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 24
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
 DDRE                              TRISE
-DECREMENT_ANALOG                  0000026A
+DECREMENT_ANALOG                  0000026C
 DONE                              00000001
 D_A                               00000005
 D_NOT_A                           00000005
@@ -1359,24 +1356,24 @@ EEIE                              00000004
 EEIF                              00000004
 EEIP                              00000004
 EEPGD                             00000007
-END_LOOP_MAIN                     000005F6
+END_LOOP_MAIN                     000005F8
 ENREGISTRAR                       00000188
-ENVIA_K                           000004CE
-ESPERA_CONVERSIO                  0000029E
+ENVIA_K                           000004D0
+ESPERA_CONVERSIO                  000002A0
 ESPERA_DESCLICAR_CANVI_A_AUTO     00000202
-ESPERA_DESCLICAR_CANVI_A_MANUAL   00000218
-ESPERA_DESCLICAR_MODE_TOCAR       000003B0
+ESPERA_DESCLICAR_CANVI_A_MANUAL   0000021A
+ESPERA_DESCLICAR_MODE_TOCAR       000003B2
 ESPERA_GRAUS                      00000158
 ESPERA_GRAUS2                     0000017C
-ESPERA_MS                         000005BE
-ESPERA_TX                         000003E6
-ESPERA_meitat                     0000054E
+ESPERA_MS                         000005C0
+ESPERA_TX                         000003E8
+ESPERA_meitat                     00000550
 EUSART_INPUT                      0000000B
-FAIL_INPUT                        0000047A
+FAIL_INPUT                        0000047C
 FAST                              00000001
 FERR                              00000002
-FINAL_T                           00000302
-FI_SONG                           000004F8
+FINAL_T                           00000304
+FI_SONG                           000004FA
 FLAGS2                            00000020
 FLAGS3                            00000021
 FLAGS4                            00000022
@@ -1392,7 +1389,7 @@ FSR0L                             00000FE9
 FSR1                              00000001
 FSR1H                             00000FE2
 FSR1L                             00000FE1
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 25
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 25
 
 
 SYMBOL TABLE
@@ -1401,7 +1398,7 @@ SYMBOL TABLE
 FSR2                              00000002
 FSR2H                             00000FDA
 FSR2L                             00000FD9
-FUNCIO_MODE_AUTOMATIC             000004D8
+FUNCIO_MODE_AUTOMATIC             000004DA
 FUNCIO_MODE_MANUAL                000001A4
 GCEN                              00000007
 GIE                               00000007
@@ -1428,7 +1425,7 @@ IDLEN                             00000007
 INCREMENTA_HIGH                   00000124
 INCREMENTA_LOW                    000000FE
 INCREMENTA_VAR                    00000130
-INCREMENT_ANALOG                  00000248
+INCREMENT_ANALOG                  0000024A
 INDF0                             00000FEF
 INDF1                             00000FE7
 INDF2                             00000FDF
@@ -1451,7 +1448,7 @@ INT2E                             00000004
 INT2F                             00000001
 INT2IE                            00000004
 INT2IF                            00000001
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 26
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 26
 
 
 SYMBOL TABLE
@@ -1478,7 +1475,7 @@ KBI0                              00000004
 KBI1                              00000005
 KBI2                              00000006
 KBI3                              00000007
-LAST_ITERACIO                     0000059A
+LAST_ITERACIO                     0000059C
 LATA                              00000F89
 LATA0                             00000000
 LATA1                             00000001
@@ -1510,7 +1507,7 @@ LATD                              00000F8C
 LATD0                             00000000
 LATD1                             00000001
 LATD2                             00000002
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 27
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 27
 
 
 SYMBOL TABLE
@@ -1525,26 +1522,26 @@ LATE                              00000F8D
 LATE0                             00000000
 LATE1                             00000001
 LATE2                             00000002
-LOOP_ANALOG                       0000022A
-LOOP_CONVER                       0000022C
-LOOP_CWAIT                        00000254
-LOOP_DWAIT                        00000276
+LOOP_ANALOG                       0000022C
+LOOP_CONVER                       0000022E
+LOOP_CWAIT                        00000256
+LOOP_DWAIT                        00000278
 LOOP_ESPERAPWM                    00000146
 LOOP_ESPERAPWM2                   0000016A
-LOOP_ESPERA_BAIXADA               000004A8
-LOOP_ESPERA_BAIXADA_2             000004AC
-LOOP_ESPERA_BAIXADA_3             000004B0
-LOOP_ESPERA_X                     00000480
-LOOP_ESPERA_X_2                   00000484
-LOOP_ESPERA_X_3                   00000488
+LOOP_ESPERA_BAIXADA               000004AA
+LOOP_ESPERA_BAIXADA_2             000004AE
+LOOP_ESPERA_BAIXADA_3             000004B2
+LOOP_ESPERA_X                     00000482
+LOOP_ESPERA_X_2                   00000486
+LOOP_ESPERA_X_3                   0000048A
 LOOP_GRAUS                        0000015C
 LOOP_GRAUS2                       00000180
-LOOP_LLEGEIX                      00000570
-LOOP_MAIN                         000005EC
-LOOP_MS                           000005C6
-LOOP_TEMPS                        00000584
-LOOP_WAIT                         00000252
-LOOP_WAITD                        00000274
+LOOP_LLEGEIX                      00000572
+LOOP_MAIN                         000005EE
+LOOP_MS                           000005C8
+LOOP_TEMPS                        00000586
+LOOP_WAIT                         00000254
+LOOP_WAITD                        00000276
 LVDCON                            00000FD2
 LVDEN                             00000004
 LVDIE                             00000002
@@ -1558,39 +1555,39 @@ LVV0                              00000000
 LVV1                              00000001
 LVV2                              00000002
 LVV3                              00000003
-MAIN                              000005D4
+MAIN                              000005D6
 MCLR                              00000003
 MINUT                             000000F8
-MIRA_MODE_ENTRADA                 0000039C
+MIRA_MODE_ENTRADA                 0000039E
 MODE_ACTUAL                       0000000A
-MOSTRAR_NOTA                      00000310
-MOSTRA_A                          0000034C
-MOSTRA_B                          00000356
-MOSTRA_C                          00000360
-MOSTRA_C_MENOR                    00000392
-MOSTRA_D                          0000036A
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 28
+MOSTRAR_NOTA                      00000312
+MOSTRA_A                          0000034E
+MOSTRA_B                          00000358
+MOSTRA_C                          00000362
+MOSTRA_C_MENOR                    00000394
+MOSTRA_D                          0000036C
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 28
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-MOSTRA_E                          00000374
-MOSTRA_F                          0000037E
-MOSTRA_G                          00000388
-MOVIMENT_JAVA_MANUAL              000003EE
-MOVIMENT_JAVA_MANUAL_SI_ENREGIST  000003F6
-MOVIMENT_JOYSTICK                 00000220
+MOSTRA_E                          00000376
+MOSTRA_F                          00000380
+MOSTRA_G                          0000038A
+MOVIMENT_JAVA_MANUAL              000003F0
+MOVIMENT_JAVA_MANUAL_SI_ENREGIST  000003F8
+MOVIMENT_JOYSTICK                 00000222
 N                                 00000004
-NETEJAR_RAM                       000003CE
+NETEJAR_RAM                       000003D0
 NEXT                              00000126
-NEXT_A                            0000045A
-NEXT_B                            0000046A
-NEXT_C                            0000040A
-NEXT_D                            0000041A
-NEXT_E                            0000042A
-NEXT_F                            0000043A
-NEXT_G                            0000044A
+NEXT_A                            0000045C
+NEXT_B                            0000046C
+NEXT_C                            0000040C
+NEXT_D                            0000041C
+NEXT_E                            0000042C
+NEXT_F                            0000043C
+NEXT_G                            0000044C
 NOTA_RAM                          00000024
 NOT_A                             00000005
 NOT_ADDRESS                       00000005
@@ -1628,7 +1625,7 @@ P1A                               00000002
 P1B                               00000005
 P1C                               00000006
 P1D                               00000007
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 29
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 29
 
 
 SYMBOL TABLE
@@ -1658,12 +1655,12 @@ PEN                               00000002
 PGC                               00000006
 PGD                               00000007
 PGM                               00000005
-PICAR_NOTA                        00000298
+PICAR_NOTA                        0000029A
 PIE1                              00000F9D
 PIE2                              00000FA0
 PIR1                              00000F9E
 PIR2                              00000FA1
-PLAY_RAM_SONG                     00000560
+PLAY_RAM_SONG                     00000562
 PLLEN                             00000006
 PLUSW0                            00000FEB
 PLUSW1                            00000FE3
@@ -1687,15 +1684,15 @@ PR2                               00000FCB
 PREINC0                           00000FEC
 PREINC1                           00000FE4
 PREINC2                           00000FDC
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 30
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 30
 
 
 SYMBOL TABLE
   LABEL                             VALUE 
 
-PRE_AUTO_MODE                     000004FC
-PRE_AUTO_MODE_CHECK_PIR           00000510
-PRE_AUTO_MODE_CHECK_PLAY_BUTTON   0000050A
+PRE_AUTO_MODE                     000004FE
+PRE_AUTO_MODE_CHECK_PIR           00000512
+PRE_AUTO_MODE_CHECK_PLAY_BUTTON   0000050C
 PROD                              00000FF3
 PRODH                             00000FF4
 PRODL                             00000FF3
@@ -1746,7 +1743,7 @@ RBIF                              00000000
 RBIP                              00000000
 RBPU                              00000007
 RC0                               00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 31
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 31
 
 
 SYMBOL TABLE
@@ -1782,10 +1779,10 @@ RE0                               00000000
 RE1                               00000001
 RE2                               00000002
 RE3                               00000003
-REPRODUINT_AUTO_BUCLE             000004E8
+REPRODUINT_AUTO_BUCLE             000004EA
 RESET_VAR                         0000013C
-RESET_VARR                        000005B2
-RESTA                             00000292
+RESET_VARR                        000005B4
+RESTA                             00000294
 RI                                00000004
 RSEN                              00000001
 RX                                00000007
@@ -1805,7 +1802,7 @@ SDA                               00000004
 SDI                               00000004
 SDO                               00000005
 SEN                               00000000
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 32
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 32
 
 
 SYMBOL TABLE
@@ -1849,7 +1846,7 @@ STKFUL                            00000007
 STKOVF                            00000007
 STKPTR                            00000FFC
 STKUNF                            00000006
-SUMA                              0000028C
+SUMA                              0000028E
 SWDTE                             00000000
 SWDTEN                            00000000
 SYNC                              00000004
@@ -1864,7 +1861,7 @@ T0PS0                             00000000
 T0PS1                             00000001
 T0PS2                             00000002
 T0SE                              00000004
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 33
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 33
 
 
 SYMBOL TABLE
@@ -1923,7 +1920,7 @@ TMR1IP                            00000000
 TMR1L                             00000FCE
 TMR1ON                            00000000
 TMR2                              00000FCC
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 34
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 34
 
 
 SYMBOL TABLE
@@ -1982,7 +1979,7 @@ TRISD0                            00000000
 TRISD1                            00000001
 TRISD2                            00000002
 TRISD3                            00000003
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 35
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 35
 
 
 SYMBOL TABLE
@@ -1997,7 +1994,7 @@ TRISE0                            00000000
 TRISE1                            00000001
 TRISE2                            00000002
 TRMT                              00000001
-TROBAT_NOTA                       0000047C
+TROBAT_NOTA                       0000047E
 TUN0                              00000000
 TUN1                              00000001
 TUN2                              00000002
@@ -2013,7 +2010,7 @@ TXIF                              00000004
 TXIP                              00000004
 TXREG                             00000FAD
 TXSTA                             00000FAC
-T_TROBAT                          000002D2
+T_TROBAT                          000002D4
 UA                                00000001
 ULTIMA_NOTA                       0000001C
 VAR_COMP                          0000000F
@@ -2038,10 +2035,10 @@ WREN                              00000002
 WRERR                             00000003
 WUE                               00000001
 Z                                 00000002
-ZONA_ENREGISTRAR                  000002EC
+ZONA_ENREGISTRAR                  000002EE
 _BBSIZ_BB1K_4L                    000000FF
 _BBSIZ_BB256_4L                   000000CF
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 36
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 36
 
 
 SYMBOL TABLE
@@ -2100,7 +2097,7 @@ _IDLOC7                           00200007
 _IESO_OFF_1H                      0000007F
 _IESO_ON_1H                       000000FF
 _LPT1OSC_OFF_3H                   000000FB
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 37
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 37
 
 
 SYMBOL TABLE
@@ -2159,7 +2156,7 @@ _XINST_OFF_4L                     000000BF
 _XINST_ON_4L                      000000FF
 __18F4321                         00000001
 
-MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  12:59:50         PAGE 38
+MPASM 5.86             NEWPIC_8B_GENERAL.ASM   3-15-2022  13:09:12         PAGE 38
 
 
 
