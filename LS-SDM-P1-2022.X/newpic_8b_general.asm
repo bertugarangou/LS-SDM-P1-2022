@@ -231,9 +231,7 @@ ACTION_TMR
 	DECF TEMPS_LOW, 1, 0
 	
     INCREMENTA_HIGH
-	INCF TEMPS_HIGH, 1, 0
-
-    
+	INCF TEMPS_HIGH, 1, 0    
     NEXT
     
     ;Comprovar si es prem pulsador change mode actual, mes d'1 segon
@@ -877,32 +875,61 @@ PLAY_RAM_SONG
 	    MOVFF NOTA_RAM, EUSART_INPUT;PER APROFITAT LA FUNCIO QUE JA TENIM DEL JAVA ENGANYEM D'ON ENS VE LA NOTA
 	    CALL MOVIMENT_JAVA_MANUAL_SI_ENREGISTRAR_TAMBE
 	    ;NOTA PANTALLA I NOTA MOVIMENT --END
-	
+	    CLRF TEMPS_LOW, 0
+	    CLRF TEMPS_HIGH, 0
 	LOOP_TEMPS
-	    CALL ESPERA_MS
-	    BTFSC FLAG_TEMPS, 0, 0
-	    GOTO LAST_ITERACIO
-	    DECF TEMPS_LOW_RAM, 1, 0
-	    BTFSC STATUS, Z, 0 ;Mirem si hem arribat a 0
-	    CALL RESET_VARR
-	    GOTO LOOP_TEMPS
-	    LAST_ITERACIO
-	    DECF TEMPS_LOW_RAM, 1, 0
-	    BTFSS STATUS, Z, 0 ;Si es ultima iteracio i arribem a 0, sortim
-	    GOTO LOOP_TEMPS
+	
+	
+	
+	
+	    
+	    CALL ESPERA_TMR
 	    
 	    
-	    
+	    INCREMENTA_LOWW
+		MOVFF TEMPS_LOW, FLAGS3 ;Movem el valor abans de sumar per no perdre'l en cas d'OV
+		MOVLW .20
+		ADDWF TEMPS_LOW, 1, 0
+		BTFSC STATUS, OV, 0
+		GOTO OVER_FLOWW
+		GOTO NEXTT
 
-	    
+	    OVER_FLOWW
+		MOVLW .20
+		MOVWF OFFSET, 0
+		MOVLW .255
+		MOVWF FLAGS4, 0    ;Flags 4 val 255
+		MOVF FLAGS3, 0, 0  ;Movem valor abans del OV al W
+		SUBWF FLAGS4, 0, 0
+		SUBWF OFFSET, 1, 0 ;20 - (255-valor) = offset
+		MOVFF OFFSET, TEMPS_LOW
+		DECF TEMPS_LOW, 1, 0
+
+	    INCREMENTA_HIGHH
+		INCF TEMPS_HIGH, 1, 0    
+	    	    
+	    NEXTT
+	    MOVF TEMPS_LOW, 0, 0
+	    SUBWF TEMPS_LOW_RAM, 0, 0
+	    BTFSC STATUS, Z, 0
+	    GOTO COMPROVA_HIGH
+	    GOTO LOOP_TEMPS
+	    COMPROVA_HIGH
+	    MOVF TEMPS_HIGH, 0, 0
+	    SUBWF TEMPS_HIGH_RAM, 0, 0
+	    BTFSS STATUS, Z, 0
+	    GOTO LOOP_TEMPS
 	DECFSZ COMPTADOR_RAM, 1, 0  ;Llegim tot el que tenim guardat
 	GOTO LOOP_LLEGEIX
-	CLRF FLAG_TEMPS, 0
 	BCF MODE_ACTUAL,1,0;FLAG REPRODUINT
-	    MOVFF COPY_RAM, COMPTADOR_RAM
+	MOVFF COPY_RAM, COMPTADOR_RAM
 	    
     RETURN
-
+ESPERA_TMR
+    BTFSS INTCON,2,0
+    GOTO ESPERA_TMR
+RETURN
+    
 RESET_VARR
     MOVLW .255
     MOVWF TEMPS_LOW_RAM
@@ -912,6 +939,7 @@ RESET_VARR
     RETURN
     
 ESPERA_MS ;1ms --> 10.000 cicles
+    BSF LATC,4,0
     MOVLW HIGH(.3325)    ;1 cicle
     MOVWF FLAG_ESPERAH, 0     ;1 cicle
     MOVLW LOW(.3325)    ;1 cicle
@@ -923,6 +951,7 @@ ESPERA_MS ;1ms --> 10.000 cicles
 				   ;10000-2-2-1-1-22  --> 3*(x-1)+2 = 9982   x = 3325
     NOP  ;1 cicle
     NOP  ;1 cicle
+    BCF LATC,4,0
     RETURN  ;2 cicles 
 
 ;--------------------------------------MAIN-------------------------------------
