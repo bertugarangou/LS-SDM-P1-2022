@@ -1,5 +1,5 @@
 MPLINK 5.09, LINKER
-Linker Map File - Created Tue Mar 15 14:04:23 2022
+Linker Map File - Created Mon Apr 04 19:14:44 2022
 
                                  Section Info
                   Section       Type    Address   Location Size(Bytes)
@@ -40,7 +40,7 @@ Linker Map File - Created Tue Mar 15 14:04:23 2022
                  CAGARRO2   0x0002e0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                 CANVIS_1S   0x0003c4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
             CARREGA_TIMER   0x0000b2    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            COMPROVA_HIGH   0x0005c4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            COMPROVA_HIGH   0x0005bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
        COMPROVA_TEMPS_LOW   0x0000ea    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                CONFIG_ADC   0x000096    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
         CONFIG_INTERRUPTS   0x0000bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
@@ -71,9 +71,9 @@ ESPERA_DESCLICAR_MODE_TOCAR   0x0003b2    program     static C:\Users\alber\Docu
        FUNCIO_MODE_MANUAL   0x0001a4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                  HIGH_RSI   0x00001a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
           INCREMENTA_HIGH   0x000124    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         INCREMENTA_HIGHH   0x0005b4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         INCREMENTA_HIGHH   0x0005ac    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
            INCREMENTA_LOW   0x0000fe    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          INCREMENTA_LOWW   0x00058e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          INCREMENTA_LOWW   0x000586    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
            INCREMENTA_VAR   0x000130    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
          INCREMENT_ANALOG   0x00024a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
               INIT_EUSART   0x000082    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
@@ -95,7 +95,7 @@ ESPERA_DESCLICAR_MODE_TOCAR   0x0003b2    program     static C:\Users\alber\Docu
              LOOP_LLEGEIX   0x000572    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                 LOOP_MAIN   0x000622    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                   LOOP_MS   0x0005fa    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_TEMPS   0x00058a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_TEMPS   0x000582    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                 LOOP_WAIT   0x000254    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                LOOP_WAITD   0x000276    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                      MAIN   0x00060a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
@@ -115,7 +115,7 @@ MOVIMENT_JAVA_MANUAL_SI_ENREGIST   0x0003f8    program     static C:\Users\alber
         MOVIMENT_JOYSTICK   0x000222    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
               NETEJAR_RAM   0x0003d0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                      NEXT   0x000126    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                    NEXTT   0x0005b6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                    NEXTT   0x0005ae    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                    NEXT_A   0x00045c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                    NEXT_B   0x00046c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                    NEXT_C   0x00040c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
@@ -124,7 +124,7 @@ MOVIMENT_JAVA_MANUAL_SI_ENREGIST   0x0003f8    program     static C:\Users\alber
                    NEXT_F   0x00043c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                    NEXT_G   0x00044c    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                 OVER_FLOW   0x000110    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               OVER_FLOWW   0x0005a0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               OVER_FLOWW   0x000598    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                PICAR_NOTA   0x00029a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
             PLAY_RAM_SONG   0x000562    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                 POLLANCRE   0x0001b8    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
@@ -252,12 +252,12 @@ CONTROL_REBOTS_PLAY_BUTTON_BAIXA   0x00053c    program     static C:\Users\alber
                BUCLE2_D_1   0x000554    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
             PLAY_RAM_SONG   0x000562    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
              LOOP_LLEGEIX   0x000572    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               LOOP_TEMPS   0x00058a    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-          INCREMENTA_LOWW   0x00058e    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-               OVER_FLOWW   0x0005a0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-         INCREMENTA_HIGHH   0x0005b4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-                    NEXTT   0x0005b6    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
-            COMPROVA_HIGH   0x0005c4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               LOOP_TEMPS   0x000582    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+          INCREMENTA_LOWW   0x000586    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+               OVER_FLOWW   0x000598    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+         INCREMENTA_HIGHH   0x0005ac    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+                    NEXTT   0x0005ae    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
+            COMPROVA_HIGH   0x0005bc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                ESPERA_TMR   0x0005dc    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                RESET_VARR   0x0005e4    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
                 ESPERA_MS   0x0005f0    program     static C:\Users\alber\Documents\GITHUB\LS-SDM-P1-2022\LS-SDM-P1-2022.X\newpic_8b_general.asm
